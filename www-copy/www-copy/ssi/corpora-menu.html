@@ -1,0 +1,202 @@
+<div id="menu">
+<!--#set var="ITEM_URL" value="index.html" -->
+<!--#set var="ITEM_TEXT" value="главная" -->
+<!--#include virtual="item.html" -->
+
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="32" border="0"></div>
+
+<!--#set var="PARENT_URL" value="main" -->
+
+<!--#set var="ITEM_URL" value="search-main.html" -->
+<!--#set var="ITEM_TEXT" value="основной" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="ITEM_URL" value="search-main.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; корпус" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-ngrams_2.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; биграммы" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-ngrams_3.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; триграммы" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-ngrams_4.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; 4-граммы" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-ngrams_5.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; 5-граммы" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#if expr="${PARENT_NAME}=${PARENT_URL}" -->
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="12" border="0"></div>
+<!--#endif -->
+<!--#set var="PARENT_URL" value="" -->
+
+
+<!--#set var="ITEM_URL" value="search-syntax.html" -->
+<!--#set var="ITEM_TEXT" value="синтаксический" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="PARENT_URL" value="paper" -->
+<!--#if expr="${PARENT_NAME}=${PARENT_URL}" -->
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="12" border="0"></div>
+<!--#endif -->
+
+<!--#set var="ITEM_URL" value="search-paper.html" -->
+<!--#set var="ITEM_TEXT" value="газетный" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="ITEM_URL" value="search-paper.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; СМИ 2000-х гг." -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-regional.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; региональный" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#if expr="${PARENT_NAME}=${PARENT_URL}" -->
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="12" border="0"></div>
+<!--#endif -->
+<!--#set var="PARENT_URL" value="" -->
+
+<!--#set var="PARENT_URL" value="para" -->
+<!--#if expr="${PARENT_NAME}=${PARENT_URL}" -->
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="12" border="0"></div>
+<!--#endif -->
+
+<!--#set var="ITEM_URL" value="search-para.html" -->
+<!--#set var="ITEM_TEXT" value="параллельный" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-en.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; английский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-hy.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; армянский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-be.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; белорусский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-bg.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; болгарский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-bua.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; бурятский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-es.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; испанский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-it.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; итальянский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-lv.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; латышский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-de.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; немецкий" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para_rus_ger.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; русская классика<br/> в немецких переводах" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-pl.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; польский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-uk.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; украинский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-fr.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; французский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-et.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; эстонский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-para-multi.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; мультиязычный" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#if expr="${PARENT_NAME}=${PARENT_URL}" -->
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="12" border="0"></div>
+<!--#endif -->
+<!--#set var="PARENT_URL" value="" -->
+
+<!--#set var="ITEM_URL" value="search-school.html" -->
+<!--#set var="ITEM_TEXT" value="обучающий" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="ITEM_URL" value="search-dialect.html" -->
+<!--#set var="ITEM_TEXT" value="диалектный" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="ITEM_URL" value="search-poetic.html" -->
+<!--#set var="ITEM_TEXT" value="поэтический" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="ITEM_URL" value="search-spoken.html" -->
+<!--#set var="ITEM_TEXT" value="устный" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="ITEM_URL" value="search-accent.html" -->
+<!--#set var="ITEM_TEXT" value="акцентологический" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="ITEM_URL" value="search-murco.html" -->
+<!--#set var="ITEM_TEXT" value="мультимедийный" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="ITEM_URL" value="search-multiparc.html" -->
+<!--#set var="ITEM_TEXT" value="мультипарк" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="PARENT_URL" value="historical" -->
+<!--#if expr="${PARENT_NAME}=${PARENT_URL}" -->
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="12" border="0"></div>
+<!--#endif -->
+
+<!--#set var="ITEM_URL" value="search-orthlib.html" -->
+<!--#set var="ITEM_TEXT" value="исторический" -->
+<!--#include virtual="item.html" -->
+
+<!--#set var="ITEM_URL" value="search-orthlib.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; церковнославянский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-mid_rus.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; старорусский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-old_rus.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; древнерусский" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="ITEM_URL" value="search-birchbark.html" -->
+<!--#set var="ITEM_TEXT" value="&ndash; берестяные грамоты" -->
+<!--#include virtual="subitem.html" -->
+
+<!--#set var="PARENT_URL" value="" -->
+
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="32" border="0"></div>
+
+<!--#set var="ITEM_URL" value="corpora-usage.html" -->
+<!--#set var="ITEM_TEXT" value="использование корпуса" -->
+<!--#include virtual="item.html" -->
+
+</div>
+

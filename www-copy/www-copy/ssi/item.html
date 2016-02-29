@@ -1,0 +1,11 @@
+<!--#if expr="${DOCUMENT_NAME}=${ITEM_URL} || ${PARENT_NAME}!='' && ${PARENT_NAME}=${PARENT_URL}"-->
+  <p class="menu">
+   <!--#echo encoding="none" var="ITEM_TEXT"-->
+  </p>
+<!--#else -->
+  <p class="menu">
+    <a class="menu" href="<!--#echo encoding="none" var="ITEM_URL"-->">
+     <!--#echo encoding="none" var="ITEM_TEXT"-->
+    </a>
+  </p>
+<!--#endif -->

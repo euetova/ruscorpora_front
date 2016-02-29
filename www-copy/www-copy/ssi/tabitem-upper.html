@@ -1,0 +1,14 @@
+<!--#if expr="${DOCUMENT_NAME}=${ITEM_URL}"-->
+<!--bgcolor="#FFFFFF"-->
+<td align="left" valign="bottom" style="padding:15 15 5 5;">
+  <nobr>
+  <img src="i/corpus_.gif" style="vertical-align:middle;" alt="" width="21" height="23" border="0"/>
+  <span class="choose" style="background-color: white; padding: 5 5 5 5"><!--#echo encoding="none" var="ITEM_TEXT"-->&nbsp;корпус</span>
+  </nobr>
+</td>
+<!--#else -->
+<td align="left" valign="bottom" class="corpus" style="padding:15 15 5 5;">
+  <nobr><img style="vertical-align:middle;" src="i/corpus.gif" alt="" width="21" height="23" border="0">
+  <a class="corpus" href="<!--#echo encoding="none" var="ITEM_URL"-->"><!--#echo encoding="none" var="ITEM_TEXT"--></a></nobr>
+</td>
+<!--#endif -->

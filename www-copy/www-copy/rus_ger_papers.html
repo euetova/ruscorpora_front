@@ -1,0 +1,340 @@
+
+<html><head>
+<title>Какие исследовательские лингвистические задачи можно решать с помощью корпуса</title>
+<script language="JavaScript" src="common.js"> </script>
+<script language="JavaScript" src="custom_draw_word.js"> </script>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+
+</head>
+<body onload="if (typeof(init) == 'function') init();" onclick="bodyclosehelp()">
+
+
+
+<div id="info" style="visibility: hidden; z-index: 100; margin:0;"></div>
+<div id="closeinfo" style="visibility: hidden;position: absolute; border: 0; margin:0; z-index: 200;">
+<a href="#" onclick="parent.closehelp()"><img src="i/close.gif" width="14" heigh="14" style="border: 0; margin:0;"></a>
+</div>
+<!--Logo-->
+<div id="logo" style="position: absolute; border: 0; margin:0; top: 7px; left: 7px">
+<a href="index.html"><img src="i/logo.gif" alt="Национальный корпус русского языка" height="57" border="0"></a>
+</div>
+<!--/Logo-->
+<!--Header-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="logo" bgcolor="#023F7C"> </td>
+        <td valign="bottom" width="100%" align="right" style="border-bottom:3px solid #FA9108;">
+      <table width="100%" bgcolor="#023F7C" >
+        <tr>
+          <td valign="bottom" style="background: url(i/s_letters.gif) no-repeat; background-position: right;">
+            <img src="i/dot.gif" alt="" width="1" height="75" border="0">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+<!--/Header-->
+<!--Menu&Text-->
+    <tr>
+        <td class="menu">
+ <div id="menu">
+
+
+
+  <p class="menu">
+    <a class="menu" href="index.html">
+     главная
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="archive.html">
+     архив новостей
+    </a>
+  </p>
+
+
+
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="32" border="0"></div>
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="search-main.html">
+     поиск в корпусе
+    </a>
+  </p>
+
+
+
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="32" border="0"></div>
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-intro.html">
+     что такое корпус?
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-structure.html">
+     состав и структура
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-stat.html">
+     статистика
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="ngram.html">
+     графики
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-freq.html">
+     частоты
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-morph.html">
+     морфология
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="obgrams.html">
+     обороты
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="instruction-syntax.html">
+     синтаксис
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-sem.html">
+     семантика
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-parameter.html">
+     параметры текстов
+    </a>
+  </p>
+
+
+
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="32" border="0"></div>
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="http://studiorum.ruscorpora.ru">
+     studiorum
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="http://studiorum.ruscorpora.ru/forum/index.php">
+     форум
+    </a>
+  </p>
+
+
+
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="32" border="0"></div>
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-about.html">
+     о проекте
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-team.html">
+     участники проекта
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-biblio.html">
+     публикации
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-progr.html">
+     программные средства
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-errors.html">
+     ошибки в корпусе
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-usage.html">
+     использование корпуса
+    </a>
+  </p>
+
+
+
+
+
+
+  <p class="menu">
+    <a class="menu" href="corpora-other.html">
+     другие корпуса
+    </a>
+  </p>
+
+
+
+</div>
+
+        </td>
+        <td valign="top">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="maintext" width="100%">
+<!--RC_Text-->
+
+
+<base target=_blank>
+<p class=h0><b>Какие исследовательские лингвистические задачи можно решать с помощью корпуса</b></p>
+<p>1. <b>Корпус немецко-русских и русско-немецких параллельных текстов в Национальном корпусе русского языка.</b> Из статьи: Д. О. Добровольский, Е. Б. Кротова, И. С. Парина. 2014. Корпусная лексикография (материалы мастер-класса) // Русская германистика: Ежегодник Российского союза германистов. Т. 11. М.: Языки славянской культуры: Знак, 2014. С. 237-278.</p>
+<p>&rarr; <a href="./rus_ger_papers/parcor_in_rnc.htm">текст</a></p>
+<p>2. Д. О. Добровольский (2012). <b>Использование корпусов текстов в двуязычной лексикографии</b> // Среди нехоженых путей. Сб. н. статей к юбилею А. А. Кретова. Воронеж: НАУКА-ЮНИПРЕСС, 2012, 14-25.</p>
+<p>&rarr; <a href="./rus_ger_papers/corpora_for_dictionaries.htm">текст</a></p>
+<p>3. Д. О. Добровольский (2015). <b>Лингвоспецифичная лексика в корпусах параллельных текстов</b> // Речевые жанры современного общения. Тезисы докладов междунар. Конф. «11-е Шмелевские чтения (23-25 февр. 2015)». М.: ИРЯ РАН, 2015. С. 47-49.</p>
+<p>&rarr; <a href="./rus_ger_papers/dd_abstract_shmelevskie_2015.htm">текст</a></p>
+<p>4. <b>Русское <i>нет</i> как лингвоспецифичное слово.</b> Из статьи Д. О. Добровольского &quot;Корпус параллельных текстов и сопоставительная лексикология&quot;</p>
+<p>&rarr; <a href="./rus_ger_papers/russian_net.htm">текст</a></p>
+<p>5. Д. О. Добровольский (2014). <b>Русские обращения в параллельных корпусах</b> (К вопросу культурной специфики некоторых лексических классов) In: Die Welt der Slaven. Internationale Halbjahresschrift f&uuml;r Slavistik. Hrsg. von Rehder, Peter und Smirnov, Igor. M&uuml;nchen/Berlin: Sagner – 1,25 а.л. Die Welt der Slaven LIX, 2014, 1-21.</p>
+<p>&rarr; <a href="./rus_ger_papers/russian_vocatives_in_parcor.htm">текст</a></p>
+<p>6. <b>Употребление русского обращения <i>брат</i> в параллельных корпусах</b>. Из статьи: Д. О. Добровольский. Корпус параллельных текстов в исследовании культурно-специфичной лексики // Национальный корпус русского языка : 2006—2008. Новые результаты и перспективы. / Отв. ред. В. А. Плунгян. — СПб.: Нестор-История, 2009. — 502 с. – с. 383-401.</p>
+<p>&rarr; <a href="./rus_ger_papers/brat_in_parcor.htm">текст</a></p>
+<p>7. <b>Высказывания от 1-го лица в параллельном корпусе</b>. Из статьи: Д. О. Добровольский, Е. В. Падучева. Высказывания от 1-го лица: семантика и прагматика // Логический анализ языка. Моно-, диа-, полилог в разных языках и культурах / Отв. ред. член-корр. РАН Н.Д. Арутюнова. М.: Индрик, 2010. С. 104-121.</p>
+<p>&rarr; <a href="./rus_ger_papers/1_person_in_parcor.htm">текст</a></p>
+<p>8. Д. О. Добровольский, И. Б. Левонтина. <b>О синонимии фокусирующих частиц</b> (на материале немецкого и русского языков) = Synonymous focus particles in German and Russian // Компьютерная лингвистика и интеллектуальные технологии: По материалам ежегодной Международной конференции «Диалог 2012». Выпуск 11 (18): В 2 т. Том 1: Основная программа конференции. – М.: Изд-во РГГУ, 2012. С. 138-149. (=Computational Linguistics and Intellectual Technologies. Papers from the Annual International Conference “Dialogue 2012” Issue 11 (18), 2012. Volume 1)</p>
+<p>&rarr; <a href="./rus_ger_papers/eben_gerade_paper-2.htm">текст</a></p>
+<p>9. <b>Zwei deutsche Phrasem-Konstruktionen mit ihren translatorischen &Auml;quivalenten im Russischen.</b> Из статьи: Dmitrij Dobrovol'skij (2012): Phrasem-Konstruktionen in Parallelcorpora. In: Prinz, Michael/Richter-Vapaatalo, Ulrike (Hg.) (2012): Idiome, Konstruktionen, &quot;verbl&uuml;mte rede&quot;. Beitr&auml;ge zur Geschichte der germanistischen Phraseologieforschung (Beitr&auml;ge zur Geschichte der Germanistik 3). Stuttgart: Hirzel, 2012. S. 327-340.</p>
+<p>&rarr; <a href="./rus_ger_papers/phrasemkonstruktionen_in_parallelcorpora.htm">текст</a></p>
+<p>10. <b>Idiome und &Uuml;bersetzung literarischer Texte (am Material paralleler Textkorpora).</b> Из статьи: Dmitrij Dobrovol'skij (2004). Idiome und &Uuml;bersetzung literarischer Texte. In: Lexikalische Semantik, Phraseologie und Lexikographie: Abgr&uuml;nde und Br&uuml;cken. Festgabe f&uuml;r Regina Hessky. Hrsg. von Rita Brdar-Szabo und Elisabeth Knipf-Komlosi. Frankfurt etc.: Lang, 2004, 273-284.</p>
+<p>&rarr; <a href="./rus_ger_papers/idioms_in_parcor.htm">текст</a></p>
+<p>11. <b>Parallele Textcorpora als linguistische Ressource neuer Art.</b> Из статьи: Dmitrij Dobrovol'skij (2005). Paralleles Textcorpus bei der Untersuchung lexikalischer Semantik. In: Lenz, Friedrich/Schierholz, Stefan J. (Hrsg.) Corpuslinguistik in Lexik und Grammatik. T&uuml;bingen: Stauffenburg, 2005, 153-186.</p>
+<p>&rarr; <a href="./rus_ger_papers/parallele_textcorpora.htm">текст</a></p>
+
+<!-- Copyright-->
+
+<table width="100%" border="0" cellspacing="5" cellpadding="0" style="border-top:3px solid #BBBBBB;"><tr>
+        <td class="copy"><nobr>Национальный корпус русского языка</nobr><br>© 2003&ndash;2015</td>
+    <td class="copy" align="right"><a href="mailto:info@ruscorpora.ru">info@ruscorpora.ru</a></td>
+</tr></table>
+<!-- Copyright-->
+</td></tr></table>
+
+<!-- include virtual="metrika.html" -->
+
+</body></html>
+

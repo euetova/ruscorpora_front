@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+   <meta http-equiv="content-type" content="text/html; charset=utf-8"> 
+   <title>Suggest Test</title> 
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <script type="text/javascript" src="suggest.js"></script> 
+   <script type="text/javascript"> 
+   function getParam(param, defaultValue) {
+      var url = document.location.href;
+      var pos = url.indexOf("?");
+      if (pos < 0)
+          return defaultValue;
+      var args = url.substr(pos + 1).split("&");
+      for (var i = 0; i < args.length; ++i) {
+          var name = args[i], value = "";
+          pos = name.indexOf("=");
+          if (pos >= 0) {
+              value = name.substr(pos + 1);
+              name = name.substr(0, pos);
+          }
+          if (name == param)
+             return value;
+      }
+      return defaultValue;
+   }
+ 
+   function init() {
+      var site = getParam("site", "ruscorp");
+      var suggest = new Suggest(document.forms[0].textCtrl, { site: site });
+      document.getElementById("site").innerHTML = site;
+   }
+   </script> 
+</head> 
+<body onload="init()"> 
+   <h3>Suggest: <span id="site"></span></h3> 
+   <form onsubmit="alert(document.forms[0].textCtrl.value);return false"> 
+      <div style="position:relative;z-index:3;"> 
+         <input type="text" name="textCtrl" id="textCtrl" autocomplete="off" style="width:300px;z-index:3"/> 
+         <div class="results" style="z-index:3;background-color:window;display:none;position:absolute;top:24px;left:0px;min-width:300px"> 
+            <div>$text</div> 
+         </div> 
+         <input type="submit" value="Submit"/> 
+      </div> 
+   </form> 
+
+   <br>
+
+   <h3>Suggest2: <span id="site"></span></h3> 
+   <form onsubmit="alert(document.forms[0].textCtrl.value);return false"> 
+      <div style="position:relative;z-index:2"> 
+         <input type="text" name="textCtrl" id="textCtrl" autocomplete="off" style="width:300px;z-index:2"/> 
+         <div class="results" style="z-index:2;background-color:window;display:none;position:absolute;top:24px;left:0px;min-width:300px"> 
+            <div>$text</div> 
+         </div> 
+         <input type="submit" value="Submit"/> 
+      </div> 
+   </form> 
+
+
+
+</body> 
+</html> 

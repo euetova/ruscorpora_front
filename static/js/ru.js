@@ -1,0 +1,23 @@
+var language = {
+    addWord : "Добавить слово",
+    addSibling : "Добавить потомка",
+    deleteWord : "Удалить слово",
+    distance : "Расстояние",
+    from : "от",
+    to : "до",
+    fromParent : " от родителя",
+    syntacticRelationship : "Синтаксическое отношение",
+    select : "выбрать",
+    word : "Слово",
+    grammFeatures : "Грамм. признаки ",
+    semFeatures : "Семант. признаки",
+    additionalFeatures : "Доп. признаки",
+    orphoMarkup : "Орфоэпическая структура",
+    accentMarkup : "Вокалическая структура",
+    feature : "Признак",
+    sem : "1-е знач.",
+    sem2 : "др. знач.",
+    semf : "фильтр 1",
+    semf2 : "фильтр 2",
+    wordFormation : "Словообразование"
+};

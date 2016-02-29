@@ -1,0 +1,92 @@
+<!--#set var="TITLE" value="График распределения по годам. Национальный корпус русского языка"-->
+<!--#include virtual="ssi/header.html" -->
+
+<div id="info" style="visibility: hidden; z-index: 1; margin:0;">
+</div>
+
+<script type="text/javascript">
+function init() {}
+
+function prepare() {
+  var q = document.getElementById("query").value;
+  q = q.replace(/ /g, "\u00A0");
+  var parts = q.split(",");
+  var url = "http://search-beta.ruscorpora.ru/ngram.xml?env=fol1&mode=main";
+  for (var i = 0; i < parts.length; ++i) {
+    var p = parts[i];
+    while (p.length > 0 && p[0] == "\u00A0") p = p.substring(1);
+    while (p.length > 0 && p[p.length - 1] == "\u00A0") p = p.substring(0, p.length-2);
+    url += "&t" + (i+1).toString() + "=" + encodeURIComponent(p);
+  }
+  url += "&start=" + document.getElementById("year_start").value;
+  url += "&end=" + document.getElementById("year_end").value;
+  url += "&smoothing=" + document.getElementById("smoothing").value;
+  url += "&query=" + encodeURIComponent(q);
+  window.open(url);
+}
+</script>
+
+
+<h1>Распределение по годам (&#x03B2)
+<a href="help-ngram.html" onClick="return showhelp('help-ngram.html',720)"><img src="i/help.gif" alt="[?]" border="0" class="help"></a>
+</h1>
+
+<br/>
+
+<table>
+<form action="" onsubmit="prepare(); return false;">
+ <tr>
+  <td valign="middle" style="font-size: 85%" colspan="2">
+   <div>
+   Слова или сочетания слов, через запятую:&nbsp;
+   <input type="text" id="query" name="query" size="50"/>
+   </div>
+   <br/>
+  </td>
+ </tr>
+ <tr>
+  <td style="font-size: 85%" colspan="2">
+   <div>
+   Годы с
+   <input type="text" id="year_start" name="year_start" size="4" maxlength="4" value="1800"/>
+   по
+   <input type="text" id="year_end" name="year_end" size="4" maxlength="4" value="2010"/>
+   </div>
+   <br/>
+  </td>
+  </tr>
+  <tr>
+  <td valign="middle" style="font-size: 85%">
+   <div>
+   Сглаживание:&nbsp;&nbsp;
+   <select name="smoothing" id="smoothing">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3" selected>3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="30">30</option>
+    <option value="40">40</option>
+    <option value="50">50</option>
+   </select>
+   </div>
+   <br/>
+  </td>
+  <td align="right" valign="top">
+   <input class="button" type="submit" value="построить">
+   <!--input class="button" type="reset" value="очистить"-->
+  </td>
+ </tr>
+</form>
+</table>
+
+<br/>
+
+<!--#include virtual="ssi/ysfooter.html" -->

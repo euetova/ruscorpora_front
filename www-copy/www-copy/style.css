@@ -1,0 +1,567 @@
+body {
+  margin: 0px; padding: 0px;
+  color: black; 
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+.maintext {
+  font-family: Arial, sans-serif;
+  font-size: 85%;
+  text-align: justify;
+  padding: 15px 30px 36px 30px;
+  vertical-align: top;
+  line-height: 140%;
+}
+.helpwindow {
+  font-family: Arial, sans-serif;
+  font-size: 85%;
+  text-align: justify;
+  padding: 45px 45px 45px 45px;
+  vertical-align: top;
+  line-height: 140%;
+  z-index: 1000;
+}
+ol.results {
+  margin:0 80px 1.7em 80px; 
+  padding:0 0 0 0px
+}
+ol.results li {
+  margin-bottom:1em; 
+  padding:0;
+}
+table.searchreq {
+  margin:0 80px 10px 80px; 
+  font-size: 85%;
+  padding:0 0 0 0px
+}
+input.text {
+  border:#808080 1px solid;
+}
+input.text100 {
+  width:100%; 
+  border:#808080 1px solid;
+}
+.wordreq {
+  background-color: #E0E0E0;
+  margin:0; 
+  padding:3;
+  border-collapse:collapse;
+}
+.wordreqtext {
+  padding:3 10;
+  white-space:nowrap; 
+  font-size:85%;
+  width:33%; 
+}
+.wordreqtext50 {
+  padding:3 10;
+  white-space:nowrap; 
+  font-size:85%;
+  width:50%; 
+}
+.wordreqcheck {
+  padding:3 10;
+  white-space:nowrap; 
+  font-size:85%;
+  width:13%; 
+  text-align: left;
+  vertical-align: middle;
+}
+.wordreqinput {
+  padding:0 10 10 10;
+}
+.distreq {
+  margin-top: 7;
+  margin-bottom: 7;
+  white-space:nowrap; 
+  font-size: 100%;
+}
+p.otherpages {
+  margin:0 80px 0 80px; 
+}
+p.yandcopy {
+  margin:0 80px 0 80px; 
+  text-align: right;
+}
+span.tabprefix {
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 90%;
+  color: #ffffff;
+  text-decoration: none;
+}
+.maintextsearch {
+  font-family: Arial, sans-serif;
+  font-size: 85%;
+  text-align: justify;
+  padding: 0px 10px 10px 10px;
+  vertical-align: top;
+  line-height: 140%;
+}
+.inform {
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  text-align: justify;
+  padding: 15px 30px 30px 30px;
+  vertical-align: top;
+}
+.intable {
+  font-family: Arial, sans-serif;
+  font-size: 11pt;
+  text-align: left;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: top;
+  line-height: 140%;
+  width: 100%;
+}
+.intable td {
+  padding: 5 5 5 0;
+}
+.deep-table {
+  font-family: Arial, sans-serif;
+  font-size: 11pt;
+  text-align: left;
+  padding: 0px;
+  margin: 0px;
+  margin-left:20px;
+  vertical-align: top;
+  line-height: 140%;
+  width: 100%;
+}
+.copy {
+  font-family: Arial, sans-serif;
+  font-size: 85%;
+  padding: 10px 0px 10px 0px;
+  vertical-align: top;
+}
+.ksan {
+  font-family: Arial, sans-serif;
+  font-size: 85%;
+  text-align: right;
+  padding: 10px 0px 10px 0px;
+  vertical-align: top;
+}
+.help {
+  padding: 0px 0px 0px 5px;
+  vertical-align: top;
+}
+.date {
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  text-align: left;
+  font-weight: bold;
+  color: #FA9108;
+}
+.author {
+  font-family: Arial, sans-serif;
+  font-size: 85%;
+  text-align: left;
+  font-weight: bold;
+  color: #FA9108;
+  padding: 10px 0px 3px 0px;
+}
+.symbol {
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  text-align: left;
+  font-weight: bold;
+  color: #FA9108;
+}
+.obsc {
+  color: white;  
+  cursor: pointer;
+}
+.number {
+  font-family: Arial, sans-serif;
+  font-size: 85%;
+  text-align: left;
+  font-weight: bold;
+  color: #808080;
+  padding-right: 10px;
+}   
+.list {
+  padding: 0px 0px 5px 0px; 
+  margin: 0px;
+  text-align: left;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 85%;
+  color: #bbbbbb;
+}
+.menuheading {
+  padding: 0px 0px 0px 0px; 
+  margin: 0px;
+  text-align: right;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 85%;
+  color: #a9a9a9;
+}
+h1 {
+  padding: 0px;
+  margin: 0px 0px 20px 0px;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  font-size: 160%;
+  font-weight: normal;
+  line-height: 100%;
+  color: #5F5F5F;
+}
+.h1 {
+  padding: 0px; 
+  margin: 0px 0px 10px 0px;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  font-size: 160%;
+  font-weight: normal;
+  line-height: 120%;
+  color: #5F5F5F;
+}
+.exact-form-search-header, .lex-gramm-search-header {
+  padding: 0px; 
+  margin: 0px 0px 10px 0px;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  font-size: 125%;
+  font-weight: normal;
+  line-height: 100%;
+  color: #5F5F5F;
+}
+h2 {
+  padding: 0px; 
+  margin: 15px 0px 5px 0px;
+  text-align: left;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  color: #404040;
+}
+.h2 {
+  padding: 0px; 
+  margin: 15px 0px 5px 0px;
+  text-align: left;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  color: #404040;
+}
+h3 {
+  padding: 0px; 
+  margin: 15px 0px 10px 0px;
+  text-align: left;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  color:  #FA9108;
+}
+.h3 {
+  padding: 0px; 
+  margin: 15px 0px 10px 0px;
+  text-align: left;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  color:  #FA9108;
+}
+.docheading {
+  padding: 10px 0px 0px 0px; 
+  margin: 0px 0px 0px 0px;
+  text-align: left;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 85%;
+  color: #404040;
+}
+.document {
+  padding: 0px; 
+  margin: 0px 0px 0px 0px;
+  font-family: Arial, sans-serif;
+  font-size: 80%;
+  color: #a9a9a9;
+}
+.document-big {
+  padding: 0px; 
+  margin: 0px 0px 0px 0px;
+  font-family: Arial, sans-serif;
+  color: #808080;
+  font-weight: bold;
+}
+.doctitle {
+  padding: 12px 0px 0px 0px;   
+  margin: 0px 0px 0px 0px;
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  color: #808080;
+  font-weight: bold;
+}
+td.menu {
+  padding: 0px 0px 0px 0px;
+  vertical-align: top;
+  border-top: 6px solid #BBBBBB;
+}
+td.comment {
+  padding: 10px 0px;
+  vertical-align: top;
+  font-size: 85%;
+}
+p.menu {
+  margin: 10px 0px 0px 20px;
+  font-size: 85%;
+  text-align: right;
+  font-weight: bold;
+  color: #747474;
+  white-space: nowrap; 
+}   
+p.subitem {
+  margin: 10px 0px 0px 20px;
+  font-size: 85%;
+  text-align: right;
+  font-weight: normal;
+  color: #747474;
+  white-space: nowrap; 
+}   
+.menusmall {
+  margin: 10px 0px 0px 20px;
+  font-size: 85%;
+  text-align: right;
+}   
+.topsearch {
+  margin: 0px;
+  font-size: 80%;
+  text-align: right;
+  color: white;
+}   
+.button {
+  font-size: 80%;
+  text-align: center;
+}   
+.logo {
+  background: url(i/logobg.jpg) no-repeat #023F7C;
+  background-position: right;
+}
+.letters {
+  background: url(i/letters.gif) no-repeat #023F7C;
+  background-position: right;
+}   
+.sletters {
+  background: url(i/s_letters.gif) no-repeat #023F7C;
+  background-position: right;
+}   
+.menudelim {
+  background: url(i/menudelim.gif) no-repeat;
+  background-position: right;
+}   
+a:link {
+  color: #023F7C;
+  font-size: 100%;
+  text-decoration: underline;
+}
+a:visited {
+  color: #023F7C;
+  font-size: 100%;
+  text-decoration: underline;
+}
+a:hover {
+  color: #023F7C;
+  font-size: 100%;
+  text-decoration: underline;
+}
+a.subitem {
+  color: #aaaaaa;
+  font-size: 100%;
+  font-weight: normal;
+  text-decoration: none;
+}   
+a.subitem:link {
+  color: #023F7C;
+  font-size: 100%;
+  font-weight: normal;
+  text-decoration: none;
+}
+a.subitem:visited {
+  color: #023F7C;
+  font-size: 100%;
+  font-weight: normal;
+  text-decoration: none;
+}
+a.subitem:hover {
+  color: #023F7C;
+  font-size: 100%;
+  font-weight: normal;
+  text-decoration: underline;
+}
+a.menu {
+  color: #aaaaaa;
+  font-size: 100%;
+  font-weight: bold;
+  text-decoration: none;
+}   
+a.menu:link {
+  color: #023F7C;
+  font-size: 100%;
+  font-weight: bold;
+  text-decoration: none;
+}
+a.menu:visited {
+  color: #023F7C;
+  font-size: 100%;
+  font-weight: bold;
+  text-decoration: none;
+}
+a.menu:hover {
+  color: #023F7C;
+  font-size: 100%;
+  font-weight: bold;
+  text-decoration: underline;
+}
+a.corpus:link {
+  font-weight: bold;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 75%;
+  color: #ffffff;
+  text-decoration: none;
+}
+a.corpus:visited {
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 75%;
+  color: #ffffff;
+  text-decoration: none;
+}
+a.corpus:hover {
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 75%;
+  color: #ffffff;
+  text-decoration: none;
+}
+.choose {
+  padding: 0px; 
+  margin: 0px;
+  text-align: left;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 75%;
+  color: #747474;
+}
+a.whitelink:link {
+  color: white;
+  font-size: 100%;
+  text-decoration: underline;
+}
+a.whitelink:visited {
+  color: white;
+  font-size:  100%;
+  text-decoration: underline;
+}
+a.whitelink:hover {
+  color: white;
+  font-size: 100%;
+  text-decoration: underline;
+}
+a.small:link {
+  color: #023F7C;
+  font-size: 85%;
+  text-decoration: underline;
+}
+a.small:visited {
+  color: #023F7C;
+  font-size: 80%;
+  text-decoration: underline;
+}
+a.small:hover {
+  color: #023F7C;
+  font-size: 80%;
+  text-decoration: underline;
+}
+.deep_caption, .deep_status {
+  padding: 0px; 
+  padding-right: 5px;
+  margin: 0px 0px 20px 0px;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  font-size: 100%;
+  font-weight: bold;
+  line-height: 120%;
+  color: #5F5F5F;
+}
+.deep_status {
+  padding-right: 30px;
+  color: green;
+  font-weight: normal;
+}
+.deep_action {
+  margin-right: 10px;
+}
+.deep_header, .deep_name {
+  width: 30%;
+}
+a.deep_clear {
+}
+a.deep_clear_disabled, a.deep_clear_disabled:visited, a.deep_clear_disabled:hover {
+  color: lightgray;
+}
+.deep_name, .deep_name_shifted {
+  font-size: 85%;
+  padding-left: 25px;
+}
+.deep_name_shifted {
+  padding-left: 50px;
+}
+.deep_value input {
+  width: 100%
+}
+.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1em;
+}
+.news-list li {
+  padding: 0 0 0 0;
+  margin: 0 0 0.25em 0;
+}
+.results {
+  border: solid 1px gray;
+}
+.results div {
+  display: list-item;
+  cursor: default;
+  white-space: nowrap;
+  padding: 1px 3px;
+  overflow: hidden;
+}
+.selected {
+  color: highlighttext;
+  background-color: highlight;
+}
+span.comment {
+  color: gray;
+  font-size: 85%;
+}
+.authorsTable {
+  border-collapse: collapse;
+}
+.authorsTable td {
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+.header {
+  float: left;
+}
+div.settings {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  float: right;
+  display: block;
+}
+.b-docattr {
+  padding-top: 5;
+  padding-bottom: 7;
+}
+.subcorp-items {
+  padding-left: 40px;
+  font-size: 9pt;
+}

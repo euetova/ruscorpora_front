@@ -1,0 +1,22 @@
+<html><head><title>Помощь</title><link rel="stylesheet" type="text/css" href="style.css"></head>
+<body style="background-color: #FFFFE1" onload="if (parent.adjustIFrameSize) parent.adjustIFrameSize(window);">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFE1">
+<tr><td class="helpwindow">
+<!--начало текста-->
+<h1>Поле &laquo;Слово&raquo;</h1>
+<p>В&nbsp;поле &laquo;Слово&raquo; указывается искомая лексема (обязательно в&nbsp;словарной форме:
+<strong>отечество</strong>, а&nbsp;не <strong>отечества</strong>) или словоформа (в кавычках:
+<strong>"отечества"</strong>). В&nbsp;поле &laquo;Слово&raquo; действуют символ <strong>*</strong>,
+обозначающий любую последовательность символов в начале или конце лексемы или словоформы,
+а&nbsp;также логические операторы &laquo;ИЛИ&raquo; и &laquo;НЕ&raquo;: для поиска слов
+<em>любовь</em> или <em>ненависть</em> нужно ввести <strong>любовь|ненависть</strong>, для поиска
+любого слова, кроме <em>без</em>, нужно ввести <strong>-без</strong>. Эти символы можно комбинировать
+при помощи логического &laquo;И&raquo;, задаваемого знаком <em>&amp;</em> или одиночным пробелом.
+Так, запрос <strong>*вед&nbsp;-швед</strong> найдет все лексемы, заканчивающиеся на <em>вед</em>
+(<em>языковед, искусствовед</em>...), но не <em>швед</em>; запрос <strong>мой&amp;"его"</strong>
+найдет все вхождения лексемы <em>мой</em> и словоформы <em>его</em>. Чтобы искать все лексемы,
+кроме нескольких определенных, следует поставить в начале запроса звёздочку: например
+<strong><nobr>* -папа -мама</strong></nobr></p>
+<p>Ударение обозначается апострофом (') после ударной гласной.</p>
+<!--конец текста-->
+</td></tr></table></body></html>

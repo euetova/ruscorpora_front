@@ -1,0 +1,98 @@
+<!--#set var="PARENT_NAME" value="main"-->
+<!--#set var="SCRIPT" value="ru.js"-->
+<!--#set var="SCRIPT1" value="search.js"-->
+<!--#set var="SCRIPT2" value="ngrams.js"-->
+<!--#set var="TITLE" value="Поиск в корпусе. Национальный корпус русского языка"-->
+<!--#include virtual="ssi/corpora-header.html" -->
+
+<link rel="search" href="opensearch-main.xml" title="Ruscorpora" type="application/opensearchdescription+xml">
+<script type="text/javascript" src="suggest.js"></script>
+
+<script type="text/javascript">
+settings.wordsCount = 4;
+settings.mode = "ngrams_4";
+</script>
+
+
+<div class="settings"/>
+ <a target="_blank" href="help-ngrams.html"><nobr>инструкция</nobr></a>
+</div>
+
+<h1 class="header">Поиск по 4-граммам</h1>
+<br clear="all" />
+
+<form target="_blank" action="http://search.ruscorpora.ru/search.xml" name="exactForm" method="get" onsubmit="toggleMode(false); return true;">
+<input type="hidden" name="env" value="sas1_2"/>
+<input type="hidden" name="mycorp" value=""/>
+<input type="hidden" name="mysent" value=""/>
+<input type="hidden" name="mysize" value=""/>
+<input type="hidden" name="mysentsize" value=""/>
+<input type="hidden" name="dpp" value="100"/>
+<input type="hidden" name="spp" value="100"/>
+<input type="hidden" name="spd" value="100"/>
+<input type="hidden" name="text" value="lexform"/>
+<input type="hidden" name="sort" value="gr_freq"/>
+<input type="hidden" name="lang" value="ru"/>
+<input type="hidden" name="mode" id="mode" value="ngrams_4"/>
+<input type="hidden" name="nodia" value="1"/>
+<table class="intable" border="0" cellspacing="0" cellpadding="0" width="100%">
+ <tr>
+   <td with="100%" colspan="2" style="font-size: 100%">
+   <input type="checkbox" id="use_lexgr" onclick="toggleMode()"/>учитывать лексику и грамматику&nbsp;&nbsp;&nbsp;<br/>
+   <input type="checkbox" id="use_punct" onclick="toggleMode()"/>учитывать пунктуацию&nbsp;&nbsp;&nbsp;<br/>
+   <br/><br/>
+   </td>
+ </tr>
+ <tr>
+  <td class="exact-form-search-header">Поиск&nbsp;точных&nbsp;форм&nbsp;&nbsp;</td>
+  <td valign="bottom" width="100%" align="left">
+   <a href="help-simple.html" onClick="return showhelp('help-simple.html',516)"><img src="i/help.gif" alt="[?]" width="19" height="25" border="0" class="help"></a>
+   <a href="#" onClick="return getVkb('req')"><img style="vertical-align:bottom;" src="i/keyboard.gif" alt="Виртуальная клавиатура" title="Виртуальная клавиатура" width="42" height="21" border="0"></a>
+  </td>
+ </tr>
+ <tr>
+  <td width="100%" valign="middle" colspan=2 style="font-size: 85%">Слово или фраза</td>
+ </tr>
+ <tr>
+  <td width="100%" valign="top" colspan=2>
+   <input type="text" name="req" size="50" style="width: 100%; padding:0; border:#808080 1px solid;">
+  </td>
+ </tr>
+ <tr>
+  <td valign="top" colspan="2">
+  </td>
+ </tr>
+</table>
+   <input class="button" type="submit" value="искать">
+   <input class="button" type="reset" value="очистить">
+</form>
+
+<br/>
+
+<form target="_blank" name="reqForm" action="http://search.ruscorpora.ru/search.xml" method="get" onsubmit="order_indexes(); toggleMode(true); return true;">
+<input type="hidden" name="env" value="sas1_2"/>
+<input type="hidden" name="mycorp" value=""/>
+<input type="hidden" name="mysent" value=""/>
+<input type="hidden" name="mysize" value=""/>
+<input type="hidden" name="mysentsize" value=""/>
+<input type="hidden" name="dpp" value="100"/>
+<input type="hidden" name="spp" value="100"/>
+<input type="hidden" name="spd" value="100"/>
+<input type="hidden" name="text" value="lexgramm"/>
+<input type="hidden" name="mode" value="ngrams_4"/>
+<input type="hidden" name="sort" value="gr_freq"/>
+<input type="hidden" name="lang" value="ru"/>
+<input type="hidden" name="nodia" value="1"/>
+<table class="intable" border="0" cellspacing="0" cellpadding="0" width=100%>
+ <tr>
+  <td class="lex-gramm-search-header"><nobr>Лексико-грамматический&nbsp;поиск&nbsp;&nbsp;</nobr></td>
+  <td valign="bottom" width="100%" align="left"><a href="help-lexic.html" onClick="return showhelp('help-lexic.html',516)"><img src="i/help.gif" alt="Помощь" width="19" height="25" border="0"></a></td>
+  <td>&nbsp;</td>
+ </tr>
+</table>
+<div id="0_words" style="padding: 10 0 10 0" ></div>
+<input class="button" type="submit" value="искать">
+<input class="button" type="reset" value="очистить">
+</form>
+
+<!--#include virtual="ssi/ysfooter.html" -->

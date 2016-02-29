@@ -1,0 +1,71 @@
+<!--#set var="SCRIPT" value="subcorp.js"-->
+<!--#set var="TITLE" value="Выбор подкорпуса в газетном корпусе"-->
+<!--#include virtual="ssi/corpora-header.html" -->
+
+<h1>Газетный корпус: выбор подкорпуса</h1>
+<form name="reqForm" action="<!--#echo var='SEARCH_SERVER'-->/search.xml" method="get">
+<input type="hidden" name="env" value="<!--#echo var='ENV'-->">
+<input type="hidden" name="text" value="meta">
+<input type="hidden" name="mode" value="paper">
+<input type="hidden" name="sort" value="gr_tagging">
+<input type="hidden" name="lang" value="ru"/>
+<p>Вы можете задать подмножество корпуса, по которому в&nbsp;дальнейшем будет вестись поиск. Подробнее о&nbsp;параметрах
+текста см.&nbsp;в&nbsp;разделе &laquo;<a href="corpora-parameter.html">Параметры текста</a>&raquo;.<br></p>
+
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr><td><h3>Основные&nbsp;параметры&nbsp;текста</h3></td>
+<td>&nbsp;&nbsp;</td>
+ <td valign="bottom" width="100%" align="left"><a href="help-paper.html" onClick="return showhelp('help-paper.html',516)"><img src="i/help.gif" alt="[?]" width="19" height="25" vspace=7 border="0"></a></td></tr>
+</table>
+
+Название&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="doc_te_header" style="width:80%">
+<br>Автор текста&nbsp;<input tye="text" name="doc_te_author" style="width:90%">
+<br>Год&nbsp;публикации:&nbsp;&nbsp;&nbsp;от&nbsp;<input type="text" name="doc_g_date_created" size="10">&nbsp;до&nbsp;<input type="text" name="doc_l_date_created" size="10">
+<br>Издание&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('source');">выбрать</a><br>
+<input type="text" class="attr_val" id="source" name="doc_source" style="width:90%">
+
+<br/>
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr><td><h3>Версии</h3></td></tr>
+</table>
+Дата добавления документа:&nbsp;c 
+<select id="doc_g_crevision" name="doc_g_crevision">
+ <option value="">самого начала</option>
+ <option value="973">августа 2012 г.</option>
+ <option value="1510">декабря 2015 г.</option>
+ <!--<option value="3177"></option>-->
+</select>
+&nbsp;по
+<select id="doc_l_crevision" name="doc_l_crevision">
+ <option value="">текущий момент</option>
+ <!--<option value="3176"></option>-->
+ <option value="1509">декабрь 2015 г.</option>
+ <option value="972">август 2012 г.</option>
+</select>
+<br/>
+<br/>
+
+
+
+<p>После выбора соответствующих параметров нажмите кнопку &laquo;Далее&raquo;
+и&nbsp;перейдите к&nbsp;просмотру списка документов, входящих в&nbsp;подкорпус.
+<!--Нажав кнопку &laquo;Сохранить&raquo;, пользователь может перейти к&nbsp;странице &laquo;Поиск в&nbsp;корпусе&raquo; для задания поискового запроса.-->
+</p>
+<br>
+<input class="button" type=submit value="Далее &gt;&gt;">
+&nbsp;&nbsp;
+<input class="button" type=reset value="Очистить">
+</form>
+
+<input class="button" type="button" value="Очистить подкорпус" onclick="saveResults();" />
+<br/><br/>
+<script type="text/javascript">
+function saveResults() {
+  document.cookie = "dialect=;domain=ruscorpora.ru";
+  window.location= "http://ruscorpora.ru/search-paper.html";
+}
+</script>
+
+<!--#include virtual="ssi/ysfooter.html" -->

@@ -1,0 +1,11 @@
+<!--#if expr="${DOCUMENT_NAME}=${ITEM_URL}"-->
+	<p class="menu">
+		<!--#echo var="ITEM_TEXT"-->
+	</p>
+<!--#else -->
+	<p class="menu">
+		<a class="menu" href="<!--#echo var="ITEM_URL"-->">
+			<!--#echo var="ITEM_TEXT"-->
+		</a>
+	</p>
+<!--#endif -->

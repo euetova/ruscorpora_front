@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>Дополнительные</title>
+<link rel="shortcut icon" href="../yandex.ru/favicon.ico">
+<link rel="stylesheet" type="text/css" href="./form.css">
+<style>
+.inverse   { cursor: pointer; color: #023F7C; }
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript">
+function parse_grams(str) {
+  var grams = str.split(/[&|,()]/);
+  for (i = 0; i < grams.length; i++) {
+    el = window.document.getElementById(grams[i]);
+    if (el) el.checked=true;
+  }
+}
+
+function collect() {
+  var els = document.flagsForm.elements;
+  var ar = {};
+  for (var i = 0; i != els.length; i++) {
+    var el = els[i];
+    if (el.type != 'checkbox') continue;
+    if (el.checked) {
+      if (!ar[el.name])
+        ar[el.name] = '';
+      ar[el.name] += ' ' + el.value
+    }
+  }
+  var s = '';
+  for (i in ar) {
+    var v = ar[i].substring(1)
+    if (v.indexOf('|') != -1) v = '(' + v + ')'
+    s += ',' + v;
+  }
+
+  s = s.substring(1)
+
+  sourceName = window.name;
+  if (window.opener && !window.opener.closed) {
+    window.opener.document.reqForm.elements[sourceName].value = s;
+  }
+  window.close();
+}
+
+function inverse(group) {
+  var els = document.flagsForm.elements;
+  var ar = {};
+  for (var i = 0; i != els.length; i++) {
+    var el = els[i];
+    if (el.type != 'checkbox') continue;
+    if (el.name == group)
+      el.checked=!el.checked;
+  }
+}
+</script>
+
+</head>
+<body>
+<center>
+<form name=flagsForm action="">
+<table border=1 cellspacing=0 cellpadding=4 class="intable">
+<tr>
+<td valign="top" rowspan=3>
+  <span title="Инвертировать" class="inverse" onclick="inverse('a')"><b>Повтор</b>*</span><br/>
+  <input type=checkbox name="a" id="lexred" value="lexred">&nbsp;лексемы<br/>
+  <input type=checkbox name="a" id="posred" value="posred">&nbsp;части&nbsp;речи<br/>
+  <input type=checkbox name="a" id="casered" value="casered">&nbsp;падежа<br/>
+  <input type=checkbox name="a" id="numred" value="numred">&nbsp;числа<br/>
+  <input type=checkbox name="a" id="timered" value="timered">&nbsp;времени<br/>
+  <input type=checkbox name="a" id="genderred" value="genderred">&nbsp;рода<br/>
+  <input type=checkbox name="a" id="posred" value="persred">&nbsp;лица<br/>
+  <input type=checkbox name="a" id="animred" value="animred">&nbsp;одушевлённости<br/>
+<br/>* При поиске по текстам с неснятой омонимией<br>задание повтора может работать некорректно:<br><i>день</i>(<b>им,ед</b>) <i>рождения</i>(<b>им</b>,мн или род,<b>ед</b>)
+</td>
+<td valign="top" nowrap rowspan=1>
+  <span title="Инвертировать" class="inverse" onclick="inverse('d')"><b>Тип оборота</b></span><br/>
+  <input type=checkbox name="d" id="mw:ADV" value="mw:ADV">&nbsp;mw:ADV<br/>
+  <input type=checkbox name="d" id="mw:ADVPRO" value="mw:ADVPRO">&nbsp;mw:ADVPRO<br/>
+  <input type=checkbox name="d" id="mw:CONJ" value="mw:CONJ">&nbsp;mw:CONJ<br/>
+  <input type=checkbox name="d" id="mw:PARENTH" value="mw:PARENTH">&nbsp;mw:PARENTH<br/>
+  <input type=checkbox name="d" id="mw:PART" value="mw:PART">&nbsp;mw:PART<br/>
+  <input type=checkbox name="d" id="mw:PR" value="mw:PR">&nbsp;mw:PR<br/>
+  <input type=checkbox name="d" id="mw:PRAEDIC" value="mw:PRAEDIC">&nbsp;mw:PRAEDIC<br/>
+  <input type=checkbox name="d" id="mw:SPRO" value="mw:SPRO">&nbsp;mw:SPRO<br/>
+</td>
+<td valign="top" nowrap rowspan=1>
+  <span title="Инвертировать" class="inverse" onclick="inverse('d')"><b>Тип оборота</b></span><br/>
+  <input type=checkbox name="d" id="mw:degr:max" value="mw:degr:max">&nbsp;mw:degr:max<br/>
+  <input type=checkbox name="d" id="mw:dir" value="mw:dir">&nbsp;mw:dir<br/>
+  <input type=checkbox name="d" id="mw:dist:max" value="mw:dist:max">&nbsp;mw:dist:max<br/>
+  <input type=checkbox name="d" id="mw:dur:max" value="mw:dur:max">&nbsp;mw:dur:max<br/>
+  <input type=checkbox name="d" id="mw:ev" value="mw:ev">&nbsp;mw:ev<br/>
+  <input type=checkbox name="d" id="mw:ev:neg" value="mw:ev:neg">&nbsp;mw:ev:neg<br/>
+  <input type=checkbox name="d" id="mw:ev:posit" value="mw:ev:posit">&nbsp;mw:ev:posit<br/>
+  <input type=checkbox name="d" id="mw:loc:body" value="mw:loc:body">&nbsp;mw:loc:body<br/>
+</td>
+<td valign="top" nowrap rowspan=1>
+  <span title="Инвертировать" class="inverse" onclick="inverse('d')"><b>Тип оборота</b></span><br/>
+  <input type=checkbox name="d" id="mw:place" value="mw:place">&nbsp;mw:place<br/>
+  <input type=checkbox name="d" id="mw:rep" value="mw:rep">&nbsp;mw:rep<br/>
+  <input type=checkbox name="d" id="mw:shift" value="mw:shift">&nbsp;mw:shift<br/>
+  <input type=checkbox name="d" id="mw:space" value="mw:space">&nbsp;mw:space<br/>
+  <input type=checkbox name="d" id="mw:speed:max" value="mw:speed:max">&nbsp;mw:speed:max<br/>
+  <input type=checkbox name="d" id="mw:time" value="mw:time">&nbsp;mw:time<br/>
+</td></tr>
+<tr>
+<td colspan=3><input type=checkbox name="d" id="mw" value="mw">&nbsp;в составе любого оборота<br/></td>
+</tr>
+<tr>
+<td valign="top" nowrap rowspan=1 colspan=2>
+  <span title="Инвертировать" class="inverse" onclick="inverse('b')"><b>Слово перед</b></span><br/>
+  <input type=checkbox name="b" id="bmark" value="bmark">&nbsp;любым&nbsp;знаком&nbsp;препинания<br/>
+  <input type=checkbox name="b" id="bdot" value="bdot">&nbsp;точкой<br/>
+  <input type=checkbox name="b" id="bcomma" value="bcomma">&nbsp;запятой<br/>
+  <input type=checkbox name="b" id="bexcl" value="bexcl">&nbsp;восклицательным&nbsp;знаком<br/>
+  <input type=checkbox name="b" id="bques" value="bques">&nbsp;вопросительным&nbsp;знаком<br/>
+  <input type=checkbox name="b" id="bcolon" value="bcolon">&nbsp;двоеточием<br/>
+  <input type=checkbox name="b" id="bsemicolon" value="bsemicolon">&nbsp;точкой&nbsp;с&nbsp;запятой<br/>
+<!--  <input type=checkbox name="b" id="bdots" value="bdots">&nbsp;многоточием<br/>-->
+</td>
+<td valign="top" nowrap rowspan=1 colspan=2>
+  <span title="Инвертировать" class="inverse" onclick="inverse('с')"><b>Слово после</b></span><br/>
+  <input type=checkbox name="с" id="amark" value="amark">&nbsp;любого&nbsp;знака&nbsp;препинания<br/>
+  <input type=checkbox name="с" id="adot" value="adot">&nbsp;точки<br/>
+  <input type=checkbox name="c" id="acomma" value="acomma">&nbsp;запятой<br/>
+  <input type=checkbox name="с" id="aexcl" value="aexcl">&nbsp;восклицательного&nbsp;знака<br/>
+  <input type=checkbox name="с" id="aques" value="aques">&nbsp;вопросительного&nbsp;знака<br/>
+  <input type=checkbox name="c" id="acolon" value="acolon">&nbsp;двоеточия<br/>
+  <input type=checkbox name="c" id="asemicolon" value="asemicolon">&nbsp;точки&nbsp;с&nbsp;запятой<br/>
+</td>
+</tr>
+<tr>
+<td valign="top" nowrap rowspan=1 colspan=4>
+  <input type=checkbox name="d" id="capital" value="capital">&nbsp;слово&nbsp;с&nbsp;заглавной&nbsp;буквы<br/>
+</td>
+</tr>
+</table>
+
+<table align=center>
+<tr><td>
+  <input type=button class=button value="  OK  " onclick="collect()">
+  <input type=button class=button value="Очистить" onclick='document.all.flagsForm.reset()'>
+  <input type=reset class=button value="Отмена" onclick='window.close()'>
+<tr><td>
+</table>
+</form>
+</center>
+
+<script for=window event=onload language="JavaScript">
+parse_grams(window.opener.document.reqForm.elements[window.name].value);
+</script>
+
+</body>
+</html>

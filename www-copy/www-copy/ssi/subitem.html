@@ -1,0 +1,13 @@
+<!--#if expr="${DOCUMENT_NAME}=${ITEM_URL}" -->
+  <p class="subitem">
+   <!--#echo encoding="none" var="ITEM_TEXT" -->
+  </p>
+<!--#else -->
+ <!--#if expr="${PARENT_NAME}=${PARENT_URL}" -->
+  <p class="subitem">
+    <a class="subitem" href="<!--#echo encoding="none" var="ITEM_URL" -->">
+     <!--#echo encoding="none" var="ITEM_TEXT" -->
+    </a>
+  </p>
+ <!--#endif -->  
+<!--#endif -->

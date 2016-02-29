@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Дополнительные</title>
+<link rel="shortcut icon" href="../yandex.ru/favicon.ico">
+<link rel="stylesheet" type="text/css" href="./form.css">
+<style>
+.inverse	 { cursor: pointer; color: #023F7C; }
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript">
+function parse_grams(str) {
+	var grams = str.split(/[&|,()]/);
+	for (i = 0; i < grams.length; i++) {
+		el = window.document.getElementById(grams[i]);
+		if (el) el.checked=true;
+	}
+}
+
+function collect() {
+	var els = document.flagsForm.elements;
+	var ar = {};
+	for (var i = 0; i != els.length; i++) {
+		var el = els[i];
+		if (el.type != 'checkbox') continue;
+		if (el.checked) {
+			if (!ar[el.name])
+				ar[el.name] = '';
+			ar[el.name] += ' ' + el.value
+		}
+	}
+	var s = '';
+	for (i in ar) {
+		var v = ar[i].substring(1)
+		if (v.indexOf('|') != -1) v = '(' + v + ')'
+		s += ',' + v;
+	}
+
+	s = s.substring(1)
+
+	sourceName = window.name;
+	if (window.opener && !window.opener.closed) {
+		window.opener.document.reqForm.elements[sourceName].value = s;
+	}
+	window.close();
+}
+
+function inverse(group) {
+	var els = document.flagsForm.elements;
+	var ar = {};
+	for (var i = 0; i != els.length; i++) {
+		var el = els[i];
+		if (el.type != 'checkbox') continue;
+		if (el.name == group)
+			el.checked=!el.checked;
+	}
+}
+</script>
+
+</head>
+
+<body>
+<center>
+<form name=flagsForm action="">
+<table border=1 cellspacing=0 cellpadding=4 class="intable">
+<tr>
+<td valign="top" rowspan=2>
+	<span title="Инвертировать" class="inverse" onclick="inverse('a')"><b>Особые случаи</b></span><br/>
+	<input type=checkbox name="a" id="first" value="first">Первое слово предложения<br/>
+	<input type=checkbox name="a" id="last" value="last">Последнее слово предложения<br/>
+	<input type=checkbox name="a" id="root" value="root">Корень синтаксического дерева<br/>
+</td>
+</tr>
+</table>
+
+<table align=center>
+<tr><td>
+	<input type=button class=button value="  OK  " onclick="collect()">
+	<input type=button class=button value="Очистить" onclick='document.all.flagsForm.reset()'>
+	<input type=reset class=button value="Отмена" onclick='window.close()'>
+<tr><td>
+</table>
+</form>
+</center>
+
+<script for=window event=onload language="JavaScript">
+parse_grams(window.opener.document.reqForm.elements[window.name].value);
+</script>
+
+</body>
+</html>

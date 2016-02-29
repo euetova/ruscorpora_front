@@ -1,0 +1,51 @@
+<html><head>
+<title><!--#echo encoding="none" var="TITLE"--></title>
+<script language="JavaScript" src="common.js"> </script>
+<!--#if expr="$SCRIPT" -->
+<script language="JavaScript" src="<!--#echo encoding="none" var="SCRIPT" -->"> </script>
+<!--#endif -->
+<!--#if expr="$SCRIPT1" -->
+<script language="JavaScript" src="<!--#echo encoding="none" var="SCRIPT1" -->"> </script>
+<!--#endif -->
+<!--#if expr="$SCRIPT2" -->
+<script language="JavaScript" src="<!--#echo encoding="none" var="SCRIPT2" -->"> </script>
+<!--#endif -->
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+</head>
+<body onload="init();" onclick="bodyclosehelp()">
+
+<div id="info" style="visibility: hidden; z-index: 100; margin:0;"></div>
+<div id="closeinfo" style="visibility: hidden;position: absolute; border: 0; margin:0; z-index: 200;">
+<a href="#" onclick="parent.closehelp()"><img src="i/close.gif" width="14" heigh="14" style="border: 0; margin:0;"></a>
+</div>
+<!--Logo-->
+<div id="logo" style="position: absolute; border: 0; margin:0; top: 7px; left: 7px">
+<a href="index.html"><img src="i/logo.gif" alt="Национальный корпус русского языка" height="57" border="0"></a>
+</div>
+<!--/Logo-->
+
+<!--Header-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="logo" bgcolor="#023F7C">
+        </td>
+        <td valign="bottom" width="100%" align="right" style="background: url(i/s_letters.gif) no-repeat; background-position: right;">
+      <!--#include virtual="tabs-2.html" -->
+    </td>
+  </tr>
+<!--/Header-->
+<!--#if expr="$NOMENU" -->
+<!--#else -->
+<!--Menu&Text-->
+    <tr>
+        <td class="menu">
+      <!--#include virtual="menu.html" -->
+        </td>
+        <td valign="top">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="maintext" width="100%">
+<!--#endif -->
+<!--RC_Text-->

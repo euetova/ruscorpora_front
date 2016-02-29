@@ -1,0 +1,96 @@
+<html><head>
+<meta name="content-type" http-equiv="text/html; charset='windows-1251'">
+<title>Фамилия автора </title>
+<link rel="stylesheet" type="text/css" href="form.css">
+<script language="JavaScript">
+
+function collect() {
+	pwin = window.opener;
+	if ( pwin && ! pwin.closed) {
+		var els = document.authNamesForm.elements;
+	    var str = "";
+    	for (var i = 0; i != els.length; i++) {
+        	var el = els[i];
+	        if (el.type != 'checkbox') continue;
+    	    if (el.checked) {
+				if (str != "") str += ", ";
+				str += el.value;
+    	    }
+	    }
+   	    pwin.document.all.author.value =	str;
+	 }
+    window.close();
+}
+
+function inverse(group) {
+    var els = document.authNamesForm.elements;
+    var ar = {};
+    for (var i = 0; i != els.length; i++) {
+        var el = els[i];
+        if (el.type != 'checkbox') continue;
+        if (el.name == group)
+            el.checked=!el.checked;
+    }
+}
+
+</script>
+
+<script for=window event=onload language="JavaScript">
+    authnames_field_name = "author";
+    if (window.opener && !window.opener.closed)
+	{
+		var str = window.opener.document.authForm.elements[authnames_field_name].value;
+		var names = str.split(", ");
+		for (i=0; i<names.length; i++) {
+			window.document.getElementById(names[i]).checked = true;
+		}
+	}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+</head>
+
+<body>
+
+<!-- Yandex.Metrika -->
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<script type="text/javascript">
+try { var yaCounter677861 = new Ya.Metrika(677861); } catch(e){}
+</script>
+<noscript><img src="//mc.yandex.ru/watch/677861" style="position:absolute" alt="" /></noscript>
+<!-- /Yandex.Metrika -->
+
+<center>
+<h3>Фамилия автора</h3>
+<form name=authNamesForm action="">
+    <table border=1 cellspacing=0 cellpadding=4 width=100% class="inform">
+      <tr> 
+        <td valign="top"><span title="Инвертировать"><a href="default.htm" onclick="inverse('an')">Инвертировать выбор</a></span>
+		<br> <input type=checkbox name=an id="Азольский" value="Азольский">&nbsp;Азольский
+		<br> <input type=checkbox name=an id="Аксенов" value="Аксенов">&nbsp;Аксенов
+		<br> <input type=checkbox name=an id="Алексин" value="Алексин">&nbsp;Алексин
+		<br> <input type=checkbox name=an id="Горенштейн" value="Горенштейн">&nbsp;Горенштейн
+		<br> <input type=checkbox name=an id="Гранин" value="Гранин">&nbsp;Гранин
+		<br> <input type=checkbox name=an id="Гроссман" value="Гроссман">&nbsp;Гроссман
+		<br> <input type=checkbox name=an id="Довлатов" value="Довлатов">&nbsp;Довлатов
+		<br> <input type=checkbox name=an id="Домбровский" value="Домбровский">&nbsp;Домбровский
+		<br> <input type=checkbox name=an id="И. Грекова" value="И. Грекова">&nbsp;И. Грекова
+		<br> <input type=checkbox name=an id="Искандер" value="Искандер">&nbsp;Искандер
+		<br> <input type=checkbox name=an id="Казакевич" value="Казакевич">&nbsp;Казакевич
+		<br> <input type=checkbox name=an id="Окуджава" value="Окуджава">&nbsp;Окуджава
+		<br> <input type=checkbox name=an id="Петрушевская" value="Петрушевская">&nbsp;Петрушевская
+		<br> <input type=checkbox name=an id="Солженицын" value="Солженицын">&nbsp;Солженицын
+		<br> <input type=checkbox name=an id="Т. Толстая" value="Т. Толстая">&nbsp;Т. Толстая
+		<br> <input type=checkbox name=an id="Трифонов" value="Трифонов">&nbsp;Трифонов
+		<br> <input type=checkbox name=an id="Шаламов" value="Шаламов">&nbsp;Шаламов
+		</td></tr>
+ 	</table>
+<br>
+<input type=button class=button value="  OK  " onclick="collect()">
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>
+<input type=reset class=button value="Отмена" onclick='window.close()'>
+</form>
+
+</center>
+</body>
+</html>

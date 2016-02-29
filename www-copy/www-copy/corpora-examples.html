@@ -1,0 +1,56 @@
+<!--#set var="TITLE" value="О проекте. Национальный корпус русского языка"-->
+
+<!--#include virtual="ssi/header.html" -->
+
+
+<h1>Примеры запросов</h1>
+
+<h2>Как говорят:</h2>
+
+<div valign="top">
+<ul>
+<script language="javascript">
+ function make_query(cgi_params, text) {
+  return '<a href="' + encodeURI('search-main-cgi.html?' + cgi_params) + '">' + text + '</a>';
+ }
+ document.write('<li>');
+ document.write(make_query('0_lex1="черный"&0_lex2="кофе"', 'черный кофе'));
+ document.write (' или ');
+ document.write(make_query('0_lex1="черное"&0_lex2="кофе"', 'черное кофе'));
+ document.write('?</li>');
+
+ document.write('<li>');
+ document.write(make_query('req=две красивые девушки', 'две красивые девушки'));
+ document.write (' или ');
+ document.write(make_query('req=две красивых девушки', 'две красивых девушки'));
+ document.write('?</li>');
+
+
+ document.write('<li>');
+ document.write(make_query('0_lex1=чашка&0_lex2="чая"', 'чашка чая'));
+ document.write (' или ');
+ document.write(make_query('0_lex1=чашка&0_lex2="чаю"', 'чашка чаю'));
+ document.write('?</li>');
+
+</script>
+</ul>
+
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+<!--#include virtual="ssi/footer.html" -->

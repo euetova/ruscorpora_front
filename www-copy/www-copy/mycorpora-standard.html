@@ -1,0 +1,235 @@
+<html><head>
+<title>Определение подкорпуса. Национальный корпус русского языка</title>
+<script language="JavaScript" src="common.js"> </script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+</head>
+<body onload="if (typeof(init) == 'function') init();" onclick="bodyclosehelp()">
+
+<script language="JavaScript" src="subcorp.js"> </script>
+
+
+<div id="info" style="visibility: hidden; z-index: 1; margin:0;"></div>
+<div id="closeinfo" style="visibility: hidden;position: absolute; border: 0; margin:0; z-index: 2;">
+<a href="#" onclick="parent.closehelp()"><img src="i/close.gif" width="14" heigh="14" style="border: 0; margin:0;"></a>
+</div>
+<!--Logo-->
+<div id="logo" style="position: absolute; border: 0; margin:0; top: 7px; left: 7px">
+<a href="index.html"><img src="i/logo.gif" alt="Национальный корпус русского языка" height="57" border="0"></a>
+</div>
+<!--/Logo-->
+<!--Header-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td class="logo" bgcolor="#023F7C"> </td>
+<td valign="bottom" width="100%" align="right" style="border-bottom:3px solid #FA9108;">
+<table width="100%" bgcolor="#023F7C" >
+<tr>
+<td valign="bottom" style="background: url(i/s_letters.gif) no-repeat; background-position: right;">
+<img src="i/dot.gif" alt="" width="1" height="75" border="0">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!--/Header-->
+<!--Menu&Text-->
+    <tr>
+        <td class="menu">
+ <div id="menu">
+
+
+
+<p class="menu">
+<a class="menu" href="index.html">
+главная
+</a>
+</p>
+
+
+
+
+
+
+<p class="menu">
+<a class="menu" href="archive.html">
+архив новостей
+</a>
+</p>
+
+
+
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="32" border="0"></div>
+
+
+
+
+<p class="menu">
+<a class="menu" href="search-main.html">
+поиск в корпусе
+</a>
+</p>
+
+
+
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="32" border="0"></div>
+
+
+
+
+<p class="menu">
+<a class="menu" href="corpora-intro.html">
+что такое корпус?
+</a>
+</p>
+
+
+
+
+
+
+<p class="menu">
+<a class="menu" href="corpora-structure.html">
+состав и структура
+</a>
+</p>
+
+
+
+
+
+
+<p class="menu">
+<a class="menu" href="corpora-stat.html">
+статистика
+</a>
+</p>
+
+
+
+
+
+
+<p class="menu">
+<a class="menu" href="corpora-morph.html">
+морфология
+</a>
+</p>
+
+
+
+
+
+
+<p class="menu">
+<a class="menu" href="corpora-sem.html">
+семантика
+</a>
+</p>
+
+
+
+
+
+
+<p class="menu">
+<a class="menu" href="corpora-parameter.html">
+параметры текстов
+</a>
+</p>
+
+
+
+<div class="menudelim"><img src="i/dot.gif" alt="" width="1" height="32" border="0"></div>
+
+
+
+
+<p class="menu">
+<a class="menu" href="corpora-about.html">
+о проекте
+</a>
+</p>
+
+
+
+
+
+
+<p class="menu">
+<a class="menu" href="corpora-team.html">
+участники проекта
+</a>
+</p>
+
+
+
+
+
+
+<p class="menu">
+<a class="menu" href="corpora-progr.html">
+программные средства
+</a>
+</p>
+
+
+
+
+
+
+<p class="menu">
+<a class="menu" href="corpora-usage.html">
+использование корпуса
+</a>
+</p>
+
+
+</div>
+
+        </td>
+        <td>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="maintext" width="100%">
+<!--RC_Text-->
+
+
+
+<h1>Мой корпус</h1>
+<form name="reqForm" action="http://search.ruscorpora.ru/search.xml" method="get">
+<input type="hidden" name="text" value="meta">
+<input type="hidden" name="mode" value="standard"/>
+<input type="hidden" name="sort" value="gr_tagging">
+<p>Вы можете задать подмножество корпуса, по которому в&nbsp;дальнейшем будет вестись поиск. Подробнее о&nbsp;параметрах
+текста см.&nbsp;в&nbsp;разделе &laquo;<a href="corpora-parameter.html">Параметры текста</a>&raquo;.<br></p>
+
+
+<table><tr><td><h3>Подкорпус</h3></td></tr></table>
+
+<br>Разметчик&nbsp;<input tye="text" name="doc_source" style="width:80%">
+
+<p>После выбора соответствующих параметров нажмите кнопку &laquo;Далее&raquo; и&nbsp;перейти к&nbsp;просмотру списка документов, входящих в&nbsp;подкорпус. Нажав кнопку &laquo;Сохранить&raquo;, пользователь может перейти к&nbsp;странице &laquo;Поиск в&nbsp;корпусе&raquo; для задания поискового запроса.</p>
+<br>
+<input class="button" type=submit value="Далее &gt;&gt;">
+&nbsp;&nbsp;
+<input class="button" type=reset value="Очистить">
+</form>
+
+<input class="button" type="button" value="Очистить подкорпус" onclick="saveResults();" />
+<br/><br/>
+<script type="text/javascript">
+function saveResults() {
+	document.cookie = "dialect=;domain=ruscorpora.ru";
+	window.location= "http://ruscorpora.ru/search-beta-standard.html";
+}
+</script>
+
+<!-- Copyright-->
+<table width="100%" border="0" cellspacing="5" cellpadding="0" style="border-top:3px solid #BBBBBB;"><tr>
+        <td class="copy"><nobr>Национальный корпус русского языка</nobr><br>© 2003&ndash;2008</td>
+<td class="copy" align="right"><a href="mailto:info@ruscorpora.ru">info@ruscorpora.ru</a></td>
+</tr></table>
+<!-- Copyright-->
+</td></tr></table>
+</body></html>

@@ -1,0 +1,435 @@
+<!--#set var="TITLE" value="Семантика. Национальный корпус русского языка"-->
+
+<!--#include virtual="ssi/header.html" -->
+
+<div class="settings">
+ <a href="en/corpora-sem.html">English</a>
+</div>
+
+<h1 class="header">Семантика</h1>
+<br clear="all" />
+
+                  <H2>О лексико-семантической информации в Корпусе</H2>
+                  <P>В настоящее время в Корпусе реализована система поиска по
+                  лексико-семантическим признакам, основанная на частичной
+                  семантической разметке текстов.</P>
+                  <P>При такой разметке большинству слов в тексте приписывается
+                  один или несколько семантических и словообразовательных
+                  признаков, например, 'лицо', 'вещество', 'пространство',
+                  'скорость', 'движение', 'обладание', 'свойство человека',
+                  'диминутив', 'отглагольное имя' и т.п. Используется фасетная
+                  классификация, при которой одно слово может попадать в
+                  несколько классов. На первом этапе поиск осуществляется по
+                  части имеющихся в словаре признаков.</P>
+                  <P>Разметка текстов осуществляется автоматически с помощью
+                  программы Semmarkup (автор А.&nbsp;Е.&nbsp;Поляков) в
+                  соответствии с Семантическим словарем Корпуса. Поскольку
+                  ручная обработка семантически размеченных текстов очень
+                  трудоемка, семантическая омонимия в Корпусе не снимается:
+                  многозначным словам приписывается несколько альтернативных
+                  наборов семантических признаков.</P>
+                  <P>В основу семантической разметки положена система
+                  классификации русской лексики, принятая в базе данных
+                  "Лексикограф", которая разрабатывалась с&nbsp;1992 г. в Отделе
+                  лингвистических исследований ВИНИТИ РАН под рук.
+                  Е.&nbsp;В.&nbsp;Падучевой и Е.&nbsp;В.&nbsp;Рахилиной. Для
+                  нужд Корпуса был существенно увеличен словник, расширен состав
+                  и усовершенствована структура семантических классов, добавлены
+                  словообразовательные признаки.</P>
+                  <P>Словник семантического словаря базируется на
+                  морфологическом словаре системы DIALING (общим объемом порядка
+                  120 тыс. слов), представляющим собой расширение
+                  Грамматического словаря русского языка
+                  А.&nbsp;А.&nbsp;Зализняка. Текущая версия семантического
+                  словаря включает слова знаменательных частей речи:
+                  существительные, прилагательные, числительные, местоимения,
+                  глаголы и наречия.</P>
+                  <P>При работе над семантической разметкой использовались
+                  сведения о значении слов и структуре семантических классов из
+                  следующих источников:</P>
+                  <UL>Словарь русского языка под&nbsp;ред.
+                    С.&nbsp;И.&nbsp;Ожегова <BR>Словарь русского языка
+                    под&nbsp;ред. С.&nbsp;И.&nbsp;Ожегова и
+                    Н.&nbsp;Ю.&nbsp;Шведовой <BR>Словарь русского языка в
+                    4-х&nbsp;тт. под&nbsp;ред. А.&nbsp;П.&nbsp;Евгеньевой (МАС)
+                    <BR>Словарь русского языка в 17-ти&nbsp;тт. (БАС)
+                    <BR>Толковый словарь русского языка Д.&nbsp;Н.&nbsp;Ушакова
+                    <BR>Русский семантический словарь под&nbsp;ред.
+                    Н.&nbsp;Ю.&nbsp;Шведовой, тт.&nbsp;1-3 <BR>Толковый словарь
+                    русских глаголов под&nbsp;ред. Л.&nbsp;Г.&nbsp;Бабенко
+                    <BR>Системный семантический словарь русского языка
+                    Л.&nbsp;М.&nbsp;Васильева <BR>Новый объяснительный словарь
+                    синонимов русского языка под&nbsp;общим&nbsp;рук.
+                    акад.&nbsp;Ю.&nbsp;Д.&nbsp;Апресяна (НОСС)
+                    <P></P></UL>
+
+                  <h3>Структура лексико-семантической информации</h3>
+                  <p>Лексико-семантическая информация, приписываемая произвольному
+                  слову в&nbsp;тексте, состоит из <nobr>трех</nobr> групп помет:</p>
+                  <ol><li>
+                  <p>разряд (например, имя собственное, возвратное местоимение);
+                  </li>
+                  <li>
+                  <p>собственно лексико-семантические характеристики (например,
+                  тематический класс лексемы, признаки каузативности, оценки);
+                  </li>
+                  <li>
+                  <p>деривационные (словообразовательные) характеристики
+                  (например, &laquo;диминутив&raquo;, &laquo;отадъективное наречие&raquo;).</p>
+                  </li></ol>
+                  <p>Лексико-семантическая информация имеет различную структуру для разных
+                  частей речи. Кроме того, каждый из разрядов существительных - имена предметные,
+                  непредметные и собственные - имеет свою структуру помет.</p>
+
+                  <p>Собственно лексико-семантические пометы сгруппированы по следующим полям:
+                  <ol><li>
+                  таксономия&nbsp;(тематический класс лексемы)&nbsp;&#151;&nbsp;для
+                  имен существительных, прилагательных, глаголов и наречий;
+                  </li>
+                  <li>
+                  мереология (указание на отношения &laquo;часть&nbsp;&#151; целое&raquo;,
+                  &laquo;элемент&nbsp;&#151; множество&raquo;)&nbsp;&#151;&nbsp;для предметных и непредметных имен;
+                  </li>
+                  <li>
+                  топология (топологический статус обозначаемого объекта)&nbsp;&#151;&nbsp;для предметных имен;
+                  </li>
+                  <li>
+                  каузация&nbsp;&#151;&nbsp;для глаголов;
+                  </li>
+                  <li>
+                  служебный статус&nbsp;&#151;&nbsp;для глаголов;
+                  </li>
+                  <li>
+                  оценка&nbsp;&#151;&nbsp;для предметных и непредметных имен, прилагательных и наречий.</p>
+                  </li></ol>
+
+                  <p>Словообразовательные характеристики включают несколько типов:
+                  <ol><li>
+                  морфо-семантические словообразовательные признаки (например, &laquo;диминутив&raquo;,
+                  &laquo;каритив&raquo;, &laquo;семельфактив&raquo;);
+                  </li>
+                  <li>
+                  разряд производящего слова (например, отглагольное существительное или отадъективное наречие);
+                  </li>
+                  <li>
+                  лексико-семантический (таксономический) тип производящего слова (например,
+                  наречие, образованное от прилагательного размера);
+                  </li>
+                  <li>
+                  морфологический тип словообразования (субстантивация, сложное слово).</p>
+                  </li></ol>
+
+                  <p>В&nbsp;основу метаязыка лексико-семантических помет, ввиду
+                  предполагаемой широкой международной аудитории пользователей Корпуса,
+                  положена система сокращенных помет (&laquo;тегов&raquo;) на основе
+                  англоязычной нотации. В&nbsp;то&nbsp;же время предусмотрена возможность
+                  использования при поиске традиционных названий категорий
+                  на русском языке (в форме &laquo;семантические признаки&raquo;).
+                  Ниже приводится инвентарь всех доступных в настоящее время для поиска
+                  в&nbsp;Корпусе семантических помет. Для пояснения в&nbsp;скобках даются примеры.</p>
+
+                  <h2>Имена существительные (<span class="symbol">S</span>)</h2>
+                  <a name="razriad"><h2>Разряды</h2></a>
+                  <span class="symbol">r:concr</span>&nbsp;&#151; предметные имена (<i>девочка, стол, молоко</i>)<br>
+                  <span class="symbol">r:abstr</span>&nbsp;&#151; непредметные имена (<i>вождение, яркость, время</i>)<br>
+                  <span class="symbol">r:propn</span>&nbsp;&#151; имена собственные (<i>Иван, Эйнштейн, Петроград</i>)<br>
+
+                  <h2>Предметные имена</h2>
+                  <h2>Лексико-семантические пометы</h2>
+                  <h2>Таксономия:</h2>
+                  <span class="symbol">t:hum</span>&nbsp;&#151; лица (<i>человек, учитель</i>)<br>
+                  <span class="symbol">t:hum:etn</span>&nbsp;&#151; этнонимы (<i>эфиоп, итальянка</i>)<br>
+                  <span class="symbol">t:hum:kin</span>&nbsp;&#151; имена родства (<i>брат, бабушка</i>)<br>
+                  <span class="symbol">t:hum:supernat</span>&nbsp;&#151; сверхъестественные существа (<i>русалка, инопланетянин</i>)<br>
+                  <span class="symbol">t:animal</span>&nbsp;&#151; животные (<i>корова, жираф, сорока, ящерица, муравей</i>)<br>
+                  <span class="symbol">t:plant</span>&nbsp;&#151; растения (<i>береза, роза, трава</i>)<br>
+                  <span class="symbol">t:stuff</span>&nbsp;&#151; вещества и материалы (<i>вода, песок, тесто, жесть, шелк</i>)<br>
+                  <span class="symbol">t:space</span>&nbsp;&#151; пространство и место (<i>космос, город, тайга, овраг, вход</i>)<br>
+                  <span class="symbol">t:constr</span>&nbsp;&#151; здания и сооружения (<i>дом, шалаш, мост</i>)<br>
+                  <span class="symbol">t:tool</span>&nbsp;&#151; инструменты и приспособления (<i>молоток, палка, пуговица, машина</i>)<br>
+                  <span class="symbol">t:tool:instr</span>&nbsp;&#151; инструменты (<i>молоток, штопор, игла, карандаш</i>)<br>
+                  <span class="symbol">t:tool:device</span>&nbsp;&#151; механизмы и приборы (<i>телефон, сеялка, градусник</i>)<br>
+                  <span class="symbol">t:tool:transp</span>&nbsp;&#151; транспортные средства (<i>автобус, поезд, сани</i>)<br>
+                  <span class="symbol">t:tool:weapon</span>&nbsp;&#151; оружие (<i>сабля, пистолет, гаубица</i>)<br>
+                  <span class="symbol">t:tool:mus</span>&nbsp;&#151; музыкальные инструменты (<i>рояль, скрипка, колокол</i>)<br>
+                  <span class="symbol">t:tool:furn</span>&nbsp;&#151; мебель (<i>стол, диван, шкаф</i>)<br>
+                  <span class="symbol">t:tool:dish</span>&nbsp;&#151; посуда (<i>чашка, кастрюля, фляжка</i>)<br>
+                  <span class="symbol">t:tool:cloth</span>&nbsp;&#151; одежда и обувь (<i>платье, шляпа, ботинки</i>)<br>
+                  <span class="symbol">t:food</span>&nbsp;&#151; еда и напитки (<i>пирог, каша, молоко</i>)<br>
+                  <span class="symbol">t:text</span>&nbsp;&#151; тексты (<i>рассказ, книга, афиша</i>)<br>
+
+                  <h2>Мереология:</h2>
+                  <span class="symbol">pt:part</span>&nbsp;&#151; части (<i>верхушка, кончик, половина</i>)<br>
+                  <span class="symbol">pt:partb & pc:hum</span>&nbsp;&#151; части тела и органы человека (<i>голова, сердце, ноготь</i>)<br>
+                  <span class="symbol">pt:partb & pc:animal</span>&nbsp;&#151; части тела и органы животных (<i>хвост, жало</i>)<br>
+                  <span class="symbol">pt:part & pc:plant</span>&nbsp;&#151; части растений (<i>лист, ветка, корень</i>)<br>
+                  <span class="symbol">pt:part & pc:constr</span>&nbsp;&#151; части зданий и сооружений (<i>комната, дверь, арка</i>)<br>
+                  <span class="symbol">pt:part & pc:tool</span>&nbsp;&#151; части приспособлений (<i>деталь, лопасть, крышка</i>)<br>
+                  <span class="symbol">pt:part & pc:tool:instr</span>&nbsp;&#151; части инструментов (<i>топорище, лезвие</i>)<br>
+                  <span class="symbol">pt:part & pc:tool:device</span>&nbsp;&#151; части механизмов и приборов (<i>дисплей, корпус, кнопка</i>)<br>
+                  <span class="symbol">pt:part & pc:tool:transp</span>&nbsp;&#151; части транспортных средств (<i>руль, колесо, капот</i>)<br>
+                  <span class="symbol">pt:part & pc:tool:weapon</span>&nbsp;&#151; части оружия (<i>дуло, курок, эфес</i>)<br>
+                  <span class="symbol">pt:part & pc:tool:mus</span>&nbsp;&#151; части музыкальных инструментов (<i>струна, гриф</i>)<br>
+                  <span class="symbol">pt:part & pc:tool:furn</span>&nbsp;&#151; части предметов мебели (<i>сиденье, подлокотник</i>)<br>
+                  <span class="symbol">pt:part & pc:tool:dish</span>&nbsp;&#151; части предметов посуды (<i>носик, горлышко</i>)<br>
+                  <span class="symbol">pt:part & pc:tool:cloth</span>&nbsp;&#151; части одежды и обуви (<i>рукав, каблук</i>)<br>
+                  <span class="symbol">pt:qtm</span>&nbsp;&#151; кванты и порции вещества (<i>капля, комок, порция</i>)<br>
+                  <span class="symbol">pt:set&nbsp;|&nbsp;pt:aggr</span>&nbsp;&#151; множества и совокупности объектов (<i>набор, букет, мебель, человечество</i>)<br>
+                  <span class="symbol">hi:class</span>&nbsp;&#151; имена классов (<i>животное, ягода, инструмент</i>)<br>
+
+                  <h2>Топология:</h2>
+                  <span class="symbol">top:contain</span>&nbsp;&#151; вместилища (<i>кошелек, комната, озеро, ниша</i>)<br>
+                  <span class="symbol">top:horiz</span>&nbsp;&#151; горизонтальные поверхности (<i>пол, площадка</i>)<br>
+
+                  <h2>Оценка:</h2>
+                  <span class="symbol">ev</span>&nbsp;&#151; оценка (неопределенная по признаку &laquo;положительная/отрицательная&raquo;) (<i>озорник, махина</i>)<br>
+                  <span class="symbol">ev:posit</span>&nbsp;&#151; положительная (<i>умница, светило</i>)<br>
+                  <span class="symbol">ev:neg</span>&nbsp;&#151; отрицательная (<i>негодяй, вертихвостка</i>)<br>
+
+                  <h2>Словообразовательные пометы</h2>
+                  <span class="symbol">d:dim</span>&nbsp;&#151; диминутивы (<i>зайчик, коробочка</i>)<br>
+                  <span class="symbol">d:aug</span>&nbsp;&#151; аугментативы (<i>детина, домище</i>)<br>
+                  <span class="symbol">d:sing</span>&nbsp;&#151; сингулятивы (<i>пылинка, изюминка</i>)<br>
+                  <span class="symbol">d:nag</span>&nbsp;&#151; nomina agentis (<i>писатель, создатель, докладчик</i>)<br>
+                  <span class="symbol">d:fem</span>&nbsp;&#151; nomina feminina (<i>немка, генеральша, доярка</i>)<br>
+
+
+                  <h2>Непредметные имена</h2>
+                  <h2>Лексико-семантические пометы</h2>
+                  <h2>Таксономия (тематический класс):</h2>
+                  <span class="symbol">t:move</span>&nbsp;&#151; движение (<i>беготня, вынос, качка</i>)<br>
+                  <span class="symbol">t:move:body</span>&nbsp;&#151; изменение положения тела, части тела (<i>поклон</i>)<br>
+                  <span class="symbol">t:put</span>&nbsp;&#151; помещение объекта (<i>размещение, расстановка, погрузка, намотка</i>)<br>
+                  <span class="symbol">t:impact</span>&nbsp;&#151; физическое воздействие (<i>удар, втирание, обмолот</i>)<br>
+                  <span class="symbol">t:impact:creat</span>&nbsp;&#151; создание физического объекта (<i>лепка, отливка, плетение, сооружение, строительство</i>)<br>
+                  <span class="symbol">t:impact:destr</span>&nbsp;&#151; уничтожение (<i>слом, сожжение</i>)<br>
+                  <span class="symbol">t:changest</span>&nbsp;&#151; изменение состояния или признака (<i>укрепление, затвердение, осушение, конденсация, осложнение</i>)<br>
+                  <span class="symbol">t:be</span>&nbsp;&#151; 	бытийная сфера<br>
+                  <span class="symbol">t:be:exist</span>&nbsp;&#151; существование (<i>жизнь, наличие, бытие</i>)<br>
+                  <span class="symbol">t:be:appear</span>&nbsp;&#151; начало существования (<i>возникновение, рождение, формирование, учреждение, творение</i>)<br>
+                  <span class="symbol">t:be:disapp</span>&nbsp;&#151; прекращение существования (<i>смерть, казнь, ликвидация</i>)<br>
+                  <span class="symbol">t:loc</span>&nbsp;&#151; местонахождение (<i>местоположение</i>)<br>
+                  <span class="symbol">t:loc:body</span>&nbsp;&#151; положение тела в пространстве (<i>лежание</i>)<br>
+                  <span class="symbol">t:contact</span>&nbsp;&#151; контакт и опора (<i>прикосновение, объятие</i>)<br>
+                  <span class="symbol">t:poss</span>&nbsp;&#151; посессивная сфера (<i>обладание, приобретение, покупка, потеря, лишение</i>)<br>
+                  <span class="symbol">t:ment</span>&nbsp;&#151; ментальная сфера (<i>знание, абстракция, воображение, воспоминание, догадка</i>)<br>
+                  <span class="symbol">t:perc</span>&nbsp;&#151; восприятие (<i>осязание, слух, видимость, взгляд, зрелище</i>)<br>
+                  <span class="symbol">t:psych</span>&nbsp;&#151; психическая сфера (<i>апатия, безумие, вдохновение, спокойствие</i>)<br>
+                  <span class="symbol">t:psych:emot</span>&nbsp;&#151; эмоция (<i>восторг, раскаяние, печаль</i>)<br>
+                  <span class="symbol">t:psych:volit</span>&nbsp;&#151; воля (<i>намерение, решение</i>)<br>
+                  <span class="symbol">t:speech</span>&nbsp;&#151; речь (<i>дискуссия, молва, ахинея, реплика, подковырка</i>)<br>
+                  <span class="symbol">t:physiol</span>&nbsp;&#151; физиологическая сфера (<i>жажда, кровоизлияние, судорога, утомление, икота</i>)<br>
+                  <span class="symbol">t:weather</span>&nbsp;&#151; природное явление (<i>зарница, вьюга, зной</i>)<br>
+                  <span class="symbol">t:sound</span>&nbsp;&#151; звук (<i>шум, перезвон, хлопок, аплодисменты, диссонанс</i>)<br>
+                  <span class="symbol">t:color</span>&nbsp;&#151; цвет (<i>окраска, колорит, желтизна, прозелень</i>)<br>
+                  <span class="symbol">t:light</span>&nbsp;&#151; свет (<i>луч, полумрак, светлынь, иллюминация</i>)<br>
+                  <span class="symbol">t:taste</span>&nbsp;&#151; вкус (<i>вкуснота, горчинка, кислятина</i>)<br>
+                  <span class="symbol">t:smell</span>&nbsp;&#151; запах (<i>аромат, перегар</i>)<br>
+                  <span class="symbol">t:temper</span>&nbsp;&#151; температура (<i>прохлада, стужа, нагрев</i>)<br>
+                  <span class="symbol">t:time</span>&nbsp;&#151; время (<i>весна, годовщина, минута, современность</i>)<br>
+                  <span class="symbol">t:time:period</span>&nbsp;&#151; период (<i>межсезонье, путина, сенокос, стаж</i>)<br>
+                  <span class="symbol">t:time:moment</span>&nbsp;&#151; момент (<i>миг, мгновение</i>)<br>
+                  <span class="symbol">t:time:week</span>&nbsp;&#151; день недели (<i>понедельник</i>)<br>
+                  <span class="symbol">t:time:month</span>&nbsp;&#151; месяц (<i>январь</i>)<br>
+                  <span class="symbol">t:time:age</span>&nbsp;&#151; возраст (<i>детство, молодость, двадцатилетие</i>)<br>
+                  <span class="symbol">t:humq</span>&nbsp;&#151; свойство человека (<i>порядочность, безволие, остроумие</i>)<br>
+                  <span class="symbol">t:behav</span>&nbsp;&#151; поведение и поступки человека (<i>разгильдяйство, подхалимаж, неповиновение, ребячество, предательство</i>)<br>
+                  <span class="symbol">t:inter</span>&nbsp;&#151; взаимодействие и взаимоотношение (<i>взаимопомощь, вражда, схватка, драка</i>)<br>
+                  <span class="symbol">t:action</span>&nbsp;&#151; мероприятие (<i>аукцион, вернисаж, вечеринка, выборы, именины, заседание, культпоход</i>)<br>
+                  <span class="symbol">t:disease</span>&nbsp;&#151; болезнь (<i>ангина, диабет</i>)<br>
+                  <span class="symbol">t:game</span>&nbsp;&#151; игра (<i>жмурки, покер, домино, волейбол</i>)<br>
+                  <span class="symbol">t:sport</span>&nbsp;&#151; спорт (<i>спартакиада, акробатика, баскетбол</i>)<br>
+                  <span class="symbol">t:param</span>&nbsp;&#151; параметр (<i>высота, грузоподъемность</i>)<br>
+                  <span class="symbol">t:unit</span>&nbsp;&#151; единица измерения (<i>балл, килограмм, метр, минута</i>)<br>
+
+                  <h2>Мереология:</h2>
+                  <span class="symbol">pt:part</span>&nbsp;&#151; часть (<i>начало, финал</i>)<br>
+                  <span class="symbol">pt:qtm</span>&nbsp;&#151; квант (<i>оборот, прыжок, кивок</i>)<br>
+                  <span class="symbol">pt:set</span>&nbsp;&#151; множество (<i>система, выборка, алгоритм</i>)<br>
+
+                  <h2>Оценка:</h2>
+                  <span class="symbol">ev</span>&nbsp;&#151; оценка (<i>озорник, махина</i>)<br>
+                  <span class="symbol">ev:posit</span>&nbsp;&#151; положительная (<i>благоухание, загляденье, изюминка</i>)<br>
+                  <span class="symbol">ev:neg</span>&nbsp;&#151; отрицательная (<i>безвкусица, ахинея</i>)<br>
+
+                  <h2>Словообразовательные пометы</h2>
+                  <span class="symbol">der:v</span>&nbsp;&#151; отглагольные имена (<i>выбор, демонстрация</i>)<br>
+                  <span class="symbol">der:a</span>&nbsp;&#151; отадъективные имена (<i>краснота, жадность</i>)<br>
+
+                  <h2>Имена собственные</h2>
+                  <h2>Лексико-семантические пометы</h2>
+                  <h2>Таксономия:</h2>
+                  <span class="symbol">t:hum&nbsp;|&nbsp;t:hum:supernat</span>&nbsp;&#151; лица (<i>Людмила, Черномор</i>)<br>
+                  <span class="symbol">t:persn</span>&nbsp;&#151; имена (<i>Александр</i>)<br>
+                  <span class="symbol">t:patrn</span>&nbsp;&#151; отчества (<i>Сергеевич</i>)<br>
+                  <span class="symbol">t:famn</span>&nbsp;&#151; фамилии (<i>Пушкин</i>)<br>
+                  <span class="symbol">t:topon</span>&nbsp;&#151; топонимы (<i>Европа, Волга, Эльбрус, Москва, Преображенка</i>)<br>
+
+                  <h2>Словообразовательные пометы</h2>
+                  <span class="symbol">d:dim</span>&nbsp;&#151; диминутивы (<i>Саша, Женечка, Николаич</i>)<br>
+
+                  <h2>Имена прилагательные (<span class="symbol">A</span>)</h2>
+                  <h2>Разряды</h2>
+                  <span class="symbol">r:qual</span>&nbsp;&#151; качественные (<i>хороший, большой</i>)<br>
+                  <span class="symbol">r:rel</span>&nbsp;&#151; относительные (<i>деревянный, лунный</i>)<br>
+                  <span class="symbol">r:poss</span>&nbsp;&#151; притяжательные (<i>божий, отцов, мужнин</i>)<br>
+                  <span class="symbol">r:invar</span>&nbsp;&#151; неизменяемые (<i>беж, джерси</i>)<br>
+
+                  <h2>Лексико-семантические пометы</h2>
+                  <span class="symbol">t:size</span>&nbsp;&#151; размер (<i>высокий, короткий</i>)<br>
+                  <span class="symbol">t:size:max</span>&nbsp;&#151; большой (<i>высокий, длинный</i>)<br>
+                  <span class="symbol">t:size:min</span>&nbsp;&#151; малый (<i>низкий, короткий</i>)<br>
+                  <span class="symbol">t:size:abs</span>&nbsp;&#151; абсолютный (<i>двухэтажный</i>)<br>
+                  <span class="symbol">t:dist</span>&nbsp;&#151; расстояние (<i>далекий, соседний</i>)<br>
+                  <span class="symbol">t:dist:max</span>&nbsp;&#151; большое (<i>дальний, отдаленный</i>)<br>
+                  <span class="symbol">t:dist:min</span>&nbsp;&#151; малое (<i>близкий, недалекий</i>)<br>
+                  <span class="symbol">t:quant</span>&nbsp;&#151; количество (<i>большой, достаточный, трехкратный</i>)<br>
+                  <span class="symbol">t:quant:max</span>&nbsp;&#151; большое (<i>обильный, многочисленный</i>)<br>
+                  <span class="symbol">t:quant:min</span>&nbsp;&#151; малое (<i>ничтожный, малочисленный</i>)<br>
+                  <span class="symbol">t:quant:abs</span>&nbsp;&#151; абсолютное  (<i>двухтысячный, восьмимилионный</i>)<br>
+                  <span class="symbol">t:place</span>&nbsp;&#151; место (<i>левый, придорожный, теменной</i>)<br>
+                  <span class="symbol">t:dir</span>&nbsp;&#151; направление (<i>обратный, подветренный</i>)<br>
+                  <span class="symbol">t:time</span>&nbsp;&#151; время (<i>прошлый, ночной</i>)<br>
+                  <span class="symbol">t:time:dur</span>&nbsp;&#151; длительность (<i>долгий, краткий</i>)<br>
+                  <span class="symbol">t:time:dur:max</span>&nbsp;&#151; большая (<i>долгий, продолжительный</i>)<br>
+                  <span class="symbol">t:time:dur:min</span>&nbsp;&#151; малая (<i>краткий, кратковременный</i>)<br>
+                  <span class="symbol">t:time:dur:abs</span>&nbsp;&#151; абсолютная (<i>восьмичасовой</i>)<br>
+                  <span class="symbol">t:time:age</span>&nbsp;&#151; возраст (<i>зрелый</i>)<br>
+                  <span class="symbol">t:time:age:max</span>&nbsp;&#151; большой (<i>старый, древний</i>)<br>
+                  <span class="symbol">t:time:age:min</span>&nbsp;&#151; малый (<i>молодой, малолетний</i>)<br>
+                  <span class="symbol">t:time:age:abs</span>&nbsp;&#151; абсолютный (<i>трехлетний</i>)<br>
+                  <span class="symbol">t:speed</span>&nbsp;&#151; скорость (<i>проворный</i>)<br>
+                  <span class="symbol">t:speed:max</span>&nbsp;&#151; большая (<i>скорый, быстрый</i>)<br>
+                  <span class="symbol">t:speed:min</span>&nbsp;&#151; малая (<i>медленный, тягучий</i>)<br>
+                  <span class="symbol">t:physq</span>&nbsp;&#151; физические свойства (<i>мягкий, вязкий</i>)<br>
+                  <span class="symbol">t:physq:form</span>&nbsp;&#151; форма (<i>кривой, круглый</i>)<br>
+                  <span class="symbol">t:physq:color</span>&nbsp;&#151; цвет (<i>красный, бесцветный</i>)<br>
+                  <span class="symbol">t:physq:taste</span>&nbsp;&#151; вкус (<i>кислый, приторный</i>)<br>
+                  <span class="symbol">t:physq:smell</span>&nbsp;&#151; запах (<i>ароматный, тухлый</i>)<br>
+                  <span class="symbol">t:physq:temper</span>&nbsp;&#151; температура (<i>горячий, ледяной</i>)<br>
+                  <span class="symbol">t:physq:weight</span>&nbsp;&#151; вес (<i>тяжелый, легкий</i>)<br>
+                  <span class="symbol">t:humq</span>&nbsp;&#151; качества человека (<i>умный, верный, ловкий</i>)<br>
+
+                  <h2>Оценка:</h2>
+                  <span class="symbol">ev</span>&nbsp;&#151; оценка (<i>толковый, мешковатый</i>)<br>
+                  <span class="symbol">ev:posit</span>&nbsp;&#151; положительная (<i>везучий, ладный</i>)<br>
+                  <span class="symbol">ev:neg</span>&nbsp;&#151; отрицательная (<i>продажный, сварливый</i>)<br>
+
+                  <h2>Словообразовательные пометы</h2>
+                  <span class="symbol">d:dim</span>&nbsp;&#151; диминутивы (<i>тихонький, крохотный</i>)<br>
+                  <span class="symbol">d:aug</span>&nbsp;&#151; аугментативы (<i>здоровенный, злющий</i>)<br>
+                  <span class="symbol">d:atten</span>&nbsp;&#151; аттенуативы (<i>угловатый, жуликоватый</i>)<br>
+                  <span class="symbol">d:habit</span>&nbsp;&#151; хабитивы (<i>глазастый, пузатый</i>)<br>
+                  <span class="symbol">d:carit</span>&nbsp;&#151; каритивы (<i>безглазый, бездыханный</i>)<br>
+                  <span class="symbol">d:potent | d:impot</span>&nbsp;&#151; потенциальные (<i>плавучий, недееспособный</i>)<br>
+                  <span class="symbol">d:potent</span>&nbsp;&#151; поссибилитивы (<i>плавучий, плодородный, занимательный</i>)<br>
+                  <span class="symbol">d:impot</span>&nbsp;&#151; импоссибилитивы (<i>несоизмеримый, недееспособный</i>)<br>
+                  <span class="symbol">der:s</span>&nbsp;&#151; отыменные прилагательные (<i>домашний, железный</i>)<br>
+                  <span class="symbol">der:v</span>&nbsp;&#151; отглагольные прилагательные (<i>ковкий, навязчивый, кочевой</i>)<br>
+                  <span class="symbol">der:adv</span>&nbsp;&#151; отадвербиальные прилагательные (<i>поздний, здешний</i>)<br>
+
+                  <h2>Имена числительные (<span class="symbol">NUM, A-NUM</span>)</h2>
+                  <h2>Разряды</h2>
+                  <span class="symbol">r:card</span>&nbsp;&#151; количественные (<i>два, пять, десять</i>)<br>
+                  <span class="symbol">r:card:pauc</span>&nbsp;&#151; числительные малого количества (<i>два, три, четыре, оба, пол, полтора</i>)<br>
+                  <span class="symbol">r:ord</span>&nbsp;&#151; порядковые (<i>первый, второй, десятый</i>)<br>
+
+                  <h2>Местоимения, в том числе:</h2>
+                  <span class="symbol">S-PRO</span>&nbsp;&#151; местоимения-существительные (<i>он, кто</i>)<br>
+                  <span class="symbol">A-PRO</span>&nbsp;&#151; местоимения-прилагательные (<i>его, какой</i>)<br>
+                  <span class="symbol">ADV-PRO</span>&nbsp;&#151; местоимения-наречия (<i>где, как</i>)<br>
+                  <h2>Разряды</h2>
+                  <span class="symbol">r:pers</span>&nbsp;&#151; личные (<i>я, он</i>)<br>
+                  <span class="symbol">r:ref</span>&nbsp;&#151; возвратные (<i>себя</i>)<br>
+                  <span class="symbol">r:poss</span>&nbsp;&#151; притяжательные (<i>мой, его, свой</i>)<br>
+                  <span class="symbol">r:rel</span>&nbsp;&#151; вопросительные/относительные (<i>кто, который, когда</i>)<br>
+                  <span class="symbol">r:dem</span>&nbsp;&#151; указательные (<i>этот, такой</i>)<br>
+                  <span class="symbol">r:indet</span>&nbsp;&#151; неопределенные (<i>некоторый, некогда</i>)<br>
+                  <span class="symbol">r:neg</span>&nbsp;&#151; отрицательные (<i>никакой, ничей</i>)<br>
+                  <span class="symbol">r:spec</span>&nbsp;&#151; кванторные (определительные) (<i>всякий, каждый, любой</i>)<br>
+
+                  <h2>Глаголы (<span class="symbol">V</span>)</h2>
+                  <h2>Лексико-семантические пометы</h2>
+                  <span class="symbol">t:move</span>&nbsp;&#151; движение (<i>бежать, дергаться, бросить, нести</i>)<br>
+                  <span class="symbol">t:move:body</span>&nbsp;&#151; изменение положения тела, части тела (<i>согнуть, нагнуться, примоститься</i>)<br>
+                  <span class="symbol">t:put</span>&nbsp;&#151; помещение объекта (<i>положить, вложить, спрятать</i>)<br>
+                  <span class="symbol">t:impact</span>&nbsp;&#151; физическое воздействие (<i>бить, колоть, вытирать</i>)<br>
+                  <span class="symbol">t:impact:creat</span>&nbsp;&#151; создание физического объекта (<i>выковать, смастерить, сшить</i>)<br>
+                  <span class="symbol">t:impact:destr</span>&nbsp;&#151; уничтожение (<i>взорвать, сжечь, зарезать</i>)<br>
+                  <span class="symbol">t:changest</span>&nbsp;&#151; изменение состояния или признака (<i>взрослеть, богатеть, расширить, испачкать</i>)<br>
+                  <span class="symbol">t:be</span>&nbsp;&#151; бытийная сфера (<i>жить, возникнуть, убить</i>)<br>
+                  <span class="symbol">t:be:exist</span>&nbsp;&#151; существование (<i>жить, происходить</i>)<br>
+                  <span class="symbol">t:be:appear</span>&nbsp;&#151; начало существования (<i>возникнуть, родиться, сформировать, создать</i>)<br>
+                  <span class="symbol">t:be:disapp</span>&nbsp;&#151; прекращение существования (<i>умереть, убить, улетучиться, ликвидировать, искоренить</i>)<br><span class="symbol">t:loc</span>&nbsp;&#151; местонахождение (<i>лежать, стоять, положить</i>)<br>
+                  <span class="symbol">t:loc:body</span>&nbsp;&#151; положение тела в пространстве (<i>сидеть</i>)<br>
+                  <span class="symbol">t:contact</span>&nbsp;&#151; контакт и опора (<i>касаться, обнимать, облокотиться</i>)<br>
+                  <span class="symbol">t:poss</span>&nbsp;&#151; посессивная сфера (<i>иметь дать, подарить, приобрести, лишиться</i>)<br>
+                  <span class="symbol">t:ment</span>&nbsp;&#151; ментальная сфера (<i>знать, верить, догадаться, помнить, считать</i>)<br>
+                  <span class="symbol">t:perc</span>&nbsp;&#151; восприятие (<i>смотреть, слышать, нюхать, чуять</i>)<br>
+                  <span class="symbol">t:psych</span>&nbsp;&#151; психическая сфера (<i>гипнотизировать, сочувствовать, настроиться, терпеть</i>)<br>
+                  <span class="symbol">t:psych:emot</span>&nbsp;&#151; эмоция (<i>радоваться, обидеть</i>)<br>
+                  <span class="symbol">t:psych:volit</span>&nbsp;&#151; воля (<i>решить</i>)<br>
+                  <span class="symbol">t:speech</span>&nbsp;&#151; речь (<i>говорить, советовать, спорить, каламбурить</i>)<br>
+                  <span class="symbol">t:behav</span>&nbsp;&#151; поведение человека (<i>куролесить, привередничать</i>)<br>
+                  <span class="symbol">t:physiol</span>&nbsp;&#151; физиологическая сфера (<i>кашлять, икать</i>)<br>
+                  <span class="symbol">t:weather</span>&nbsp;&#151; природное явление (<i>бушевать, вьюжить</i>)<br>
+                  <span class="symbol">t:sound</span>&nbsp;&#151; звук (<i>гудеть, шелестеть</i>)<br>
+                  <span class="symbol">t:light</span>&nbsp;&#151; свет (<i>гаснуть, лучиться</i>)<br>
+                  <span class="symbol">t:smell</span>&nbsp;&#151; запах (<i>пахнуть, благоухать</i>)<br>
+
+                  <h2>Каузация:</h2>
+                  <span class="symbol">ca:caus</span>&nbsp;&#151; каузативные глаголы (<i>показать, вертеть</i>)<br>
+                  <span class="symbol">ca:noncaus</span>&nbsp;&#151; некаузативные глаголы (<i>видеть, вертеться</i>)<br>
+
+                  <h2>Служебные глаголы:</h2>
+                  <span class="symbol">aux:phase</span>&nbsp;&#151; фазовые (<i>начать, продолжать, прекратить</i>)<br>
+                  <span class="symbol">aux:caus</span>&nbsp;&#151; служебные каузативные (<i>вызвать, привести (к)</i>)<br>
+
+                  <h2>Словообразовательные пометы</h2>
+                  <span class="symbol">d:pref</span>&nbsp;&#151; приставочные глаголы (<i>забегать, оглядеть</i>)<br>
+                  <span class="symbol">d:semelf</span>&nbsp;&#151; семельфактивы (<i>кивнуть, чихнуть, боднуть, качнуться</i>)<br>
+                  <span class="symbol">d:impf</span>&nbsp;&#151; вторичные имперфективы (-ива-, -ва-, -а-) (<i>выпивать, вбивать, прогонять</i>)<br>
+
+                  <h2>Наречия (<span class="symbol">ADV</span>)</h2>
+                  <h2>Лексико-семантические пометы</h2>
+                  <span class="symbol">t:place</span>&nbsp;&#151; место (<i>здесь, посередине</i>)<br>
+                  <span class="symbol">t:dir</span>&nbsp;&#151; направление (<i>туда, наверх</i>)<br>
+                  <span class="symbol">t:dist</span>&nbsp;&#151; расстояние (<i>далеко, близко</i>)<br>
+                  <span class="symbol">t:dist:max</span>&nbsp;&#151; большое (<i>далеко, вдали, вдалеке</i>)<br>
+                  <span class="symbol">t:dist:min</span>&nbsp;&#151; малое (<i>близко, вблизи</i>)<br>
+                  <span class="symbol">t:time</span>&nbsp;&#151; время (<i>тогда, поздно</i>)<br>
+                  <span class="symbol">t:time:dur</span>&nbsp;&#151; длительность (<i>вечно, недолго</i>)<br>
+                  <span class="symbol">t:time:dur:max</span>&nbsp;&#151; большая (<i>вечно, подолгу, всегда</i>)<br>
+                  <span class="symbol">t:time:dur:min</span>&nbsp;&#151; малая (<i>временно, недолго</i>)<br>
+                  <span class="symbol">t:speed</span>&nbsp;&#151; скорость (<i>быстро, медленно</i>)<br>
+                  <span class="symbol">t:speed:max</span>&nbsp;&#151; большая (<i>быстро, мигом</i>)<br>
+                  <span class="symbol">t:speed:min</span>&nbsp;&#151; малая (<i>медленно, неторопливо</i>)<br>
+                  <span class="symbol">t:quant</span>&nbsp;&#151; количество (<i>столько, достаточно</i>)<br>
+                  <span class="symbol">t:quant:max</span>&nbsp;&#151; большое (<i>много, навалом</i>)<br>
+                  <span class="symbol">t:quant:min</span>&nbsp;&#151; малое (<i>мало, чуть-чуть</i>)<br>
+
+                  <h2>Оценка:</h2>
+                  <span class="symbol">ev</span>&nbsp;&#151; оценка (<i>беспечно, бойко</i>)<br>
+                  <span class="symbol">ev:posit</span>&nbsp;&#151; положительная (<i>бойко, безупречно</i>)<br>
+                  <span class="symbol">ev:neg</span>&nbsp;&#151; отрицательная (<i>бездарно, неловко</i>)<br>
+
+                  <h2>Словообразовательные пометы</h2>
+                  <span class="symbol">d:dim</span>&nbsp;&#151; диминутивы (<i>немножко, быстренько</i>)<br>
+                  <span class="symbol">d:atten</span>&nbsp;&#151; аттенуативы (<i>рановато, суховато</i>)<br>
+                  <span class="symbol">der:s</span>&nbsp;&#151; отыменные наречия (<i>вверху, дома</i>)<br>
+                  <span class="symbol">der:v</span>&nbsp;&#151; отглагольные наречия (<i>отродясь, стоймя</i>)<br>
+                  <span class="symbol">der:a</span>&nbsp;&#151; отадъективные наречия (<i>быстро, обычно</i>)<br>
+                  <h2>Таксономия производящего слова-прилагательного</h2>
+                  <span class="symbol">der:a & dt:size</span>&nbsp;&#151; размер (<i>высоко, коротко</i>)<br>
+                  <span class="symbol">der:a & dt:size:max</span>&nbsp;&#151; большой (<i>высоко, бесконечно</i>)<br>
+                  <span class="symbol">der:a & dt:size:min</span>&nbsp;&#151; малый (<i>коротко, низко</i>)<br>
+                  <span class="symbol">der:a & dt:physq</span>&nbsp;&#151; физические свойства (<i>твердо, плотно</i>)<br>
+                  <span class="symbol">der:a & dt:physq:form</span>&nbsp;&#151; форма (<i>плоско, прямо</i>)<br>
+                  <span class="symbol">der:a & dt:physq:color</span>&nbsp;&#151; цвет (<i>красно, добела</i>)<br>
+                  <span class="symbol">der:a & dt:physq:taste</span>&nbsp;&#151; вкус (<i>горько, вкусно</i>)<br>
+                  <span class="symbol">der:a & dt:physq:smell</span>&nbsp;&#151; запах (<i>смрадно, зловонно</i>)<br>
+                  <span class="symbol">der:a & dt:physq:temper</span>&nbsp;&#151; температура (<i>тепло, прохладно</i>)<br>
+                  <span class="symbol">der:a & dt:physq:weight</span>&nbsp;&#151; вес (<i>тяжело, легко</i>)<br>
+                  <span class="symbol">der:a & dt:humq</span>&nbsp;&#151; качества человека (<i>внимательно, грубо</i>)<br>
+<br>
+<!--#include virtual="ssi/footer.html" -->

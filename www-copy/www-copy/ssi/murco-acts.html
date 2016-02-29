@@ -1,0 +1,178 @@
+
+<hr class="murco-hr" />
+<table class="intable" border="0" cellspacing="5" cellpadding="0" width="100%">
+ <tr>
+  <td class="deep_header">
+   <span class="deep_caption">Речевые&nbsp;действия:</span>
+   <span class="deep_status" id="acts_status">не&nbsp;заданы</span>
+  </td><td>
+   <a id="toggle_acts" class="deep_action" href="javascript:onToggle('acts')">задать</a>
+   &nbsp;&nbsp;&nbsp;
+   <a id="clear_acts" class="deep_clear_disabled" href="javascript:onClearInputs('acts')">очистить</a>
+   &nbsp;&nbsp;&nbsp;&nbsp;
+   <a href="help-acts.html" target="_blank">
+<img src="i/help2.gif" style="vertical-align:bottom;" alt="[?]" width="18" height="18" border="0" /></a>
+  </td>
+ </tr>
+</table>
+<table id="acts_table" class="deep_table" border="0" cellspacing="5" cellpadding="0" width="100%" style="display:none">
+
+
+<tr><td class="deep_name">
+ <a href="javascript:getMurcoAttr('act_speakersamount');">Количество говорящих в клипе</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_speakersamount" name="act_speakersamount" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name">
+ <a href="javascript:getMurcoAttr('act_sex');">Пол говорящих (актеров)</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_sex" name="act_sex" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name">
+ <a href="javascript:getMurcoAttr('act_lang');">Язык, на котором говорят</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_lang" name="act_lang" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name">
+ <a href="javascript:getMurcoAttr('act_situation');">Социальная ситуация, отраженная в клипе</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_situation" name="act_situation" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name">
+ <a href="javascript:getMurcoAttr('act_acttypes');">Типы речевых действий</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_acttypes" name="act_acttypes" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_appeals');">Апеллятивы</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_appeals" name="act_appeals" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_questions');">Вопросы</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_questions" name="act_questions" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_imperatives');">Императивы и побудительные высказывания</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_imperatives" name="act_imperatives" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_modals');">Модальные высказывания и перформативы</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_modals" name="act_modals" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_negation');">Отрицание</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_negation" name="act_negation" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_pejoratives');">Пейоративные высказывания</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_pejoratives" name="act_pejoratives" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_praise');">Похвала</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_praise" name="act_praise" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_consent');">Согласие</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_consent" name="act_consent" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_trade');">Торговля</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_trade" name="act_trade" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_assertion');">Утверждение</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_assertion" name="act_assertion" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_othersspeech');">Чужая речь</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_othersspeech" name="act_othersspeech" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_mocking');">Шутливые/насмешливые высказывания</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_mocking" name="act_mocking" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name_shifted">
+ <a href="javascript:getMurcoAttr('act_etiquette');">Этикетные высказывания</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_etiquette" name="act_etiquette" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name">
+ <a href="javascript:getMurcoAttr('act_completeness');">Полнота речевого действия</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_completeness" name="act_completeness" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name">
+ <a href="javascript:getMurcoAttr('act_repetitions');">Наличие и типы повторов</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_repetitions" name="act_repetitions" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name">
+ <a href="javascript:getMurcoAttr('act_manner');">Манера говорения</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_manner" name="act_manner" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+<tr><td class="deep_name">
+ <a href="javascript:getMurcoAttr('act_vocals');">Типы вокальных жестов и междометий</a>
+ </td><td class="deep_value">
+ <input type="text" id="act_vocals" name="act_vocals" width="100%" onchange="onInputChange('acts')">
+</td></tr>
+
+
+</table>
+
+<br />
+

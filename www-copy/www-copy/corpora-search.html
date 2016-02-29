@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><base target="_top">
+<meta name="content-type" http-equiv="text/html; charset='windows-1251'">
+  <title>Поиск в "Национальном корпусе русского языка"</title>
+<script language="JavaScript">
+var wordNum;
+function getGrm(name) {
+    grmDialog = window.open("reqgrm.html", "grm" +name,"width=380,height=510,resizable=yes");
+    <!-- /* name == sourceName !! */ -->
+    return void(0);
+}
+function getLex(name) {
+    lexDialog = window.open("reqlex.html","lex" +name,"width=330,height=350,resizable=yes");
+    return void(0);
+};
+
+
+function addWordField(){
+    wordNum++;
+
+    var lx = new Array(wordNum);
+    var gr = new Array(wordNum);
+    var mx = new Array(wordNum);
+    var mn = new Array(wordNum);
+    var ordr = new Array(wordNum);
+
+    for (i = 1; i < wordNum; i++){
+        lx[i] = window.document.reqForm.elements('lex'+i).value;
+        gr[i] = window.document.reqForm.elements('grm'+i).value;
+        if (i >1){
+            mx[i] = window.document.reqForm.elements('max'+i).value;
+            mn[i] = window.document.reqForm.elements('min'+i).value;
+            ordr[i] = window.document.reqForm.elements('order'+i).value;
+        }
+    }
+
+    var s=
+    '<table><tr class=oper> '+
+        '<td width=272>Расстояние '+
+            'макс. '+
+            '<input type=text name=max' +wordNum + ' size=4 value="1"> '+
+            'мин. '+
+            '<input type=text name=min' +wordNum + ' size=4> '+
+        '</td><td width=317>Порядок '+
+            '<input type=checkbox name=order' +wordNum + ' value="1" checked>важен '+
+        '</td>'+
+    '</tr>'+
+    '<tr class=lex>'+
+        '<td class=lex width=272>Слово ' +wordNum+
+            ' <input type=text name=lex' +wordNum+ ' size=30>'+
+            '<a href="javascript:getLex(' +wordNum+ ')">задать</a> '+
+        '</td><td class=gram width=317>грам. признаки&nbsp;'+
+            '<a href="javascript:getGrm(' +wordNum+ ')">выбрать</a>'+
+            '<input type=text name=grm' +wordNum+ ' size=30> '+
+        '</td>'+
+    '</tr></table>';
+
+    window.document.getElementById("reqWords").innerHTML += s;
+
+    for (i = 1; i < wordNum; i++){
+        window.document.reqForm.elements('lex'+i).value = lx[i];
+        window.document.reqForm.elements('grm'+i).value = gr[i];
+        if (i >1){
+            window.document.reqForm.elements('max'+i).value = mx[i];
+            window.document.reqForm.elements('min'+i).value = mn[i];
+            window.document.reqForm.elements('order'+i).value = ordr[i];
+        }
+    }
+};
+function init(){
+    wordNum = 2;
+};
+</script>
+
+
+
+
+<style>
+#bn {display:block;}
+#bt {display:block;}
+  </style><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<body onload="init();" bgcolor=#99ccff  link=#006666 vlink=#006666 alink=#ffcc66 topmargin=0 leftmargin=0 marginwidth=0 marginheight=0 background=img/bg.gif>
+
+<!-- Yandex.Metrika -->
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<script type="text/javascript">
+try { var yaCounter677861 = new Ya.Metrika(677861); } catch(e){}
+</script>
+<noscript><img src="//mc.yandex.ru/watch/677861" style="position:absolute" alt="" /></noscript>
+<!-- /Yandex.Metrika -->
+
+<table cellspacing=0 cellpadding=0 border=0 width=780>
+<tr><td><img src="img//d-t.gif" width=148 height=52></td></tr>
+<tr valign=top><td><table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td><table cellspacing=0 cellpadding=10 border=0 width=100%><tr><td><font size=-1>
+<a href="corpora.html">Главная/новости</a></font></td>
+      </tr></table></td></tr>
+<tr><td><table cellspacing=0 cellpadding=10 border=0 width=100%><tr><td><font size=-1>
+<a href="corpora-intro.html">Что такое корпус?</a>
+</font></td></tr></table></td></tr>
+<tr><td><table cellspacing=0 cellpadding=10 border=0 width=100%><tr><td><font size=-1>
+<a href="corpora-structure.html">Состав и структура
+корпуса</a>
+</font></td></tr></table></td></tr>
+<tr><td><table cellspacing=0 cellpadding=10 border=0 width=100%><tr><td><font size=-1>
+<a href="corpora-search.html">Поиск в корпусе</a>
+</font></td></tr></table></td></tr>
+<tr><td><table cellspacing=0 cellpadding=10 border=0 width=100%><tr><td><font size=-1>
+<a href="corpora-morph.html">Морфология</a>
+</font></td></tr></table></td></tr>
+<tr><td><table cellspacing=0 cellpadding=10 border=0 width=100%><tr><td><font size=-1>
+<a href="corpora-about.html">Участники проекта</a>
+</font></td></tr></table></td></tr>
+<tr><td><table cellspacing=0 cellpadding=10 border=0 width=100%><tr><td><font size=-1>
+<a href="corpora-help.html">Помощь</a>
+</font></td></tr></table></td></tr>
+
+<tr><td bgcolor=000000><img src="d-t.gif" width=1 height=1></td></tr>
+</table></td><td bgcolor=000000><img src="d-t.gif" width=1 height=1></td>
+<td><table cellspacing=0 cellpadding=6 border=0>
+
+<tr><td>
+<font color="Black" style="font-size: 24pt">
+Извините, поиск временно не работает.<br>
+Скоро будет доступна новая версия.
+</font>
+</td></tr>
+</table>
+
+
+<p>
+
+
+<comment><a href="http://www.ruscorpora.ru/"><img style="border: 0px solid ; width: 137px; height: 76px;" hspace="112" title="" alt="Логотип Корпуса Русского языка"></a></comment>
+
+</p>
+
+</body></html>
