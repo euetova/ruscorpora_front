@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-    <ShortName>Рускорпора, далектный корпус</ShortName>
-    <Description>Поиск по диалектному корпусу НКРЯ.</Description>
-    <Image width="16" height="16" type="image/x-icon">http://ruscorpora.ru/favicon.ico</Image>
-    <Url type="text/html" template="http://search.ruscorpora.ru/search.xml?mode=dialect&amp;text=lexform&amp;sort=gr_tagging&amp;req={searchTerms}"/>
-    <InputEncoding>windows-1251</InputEncoding>
-</OpenSearchDescription>
