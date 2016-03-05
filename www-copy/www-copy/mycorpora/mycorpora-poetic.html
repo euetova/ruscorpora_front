@@ -1,0 +1,171 @@
+<!--#set var="SCRIPT" value="subcorp.js"-->
+<!--#set var="TITLE" value="Выбор подкорпуса в поэтическом корпусе"-->
+<!--#include virtual="ssi/corpora-header.html" -->
+
+<h1>Поэтический корпус: выбор подкорпуса</h1>
+<form name="reqForm" action="<!--#echo var='SEARCH_SERVER'-->/search.xml" method="get">
+<input type="hidden" name="env" value="<!--#echo var='ENV'-->">
+<input type="hidden" name="text" value="meta">
+<input type="hidden" name="mode" value="poetic">
+<input type="hidden" name="sort" value="gr_tagging">
+<input type="hidden" name="lang" value="ru"/>
+<p>Вы можете задать подмножество корпуса, по которому в&nbsp;дальнейшем будет вестись поиск. Подробнее о&nbsp;параметрах
+текста см.&nbsp;в&nbsp;разделе &laquo;<a href="corpora-parameter.html">Параметры текста</a>&raquo;. О специальных параметрах и терминологии, используемых в корпусе поэтических текстов, см. <a target="_blank" href="termin-poetic.html"><nobr>терминологический указатель</nobr></a>. См. также <a href="poet-list.html">список авторов</a>, произведения которых размещены в Корпусе<br></p>
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr><td><h3>Основные&nbsp;параметры&nbsp;текста</h3></td>
+<td>&nbsp;&nbsp;</td>
+<td valign="bottom" width="100%" align="left"><a href="default.htm" onClick="return showhelp('help-mainpar.html',516)"><img src="i/help.gif" alt="[?]" width="19" height="25" vspace=7 border="0"></a></td></tr>
+</table>
+
+<p>Название&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="doc_te_header" style="width:80%">
+<br><br>
+Цикл&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="doc_t_cyclus" style="width:85%">
+<br><br>
+Книга стихов&nbsp;&nbsp;&nbsp;<input type="text" name="doc_t_liber" style="width:80%">
+<br><br>
+<a href="poet-list.html">Автор текста</a>&nbsp;<input type="text" name="doc_te_author" style="width:60%"> <input type="checkbox" name="dubium" value="-dubium"> без приписываемого
+<br><br>
+Пол:
+<input type="radio" name="doc_sex" value="" checked>любой&nbsp;
+<input type="radio" name="doc_sex" value='муж'>мужской&nbsp;
+<input type="radio" name="doc_sex" value='жен'>женский&nbsp;&nbsp;&nbsp;&nbsp;
+<br><br>
+Год рождения:&nbsp;&nbsp;от <input type="text" name="doc_g_birthday" size="10"> до <input type="text" name="doc_l_birthday" size="10">
+<br><br>
+Автор оригинала (для переводных текстов)&nbsp;<input type="text" name="doc_te_original" style="width:53%">
+<br><br>
+Год&nbsp;создания:&nbsp;&nbsp;&nbsp;от&nbsp;<input type="text" name="doc_g_created" size="10">&nbsp;до&nbsp;<input type="text" name="doc_l_created" size="10"> <input type="checkbox" name="exact" value="-неточная"> только точная дата
+
+<p>
+<!--
+Число слов:&nbsp;&nbsp;&nbsp;&nbsp;от&nbsp;<input type=text name=d_words1 size=10>&nbsp;до&nbsp;<input type=text name=d_words2 size=10>
+<br>
+-->
+Число строк:&nbsp;&nbsp;&nbsp;от&nbsp;<input type="text" name="doc_g_verses" size="10">&nbsp;до&nbsp;<input type="text" name="doc_l_verses" size="10">&nbsp;&nbsp;
+</p>
+<p>
+Жанр текста&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('genre_poet');">выбрать</a><br>
+<input type="text" class="attr_val" id="genre_poet" name="doc_genre_fi" style="width:90%">
+<br>
+Язык оригинала (для переводных текстов)&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('language');">выбрать</a><br>
+<input type="text" class="attr_val" id="language" name="doc_language" style="width:90%">
+<br>
+Метр&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('meter');">выбрать</a> (введите другое)<br>
+<input type="text" class="attr_val" id="meter" name="doc_meter" style="width:90%">
+<br>
+Длина строки (стопы, икты в тонике, слоги в силлабике)&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('feet');">выбрать</a> (введите другое)<br>
+<input type="text" class="attr_val" id="feet" name="doc_feet" style="width:90%">
+<br>
+Клаузула&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('clausula');">выбрать</a> (введите другое)<br>
+<input type="text" class="attr_val" id="clausula" name="doc_clausula" style="width:90%">
+<br>
+Строфика&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('strophe');">выбрать</a> (введите другое)<br>
+<input type="text" class="attr_val" id="strophe" name="doc_strophe" style="width:90%">
+<br>
+Графическая строфика&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('gr_strophe');">выбрать</a> (введите другое)<br>
+<input type="text" class="gr_strophe" id="gr_strophe" name="doc_gr_strophe" style="width:90%">
+<br>
+Рифма&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('rhyme');">выбрать</a> (введите другое)<br>
+<input type="text" class="attr_val" id="rhyme" name="doc_rhyme" style="width:90%">
+<br>
+Формула&nbsp;&nbsp;&nbsp;<!---<a href="javascript:getAttr('formula');">выбрать</a><br>--->
+<input type="text" class="attr_val" id="formula" name="doc_formula" style="width:90%">
+<br>
+Дополнительные параметры&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('extra');">выбрать</a><br>
+<input type="text" class="attr_val" id="extra" name="doc_extra" style="width:90%">
+</p>
+
+<!--
+<table border="0" cellspacing="0" cellpadding="0">
+<tr><td><h3>Параметры&nbsp;стихотворной&nbsp;строки</h3></td>
+<td>&nbsp;&nbsp;</td>
+<td valign="bottom" width="100%" align="left"><a href="default.htm" onClick="return showhelp('help-mainpar.html',516)"><img src="i/help.gif" alt="[?]" width="19" height="25" vspace=7 border="0"></a></td></tr>
+</table>
+<p>
+Метр&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('ln_meter');">выбрать</a> (введите другое)<br>
+<input type="text" class="attr_val" id="ln_meter" name="sent_ln_meter" style="width:90%">
+<br>
+Длина строки (стопы, икты в тонике, слоги в силлабике)&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('ln_feet');">выбрать</a> (введите другое)<br>
+<input type="text" class="attr_val" id="ln_feet" name="sent_ln_feet" style="width:90%">
+<br>
+Клаузула&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('ln_clausula');">выбрать</a> (введите другое)<br>
+<input type="text" class="attr_val" id="ln_clausula" name="sent_ln_clausula" style="width:90%">
+<br>
+Формула&nbsp;&nbsp;&nbsp;
+<input type="text" class="attr_val" id="ln_formula" name="sent_ln_formula" style="width:90%">
+<br>
+-->
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr><td><h3>Версии</h3></td></tr>
+</table>
+Дата добавления документа:&nbsp;c
+<select id="doc_g_crevision" name="doc_g_crevision">
+ <option value="">самого начала</option>
+ <!--<option value="43">июля 2010 г.</option>-->
+ <option value="43">мая 2011 г.</option>
+ <option value="793">декабря 2011 г.</option>
+ <option value="1359">декабря 2012 г.</option>
+ <option value="1860">июля 2013 г.</option>
+ <option value="2140">декабря 2013 г.</option>
+ <option value="2236">октября 2014 г.</option>
+ <option value="2581">апреля 2015 г.</option>
+ <option value="2807">декабря 2015 г.</option>
+ <!--option value="3336"></option-->
+</select>
+&nbsp;по
+<select id="doc_l_crevision" name="doc_l_crevision">
+ <option value="">текущий момент</option>
+ <!--<option value="3335">декабрь 2015 г.</option>-->
+ <option value="2806">апрель 2015 г.</option>
+ <option value="2580">октябрь 2014 г.</option>
+ <option value="2235">декабрь 2013 г.</option>
+ <option value="2139">июль 2013 г.</option>
+ <option value="1859">декабрь 2012 г.</option>
+ <option value="1358">декабрь 2011 г.</option>
+ <option value="792">май 2011 г.</option>
+ <option value="42">июль 2010 г.</option>
+ <!--<option value="42">июль 2010 г.</option>-->
+</select>
+<!--
+<br>
+Дата изменения документа:&nbsp;&nbsp;&nbsp;с
+<select id="doc_g_mrevision" name="doc_g_mrevision">
+ <option value="">самого начала</option>
+ <option value="43">июля 2010 г.</option>
+ <option value="788">мая 2011 г.</option>
+</select>
+&nbsp;по
+<select id="doc_l_mrevision" name="doc_l_mrevision">
+ <option value="">текущий момент</option>
+ <option value="787">май 2011 г.</option>
+ <option value="42">июль 2010 г.</option>
+</select>
+-->
+<br/>
+<br/>
+
+
+
+<p>После выбора соответствующих параметров нажмите кнопку &laquo;Далее&raquo;
+и&nbsp;перейдите к&nbsp;просмотру списка документов, входящих в&nbsp;подкорпус.
+<!--Нажав кнопку &laquo;Сохранить&raquo;, пользователь может перейти к&nbsp;странице &laquo;Поиск в&nbsp;корпусе&raquo; для задания поискового запроса.-->
+</p>
+<br>
+<input class="button" type=submit value="Далее &gt;&gt;">
+&nbsp;&nbsp;
+<input class="button" type=reset value="Очистить">
+</form>
+
+<input class="button" type="button" value="Очистить подкорпус" onclick="saveResults();" />
+<br/><br/>
+<script type="text/javascript">
+function saveResults() {
+  document.cookie = "dialect=;domain=ruscorpora.ru";
+  window.location= "http://ruscorpora.ru/search-poetic.html";
+}
+</script>
+
+<!--#include virtual="ssi/ysfooter.html" -->

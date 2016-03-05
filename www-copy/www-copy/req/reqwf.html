@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Словообразование</title>
+<link rel="shortcut icon" href="../yandex.ru/favicon.ico">
+<link rel="stylesheet" type="text/css" href="./form.css">
+<style>
+.inverse   { cursor: pointer; color: #023F7C; }
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript">
+
+function parse(str) {
+  var wf = str.split(/_/);
+  if (wf.length != 3) return;
+  
+  var text = window.document.getElementById('text');
+  var allomorph = window.document.getElementById('allomorph');
+  var pos = window.document.getElementById('pos');
+  
+  if (wf[0].length > 1 && wf[0][0] == 'q') {
+    allomorph.checked = false;
+    wf[0] = wf[0].substr(1);
+  }
+  text.value = wf[0];
+
+  if (wf[1]=="p" || wf[1]=="r" || wf[1]=="s" || wf[1]=="f")
+    window.document.getElementById("type_" + wf[1]).checked = true;
+  
+  pos.value = wf[2];
+}
+
+
+function collect() {
+  var s = '';
+  var allomorph = window.document.getElementById('allomorph').checked;
+  var text = window.document.getElementById('text').value;
+  if (!allomorph && text != "") s += "q";
+  s += text;
+  s += "_";
+
+  var types = window.document.getElementsByName('type');
+  for (var i = 0; i < types.length; ++i)
+    if (types[i].checked) {
+      s += types[i].value;
+      break;
+    }
+  s += "_";
+  s += window.document.getElementById('pos').value;
+
+  var sourceName = window.name;
+  if (window.opener && !window.opener.closed) {
+    window.opener.document.reqForm.elements[sourceName].value = s;
+  }
+  window.close();
+}
+
+</script>
+
+</head>
+<body>
+
+<form name=wfForm action="" style="margin:10; font-size: 100%">
+<b>Текст:</b>&nbsp;&nbsp; <input id="text" type="text" value=""/><br/>
+<input id="allomorph" type="checkbox"/>С учетом чередования<br/>
+<br/>
+<b>Тип морфемы:</b><br/>
+<input type="radio" name="type" id="type_p" value="p"/>префикс&nbsp;&nbsp;
+<input type="radio" name="type" id="type_r" value="r" checked="true"/>корень&nbsp;&nbsp;
+<input type="radio" name="type" id="type_s" value="s"/>суффикс&nbsp;&nbsp;
+<input type="radio" name="type" id="type_f" value="f"/>флексия<br/>
+<br/>
+<b>Позиция:</b>&nbsp;&nbsp;<input type="text" id="pos" value=""/><br/>
+
+<br/>
+<br/>
+
+<input type=button class=button value="  OK  " onclick="collect()">&nbsp;&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='document.all.wfForm.reset()'>&nbsp;&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>
+
+</form>
+
+<script for="window" event="onload" language="JavaScript">
+parse(window.opener.document.reqForm.elements[window.name].value);
+</script>
+
+</body>
+</html>

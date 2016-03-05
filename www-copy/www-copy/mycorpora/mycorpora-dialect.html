@@ -1,0 +1,53 @@
+<!--#set var="SCRIPT" value="subcorp.js"-->
+<!--#set var="TITLE" value="Выбор подкорпуса в диалектном корпусе"-->
+<!--#include virtual="ssi/corpora-header.html" -->
+
+<h1>Диалектный корпус: выбор подкорпуса</h1>
+<form name="reqForm" action="<!--#echo var='SEARCH_SERVER'-->/search.xml" method="get">
+<input type="hidden" name="env" value="<!--#echo var='ENV'-->">
+<input type="hidden" name="text" value="meta">
+<input type="hidden" name="mode" value="dialect">
+<input type="hidden" name="sort" value="gr_tagging">
+<input type="hidden" name="lang" value="ru"/>
+<p>Вы можете задать подмножество корпуса, по которому в&nbsp;дальнейшем будет вестись поиск. Подробнее о&nbsp;параметрах
+текста см.&nbsp;в&nbsp;разделе &laquo;<a href="corpora-parameter.html">Параметры текста</a>&raquo;.<br></p>
+
+<h3>Основные&nbsp;параметры&nbsp;текста
+<a href="default.htm" onclick="return showhelp('help-mainpar.html',516)"><img src="i/help.gif" alt="[?]" width="19" height="25" valign=bottom border="0"></a></h3>
+
+Название&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="doc_te_header" style="width:80%">
+<br>Автор&nbsp;записи&nbsp;<input type="text" name="doc_te_interviewer" style="width:80%">
+<br>Пол информанта:
+<input type="radio" name="doc_sex" value="" checked>любой&nbsp;
+<input type="radio" name="doc_sex" value='муж'>мужской&nbsp;
+<input type="radio" name="doc_sex" value='жен'>женский&nbsp;&nbsp;&nbsp;&nbsp;
+<br>Год&nbsp;записи:&nbsp;&nbsp;&nbsp;от&nbsp;<input type="text" name="doc_g_created" size="10">&nbsp;до&nbsp;<input type="text" name="doc_l_created" size="10">
+<br>Объем текста:&nbsp;&nbsp;от&nbsp;<input type="text" name="doc_g_words" size="10">&nbsp;до&nbsp;<input type="text" name="doc_l_words" size="10">&nbsp;&nbsp;слов
+<br>
+<br>Место&nbsp;записи&nbsp;<a href="javascript:getAttr('dial_loc');">выбрать</a><br>
+<input type="text" class="attr_val" name="doc_region" id="dial_loc" style="width:90%">
+<br>
+Тематика&nbsp;текста&nbsp;&nbsp;&nbsp;<a href="javascript:getAttr('dial_topic');">выбрать</a><br>
+<input class="attr_val" name="doc_topic" id="dial_topic" style="width:90%">
+
+
+<p>После выбора соответствующих параметров нажмите кнопку &laquo;Далее&raquo;
+и&nbsp;перейдите к&nbsp;просмотру списка документов, входящих в&nbsp;подкорпус.
+<!--Нажав кнопку &laquo;Сохранить&raquo;, пользователь может перейти к&nbsp;странице &laquo;Поиск в&nbsp;корпусе&raquo; для задания поискового запроса.-->
+</p>
+<br>
+<input class="button" type=submit value="Далее &gt;&gt;">
+&nbsp;&nbsp;
+<input class="button" type=reset value="Очистить">
+</form>
+
+<input class="button" type="button" value="Очистить подкорпус" onclick="saveResults();" />
+<br/><br/>
+<script type="text/javascript">
+function saveResults() {
+  document.cookie = "dialect=;domain=ruscorpora.ru";
+  window.location= "http://ruscorpora.ru/search-dialect.html";
+}
+</script>
+
+<!--#include virtual="ssi/ysfooter.html" -->

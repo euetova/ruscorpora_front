@@ -1,0 +1,945 @@
+<html>
+<head>
+<link rel="SHORTCUT ICON" href="../yandex.ru/favicon.ico">
+<title>Семантические признаки</title>
+<link rel="stylesheet" type="text/css" href="form.css">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript">
+
+curform = 'S1';
+
+function show(form) {
+	document.forms[curform].reset()
+	document.forms[curform].style.display = 'none';
+	document.forms[form].style.display = 'block';
+	curform = form;
+}
+
+function set_children_checked(parent_id, ischecked) {
+	var chlds = window.document.getElementById(parent_id).all;
+	for (i=0; i<chlds.length; i++) {
+		if (chlds[i].type=="checkbox") chlds[i].checked=ischecked;
+	}
+}
+
+function parse_sems(str) {
+	var s = new String(str);
+	if (s.match("r:concr")) show('S1');
+	if (s.match("r:abstr")) show('S2');
+	if (s.match("r:propn")) show('S3');
+	if (s.match("gramm=A")) show('A');
+	if (s.match("gramm=NUM")) show('NUM');
+	if (s.match("gramm=ANUM")) show('NUM');
+	if (s.match("gramm=SPRO")) show('PRO');
+	if (s.match("gramm=APRO")) show('PRO');
+	if (s.match("gramm=ADVPRO")) show('PRO');
+	if (s.match("gramm=V")) show('V');
+	if (s.match("gramm=ADV")) show('ADV');
+
+var sems_arr = [
+	"t:hum",	// [|] for regex
+	"t:hum:etn",
+	"t:hum:kin",
+	"t:hum:supernat",
+	"t:animal",
+	"t:plant",
+	"t:stuff",
+	"t:space",
+	"t:constr",
+	"t:tool",
+	"t:tool:instr",
+	"t:tool:device",
+	"t:tool:transp",
+	"t:tool:weapon",
+	"t:tool:mus",
+	"t:tool:furn",
+	"t:tool:dish",
+	"t:tool:cloth",
+	"t:food",
+	"t:text",
+	"pt:part",
+	"pt:partb & pc:hum",
+	"pt:partb & pc:animal",
+	"pt:part & pc:plant",
+	"pt:part & pc:constr",
+	"pt:part & pc:tool",
+	"pt:part & pc:tool:instr",
+	"pt:part & pc:tool:device",
+	"pt:part & pc:tool:transp",
+	"pt:part & pc:tool:weapon",
+	"pt:part & pc:tool:mus",
+	"pt:part & pc:tool:furn",
+	"pt:part & pc:tool:dish",
+	"pt:part & pc:tool:cloth",
+	"pt:qtm",
+	"pt:set [|] pt:aggr",
+	"hi:class",
+	"top:contain",
+	"top:horiz",
+	"ev",
+	"ev:posit",
+	"ev:neg",
+	"d:dim",
+	"d:aug",
+	"d:sing",
+	"d:nag",
+	"d:fem",
+	"t:move",
+	"t:move:body",
+	"t:put",
+	"t:impact",
+	"t:impact:creat",
+	"t:impact:destr",
+	"t:changest",
+	"t:be",
+	"t:be:exist",
+	"t:be:appear",
+	"t:be:disapp",
+	"t:loc",
+	"t:loc:body",
+	"t:contact",
+	"t:poss",
+	"t:ment",
+	"t:perc",
+	"t:psych",
+	"t:psych:emot",
+	"t:psych:volit",
+	"t:speech",
+	"t:physiol",
+	"t:weather",
+	"t:sound",
+	"t:color",
+	"t:light",
+	"t:taste",
+	"t:smell",
+	"t:temper",
+	"t:time",
+	"t:time:period",
+	"t:time:moment",
+	"t:time:week",
+	"t:time:month",
+	"t:time:age",
+	"t:humq",
+	"t:behav",
+	"t:inter",
+	"t:action",
+	"t:disease",
+	"t:game",
+	"t:sport",
+	"t:param",
+	"t:unit",
+	"pt:part",
+	"pt:qtm",
+	"pt:set",
+	"ev",
+	"ev:posit",
+	"ev:neg",
+	"der:v",
+	"der:abs",
+	"t:persn [|] t:patrn [|] t:famn",
+	"t:persn",
+	"t:patrn",
+	"t:famn",
+	"t:topon",
+	"d:dim",
+	"t:size",
+	"t:size:max",
+	"t:size:min",
+	"t:size:abs",
+	"t:dist",
+	"t:dist:max",
+	"t:dist:min",
+	"t:quant",
+	"t:quant:max",
+	"t:quant:min",
+	"t:quant:abs",
+	"t:place",
+	"t:dir",
+	"t:time",
+	"t:time:dur",
+	"t:time:dur:max",
+	"t:time:dur:min",
+	"t:time:dur:abs",
+	"t:time:age",
+	"t:time:age:max",
+	"t:time:age:min",
+	"t:time:age:abs",
+	"t:speed",
+	"t:speed:max",
+	"t:speed:min",
+	"t:physq",
+	"t:physq:form",
+	"t:physq:color",
+	"t:physq:taste",
+	"t:physq:smell",
+	"t:physq:temper",
+	"t:physq:weight",
+	"t:humq",
+	"der:abbr",
+	"r:qual",
+	"r:rel",
+	"r:poss",
+	"r:invar",
+	"ev",
+	"ev:posit",
+	"ev:neg",
+	"d:dim",
+	"d:aug",
+	"d:atten",
+	"d:habit",
+	"d:carit",
+	"d:potent [|] d:impot",
+	"d:potent",
+	"d:impot",
+	"der:s",
+	"der:s & dt:hum",
+	"der:s & dt:animal",
+	"der:s & dt:plant",
+	"der:s & dt:stuff",
+	"der:s & dt:space",
+	"der:s & dt:constr",
+	"der:s & dt:tool",
+	"der:s & dt:food",
+	"der:s & dt:text",
+	"der:s & dt:partb",
+	"der:v",
+	"der:adv",
+	"r:card",
+	"r:card:pauc",
+	"r:ord",
+	"r:card",
+	"t:number",
+	"t:numnot",
+	"t:ord",
+	"gr=S-PRO",
+	"gr=A-PRO",
+	"gr=ADV-PRO",
+	"gr=ADV-PRO",
+	"r:pers",
+	"r:ref",
+	"r:poss",
+	"r:rel",
+	"r:dem",
+	"r:indet",
+	"r:neg",
+	"r:spec",
+	"t:move",
+	"t:move:body",
+	"t:put",
+	"t:impact",
+	"t:impact:creat",
+	"t:impact:destr",
+	"t:changest",
+	"t:be",
+	"t:be:exist",
+	"t:be:appear",
+	"t:be:disapp",
+	"t:loc",
+	"t:loc:body",
+	"t:contact",
+	"t:poss",
+	"t:ment",
+	"t:perc",
+	"t:psych",
+	"t:psych:emot",
+	"t:emot",
+	"t:psych:volit",
+	"t:speech",
+	"t:behav",
+	"t:physiol",
+	"t:weather",
+	"t:sound",
+	"t:light",
+	"t:smell",
+	"~ca",
+	"ca:caus",
+	"ca:-",
+	"aux:caus",
+	"aux:phase",
+	"der:pref",
+	"der:semelf",
+	"der:impf",
+	"t:place",
+	"t:dir",
+	"t:dist",
+	"t:dist:max",
+	"t:dist:min",
+	"t:time",
+	"t:time:dur",
+	"t:time:dur:max",
+	"t:time:dur:min",
+	"t:time:age",
+	"t:speed",
+	"t:speed:max",
+	"t:speed:min",
+	"t:quant",
+	"t:quant:max",
+	"t:quant:min",
+	"d:dim",
+	"d:atten",
+	"der:s",
+	"der:v",
+	"der:abs",
+	"der:a & t:size",
+	"der:a & t:size:l",
+	"der:a & t:size:min",
+	"der:a & t:physq",
+	"der:a & t:physq:form",
+	"der:a & t:physq:color",
+	"der:a & t:physq:taste",
+	"der:a & t:physq:smell",
+	"der:a & t:physq:temper",
+	"der:a & t:physq:weght",
+	"der:a & t:humq",
+	"ev",
+	"ev:posit",
+	"ev:neg"
+]
+	for (i=0; i<sems_arr.length; i++) {
+		if (s.match(sems_arr[i])) {
+			el = window.document.getElementById(s.match(sems_arr[i]));
+			if (el) el.checked=true;
+		}
+	}
+
+}
+
+function load_function() {
+	show(curform);
+	parse_sems(window.opener.document.reqForm.elements[window.name].value);
+}
+
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+
+<style>
+FORM {display: none; margin: 0;}
+td {vertical-align: top;}
+h3 {text-align: center;}
+div.l2 {margin: 2px 5px 2px 20px; background-color: #f5f5f5; padding: 3px;	}
+div.l3 {margin: 2px 5px 2px 20px; background-color: #e6e6e6; padding: 3px;	}
+div.l4 {margin: 2px 5px 2px 20px; background-color: #d4d4d4; padding: 3px;	}
+</style>
+
+
+<body onload="load_function()">
+<table align="left" style="text-align: left;">
+<tr>
+<td>
+
+<table style="text-align: left;">
+<tr>
+<td>
+<table width="760">
+<tr align="center">
+<td><span class="intable">Имена&nbsp;</span></td>
+<td><a href="javascript:show('S1')">предметные</a></td>
+<td><a href="javascript:show('S2')">непредметные</a></td>
+<td><a href="javascript:show('S3')">собственные</a></td>
+<td><span style="color:#8b8b8b; font-size: 12px; font-weight:bold;">|</span></td>
+<td><a href="javascript:show('A')">Прилагательные</a></td>
+<td><span style="color:#8b8b8b; font-size: 12px; font-weight:bold;">|</span></td>
+<td><a href="javascript:show('NUM')">Числительные</a></td>
+<td><span style="color:#8b8b8b; font-size: 12px; font-weight:bold;">|</span></td>
+<td><a href="javascript:show('PRO')">Местоимения</a></td>
+<td><span style="color:#8b8b8b; font-size: 12px; font-weight:bold;">|</span></td>
+<td><a href="javascript:show('V')">Глаголы</a></td>
+<td><span style="color:#8b8b8b; font-size: 12px; font-weight:bold;">|</span></td>
+<td><a href="javascript:show('ADV')">Наречия</a></td></tr>
+</table>
+</table>
+
+
+<form name=S1>
+
+<h4>Предметные имена</h4>
+<input type=checkbox name=gr value="S" id="S" checked style="display: none">
+<input type=checkbox name=R value="r:concr" id="r:concr" checked style="display: none">
+
+<table border=0 cellspacing=10 cellpadding=0 class="intable" style="margin: 5px;" width="760">
+<tr><td colspan="6"  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr><td nowrap rowspan=5>
+<b>Таксономия</b><br><br>
+<span title="человек, учитель"><input onClick="set_children_checked('cl1', this.checked);" type=checkbox name=Cl value="t:hum" id="t:hum">лица&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span></span><br>
+<div class=l2 id="cl1">
+<span title="эфиоп, итальянка"><input type=checkbox name=Cl value="t:hum:etn" id="t:hum:etn">этнонимы<br></span>
+<span title="брат, бабушка"><input type=checkbox name=Cl value="t:hum:kin" id="t:hum:kin">имена родства<br></span>
+<span title="русалка, инопланетянин"><input type=checkbox name=Cl value="t:hum:supernat" id="t:hum:supernat">сверхъестественные существа<br></span>
+
+</div>
+
+<span title="корова, жираф, сорока, ящерица, муравей"><input type=checkbox name=Cl value="t:animal" id="t:aimal">животные<br></span>
+<span title="береза, роза, трава"><input type=checkbox name=Cl value="t:plant" id="t:plant">растения<br></span>
+<span title="вода, песок, тесто, жесть, шелк"><input type=checkbox name=Cl value="t:stuff" id="t:stuff">вещества и материалы<br></span>
+<span title="космос, город, тайга, овраг, вход"><input type=checkbox name=Cl value="t:space" id="t:space">пространство и место<br></span>
+<span title="дом, шалаш, мост"><input type=checkbox name=Cl value="t:constr" id="t:constr">здания и сооружения<br></span>
+<span title="молоток, палка, пуговица, машина"><input onClick="set_children_checked('cl2', this.checked);" type=checkbox name=Cl value="t:tool" id="t:tool">инструменты<!--, устройства--> и приспособления&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br></span>
+<div class=l2 id="cl2">
+<span title="молоток, штопор, игла, карандаш"><input type=checkbox name=Cl value="t:tool:instr" id="t:tool:instr">инструменты<br></span>
+<span title="телефон, сеялка, градусник"><input type=checkbox name=Cl value="t:tool:device" id="t:tool:device">механизмы и приборы<br></span>
+<span title="автобус, поезд, сани"><input type=checkbox name=Cl value="t:tool:transp" id="t:tool:transp">транспортные средства<br></span>
+<span title="сабля, пистолет, гаубица"><input type=checkbox name=Cl value="t:tool:weapon" id="t:tool:weapon">оружие<br></span>
+<span title="рояль, скрипка, колокол"><input type=checkbox name=Cl value="t:tool:mus" id="t:tool:mus">музыкальные инструменты<br></span>
+<span title="стол, диван, шкаф"><input type=checkbox name=Cl value="t:tool:furn" id="t:tool:furn">мебель<br></span>
+<span title="чашка, кастрюля, фляжка"><input type=checkbox name=Cl value="t:tool:dish" id="t:tool:dish">посуда<br></span>
+<span title="платье, шляпа, ботинки"><input type=checkbox name=Cl value="t:tool:cloth" id="t:tool:cloth">одежда и обувь<br></span>
+</div>
+<span title="пирог, каша, молоко"><input type=checkbox name=Cl value="t:food" id="t:food">еда и напитки<br></span>
+<span title="рассказ, книга, афиша"><input type=checkbox name=Cl value="t:text" id="t:text">тексты<br></span>
+</td>
+<td rowspan=5 bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td>
+<td width="100%" nowrap rowspan=5>
+<b>Мереология</b><br><br>
+<span title="верхушка, кончик, половина"><input onClick="set_children_checked('pt1', this.checked);" type=checkbox name=Pt value="pt:part" id="pt:part">части</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id="pt1">
+
+<span title="голова, сердце, ноготь"><input type=checkbox name=Pt value="pt:partb & pc:hum" id="pt:partb & pc:hum">части тела и органы человека<br></span>
+<span title="хвост, жало"><input type=checkbox name=Pt value="pt:partb & pc:animal" id="pt:partb & pc:animal">части тела и органы животных<br></span>
+<span title="лист, ветка, корень"><input type=checkbox name=Pt value="pt:part & pc:plant" id="pt:part & pc:plant">части растений<br></span>
+<span title="комната, дверь, арка"><input type=checkbox name=Pt value="pt:part & pc:constr" id="pt:part & pc:constr">части зданий и сооружений<br></span>
+<span title="деталь, лопасть, крышка"><input onClick="set_children_checked('pt3', this.checked);" type=checkbox name=Pt value="pt:part & pc:tool" id="pt:part & pc:tool">части приспособлений<br><span class="vtch">в&nbsp;том&nbsp;числе:</span><br></span>
+<div class=l3 id="pt3">
+
+<span title="топорище, лезвие"><input type=checkbox name=Pt value="pt:part & pc:tool:instr" id="pt:part & pc:tool:instr">части инструментов<br></span>
+<span title="дисплей, корпус, кнопка"><input type=checkbox name=Pt value="pt:part & pc:tool:device" id="pt:part & pc:tool:device">части механизмов и приборов<br></span>
+<span title="руль, колесо, капот"><input type=checkbox name=Pt value="pt:part & pc:tool:transp" id="pt:part & pc:tool:transp">части транспортных средств<br></span>
+<span title="дуло, курок, эфес"><input type=checkbox name=Pt value="pt:part & pc:tool:weapon" id="pt:part & pc:tool:weapon">части оружия<br></span>
+<span title="струна, гриф"><input type=checkbox name=Pt value="pt:part & pc:tool:mus" id="pt:part & pc:tool:mus">части музыкальных<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;инструментов<br></span>
+<span title="сиденье, подлокотник"><input type=checkbox name=Pt value="pt:part & pc:tool:furn" id="pt:part & pc:tool:furn">части предметов мебели<br></span>
+<span title="носик, горлышко"><input type=checkbox name=Pt value="pt:part & pc:tool:dish" id="pt:part & pc:tool:dish">части предметов посуды<br></span>
+<span title="рукав, каблук"><input type=checkbox name=Pt value="pt:part & pc:tool:cloth" id="pt:part & pc:tool:cloth">части одежды и обуви<br></span>
+</div>
+</div>
+<span title="капля, комок, порция"><input type=checkbox name=Pt value="pt:qtm" id="pt:qtm">кванты и порции вещества<br></span>
+<span title="набор, букет, мебель, человечество"><input type=checkbox name=Pt value="pt:set | pt:aggr" id="pt:set | pt:aggr">множества и совокупности объектов<br></span>
+<span title="животное, ягода, инструмент"><input type=checkbox name=Pt value="hi:class" id="hi:class">имена классов<br></span>
+</td>
+<td rowspan=5 bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td>
+<td width="100%" xnowrap>
+<b>Топология</b><br><br>
+<span title="кошелек, комната, озеро, ниша"><input type=checkbox name=To value="top:contain" id="top:contain">вместилища<br></span>
+<span title="пол, площадка"><input type=checkbox name=To value="top:horiz" id="top:horiz">горизонтальные<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;поверхности<br></span>
+</td>
+</tr>
+<tr><td bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr>
+<td><b><span title="озорник, махина"><input onClick="set_children_checked('ev1', this.checked);" type=checkbox name=Ev value="ev" id="ev">Оценка</b>
+<span class="vtch">в&nbsp;том&nbsp;числе:</span>
+<div class=l2 id="ev1">
+<span title="умница, светило"><input type=checkbox name=Ev value="ev:posit" id="ev:posit">положительная<br></span>
+<span title="негодяй, вертихвостка"><input type=checkbox name=Ev value="ev:neg" id="ev:neg">отрицательная<br></span>
+</div>
+</td>
+</tr>
+
+<tr><td bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr>
+<td><b>Словообразование</b><br><br>
+<span title="зайчик, коробочка"><input type=checkbox name=D value="d:dim" id="d:dim">диминутивы<br></span>
+<span title="детина, домище"><input type=checkbox name=D value="d:aug" id="d:aug">аугментативы<br></span>
+<span title="пылинка, изюминка"><input type=checkbox name=D value="d:sing" id="d:sing">сингулятивы<br></span>
+<span title="писатель, создатель, докладчик"><input type=checkbox name=D value="d:nag" id="d:nag">nomina agentis<br></span>
+<span title="немка, генеральша, доярка"><input type=checkbox name=D value="d:fem" id="d:fem">nomina feminina<br></span></td>
+</tr>
+
+</table>
+</form>
+
+<form name=S2>
+
+<h4>Непредметные имена</h4>
+<input type=checkbox name=gr value="S" id="S" checked style="display: none">
+<input type=checkbox name=R value="r:abstr" id="r:abstr" checked style="display: none">
+
+<table border=0 cellspacing=10 cellpadding=0 class="intable" style="margin: 5px;" width="760">
+<tr><td colspan="6"  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr><td>
+<b>Таксономия</b><br><br>
+<span title="беготня, вынос, качка"><input onClick="set_children_checked('cl3', this.checked);" type=checkbox name=Cl value="t:move" id="t:move">движение</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br></span>
+<div class=l2 id=cl3>
+<span title="поклон"><input type=checkbox name=Cl value="t:move:body" id="t:move:body">изменение положения тела, части тела<br></span>
+</div>
+<span title="размещение, расстановка, погрузка, намотка"><input type=checkbox name=Cl value="t:put" id="t:put">помещение объекта<br></span>
+<span title="удар, втирание, обмолот"><input onClick="set_children_checked('cl4', this.checked);" type=checkbox name=Cl value="t:impact" id="t:impact">физическое воздействие</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl4>
+<span title="лепка, отливка, плетение, сооружение, строительство"><input type=checkbox name=Cl value="t:impact:creat" id="t:impact:creat">создание физического объекта<br></span>
+<span title="слом, сожжение"><input type=checkbox name=Cl value="t:impact:destr" id="t:impact:destr">уничтожение<br></span>
+</div>
+<span title="укрепление, затвердение, осушение, конденсация, осложнение"><input type=checkbox name=Cl value="t:changest" id="t:changest">изменение состояния или признака<br></span>
+<span title=""><input onClick="set_children_checked('cl5', this.checked);" type=checkbox name=Cl value="t:be" id="t:be">бытийная сфера&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br></span>
+<div class=l2 id=cl5>
+<span title="жизнь, наличие, бытие"><input type=checkbox name=Cl value="t:be:exist" id="t:be:exist">существование<br></span>
+<span title="возникновение, рождение, формирование, учреждение, творение"><input type=checkbox name=Cl value="t:be:appear" id="t:be:appear">начало существования<br></span>
+<span title="смерть, казнь, ликвидация"><input type=checkbox name=Cl value="t:be:disapp" id="t:be:disapp">прекращение существования<br></span>
+</div>
+<span title="местоположение"><input onClick="set_children_checked('cl6', this.checked);" type=checkbox name=Cl value="t:loc" id="t:loc">местонахождение&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br></span>
+<div class=l2 id=cl6>
+<span title="лежание"><input type=checkbox name=Cl value="t:loc:body" id="t:loc:body">положение тела в пространстве<br></span>
+</div>
+<span title="прикосновение, объятие"><input type=checkbox name=Cl value="t:contact" id="t:contact">контакт и опора<br></span>
+<span title="обладание, приобретение, покупка, потеря, лишение"><input type=checkbox name=Cl value="t:poss" id="t:poss">посессивная сфера<br></span>
+<span title="знание, абстракция, воображение, воспоминание, догадка"><input type=checkbox name=Cl value="t:ment" id="t:ment">ментальная сфера<br></span>
+<span title="осязание, слух, видимость, взгляд, зрелище"><input type=checkbox name=Cl value="t:perc" id="t:perc">восприятие<br></span>
+<span title="апатия, безумие, вдохновение, спокойствие"><input onClick="set_children_checked('cl7', this.checked);" type=checkbox name=Cl value="t:psych" id="t:psych">психическая сфера</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl7>
+<span title="восторг, раскаяние, печаль"><input type=checkbox name=Cl value="t:psych:emot" id="t:psych:emot">эмоция<br></span>
+<span title="намерение, решение"><input type=checkbox name=Cl value="t:psych:volit" id="t:psych:volit">воля<br></span>
+</div>
+</td>
+<td><img src="i/dot.gif" width="10" height="1" border="0"></td>
+
+<td><span title="дискуссия, молва, ахинея, реплика, подковырка"><input type=checkbox name=Cl value="t:speech" id="t:speech">речь<br></span>
+<span title="жажда, кровоизлияние, судорога, утомление, икота"><input type=checkbox name=Cl value="t:physiol" id="t:physiol">физиологическая сфера<br></span>
+<span title="зарница, вьюга, зной"><input type=checkbox name=Cl value="t:weather" id="t:weather">природное явление<br></span>
+<span title="шум, перезвон, хлопок, аплодисменты, диссонанс"><input type=checkbox name=Cl value="t:sound" id="t:sound">звук<br></span>
+<span title="окраска, колорит, желтизна, прозелень"><input type=checkbox name=Cl value="t:color" id="t:color">цвет<br></span>
+<span title="луч, полумрак, светлынь, иллюминация"><input type=checkbox name=Cl value="t:light" id="t:light">свет<br></span>
+<span title="аромат, перегар; горчинка, кислятина"><input type=checkbox name=Cl value="t:smell" id="t:smell">запах и вкус<br></span>
+<span title="прохлада, стужа, нагрев"><input type=checkbox name=Cl value="t:temper" id="t:temper">температура<br></span>
+
+<span title="весна, годовщина, минута, современность"><input type=checkbox name=Cl value="t:time" id="t:time" onClick="set_children_checked('cl8', this.checked);">время</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id="cl8">
+<span title="межсезонье, путина, сенокос, стаж"><input type=checkbox name=Cl value="t:time:period" id="t:time:period">период<br></span>
+<span title="миг, мгновение"><input type=checkbox name=Cl value="t:time:moment" id="t:time:moment">момент<br></span>
+<span title="понедельник"><input type=checkbox name=Cl value="t:time:week" id="t:time:week">день недели<br></span>
+<span title="январь"><input type=checkbox name=Cl value="t:time:month" id="t:time:month">месяц<br></span>
+<span title="детство, молодость, двадцатилетие"><input type=checkbox name=Cl value="t:time:age" id="t:time:age">возраст<br></span>
+</div>
+<span title="порядочность, безволие, остроумие"><input type=checkbox name=Cl value="t:humq" id="t:humq">свойство человека<br></span>
+<span title="разгильдяйство, подхалимаж, неповиновение, ребячество, предательство"><input type=checkbox name=Cl value="t:behav" id="t:behav">поведение и поступки человека<br></span>
+<span title="взаимопомощь, вражда, схватка, драка"><input type=checkbox name=Cl value="t:inter" id="t:inter">взаимодействие и взаимоотношение<br></span>
+<span title="аукцион, вернисаж, вечеринка, выборы, именины, заседание, культпоход"><input type=checkbox name=Cl value="t:action" id="t:action">мероприятие<br></span>
+<span title="ангина, диабет"><input type=checkbox name=Cl value="t:disease" id="t:disease">болезнь<br></span>
+<span title="жмурки, покер, домино, волейбол"><input type=checkbox name=Cl value="t:game" id="t:game">игра<br></span>
+<span title="спартакиада, акробатика, баскетбол"><input type=checkbox name=Cl value="t:sport" id="t:sport">спорт<br></span>
+<span title="ширина, скорость, мощность"><input type=checkbox name=Cl value="t:param" id="t:param">параметр<br></span>
+<span title="балл, килограмм, метр, минута"><input type=checkbox name=Cl value="t:unit" id="t:unit">единица измерения<br></span>
+
+<td bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td>
+
+<td><table class="intable" border=0 cellspacing=10 cellpadding=0>
+<tr><td width="20%"><b>Мереология</b><br><br>
+<span title="начало, финал"><input type=checkbox name=Pt value="pt:part" id="pt:part">часть<br></span>
+<span title="оборот, прыжок, кивок"><input type=checkbox name=Pt value="pt:qtm" id="pt:qtm">квант<br></span>
+<span title="система, выборка, алгоритм"><input type=checkbox name=Pt value="pt:set" id="pt:set">множество<br></span></td></tr>
+<tr><td bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr><td width="40%"><b><span title=""><input onClick="set_children_checked('ev2', this.checked);" type=checkbox name=Ev value="ev" id="ev">Оценка</span></b>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=ev2>
+<span title="благоухание, загляденье, изюминка"><input type=checkbox name=Ev value="ev:posit" id="ev:posit">положительная<br></span>
+<span title="безвкусица, ахинея"><input type=checkbox name=Ev value="ev:neg" id="ev:neg">отрицательная<br></span>
+</div>
+</td></tr>
+
+<tr><td bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr><td width="40%"><b>Словообразование</b><br><br>
+<span title="выбор, демонстрация"><input type=checkbox name=D value="der:v" id="der:v">отглагольные имена<br></span>
+<span title="краснота, жадность"><input type=checkbox name=D value="der:a" id="der:a">отадъективные имена<br></span></td></tr></table>
+</td>
+</tr>
+</table>
+</form>
+
+<form name=S3>
+<h4>Имена собственные</h4>
+<input type=checkbox name=gr value="S" id="S" checked style="display: none">
+<input type=checkbox name=R value="r:propn" id="r:concr" checked style="display: none">
+
+<table border=0 cellspacing=10 cellpadding=0 class="intable" style="margin: 5px;" width="770">
+<tr><td colspan="6"  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr><td>
+<b>Таксономия</b><br><br>
+<span title="Людмила, Черномор"><input onClick="set_children_checked('cl10', this.checked);" type=checkbox name=Cl value="t:hum" id="t:hum">лица</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br></span>
+<div class=l2 id=cl10>
+<span title="Александр"><input type=checkbox name=Cl value="t:persn" id="t:persn">имена<br></span>
+<span title="Сергеевич"><input type=checkbox name=Cl value="t:patrn" id="t:patrn">отчества<br></span>
+<span title="Пушкин"><input type=checkbox name=Cl value="t:famn" id="t:famn">фамилии<br></span>
+</div>
+<span title="Европа, Волга, Эльбрус, Москва, Преображенка"><input type=checkbox name=Cl value="t:topon" id="t:topon">топонимы<br></span>
+</td>
+</tr>
+<tr><td bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+</tr>
+<td>
+<b>Словообразовательные корреляты</b><br><br>
+<span title="Саша, Женечка, Николаич, Вражек"><input type=checkbox name=D value="d:dim" id="d:dim">гипокористические и стяженные формы<br></span>
+<span title="МГУ, ЗИЛ, Мосфильм"><input type=checkbox name=D value="der:abbr" id="der:abbr">аббревиатуры<br></span>
+
+</table>
+</form>
+
+<form name=A>
+
+<h4>Прилагательные</h4>
+<input type=checkbox name=gr value="A" id="A" checked style="display: none">
+
+<table border=0 cellspacing=10 cellpadding=0 class="intable"  style="margin: 5px;" width="760">
+<tr><td colspan="6"  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr>
+<td nowrap>
+<b>Разряд</b><br>
+<span title="хороший, большой"><input type=checkbox name=R value="r:qual" id="r:qual">качественные<br></span>
+<span title="деревянный, лунный"><input type=checkbox name=R value="r:rel" id="r:rel">относительные<br></span>
+<span title="божий, отцов, мужнин"><input type=checkbox name=R value="r:poss" id="r:poss">притяжательные<br></span>
+<span title="беж, джерси"><input type=checkbox name=R value="r:invar" id="r:invar">неизменяемые<br></span>
+
+<br>
+<b>Таксономия</b><br><br>
+<span title="высокий, короткий"><input onClick="set_children_checked('cl11', this.checked);" type=checkbox name=Cl value="t:size" id="t:size">размер</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br></span>
+<div class=l2 id=cl11>
+<span title="высокий, длинный"><input type=checkbox name=Cl value="t:size:max" id="t:size:max">большой</span>&nbsp;
+<span title=""><input type=checkbox name=Cl value="t:size:min" id="t:size:min">малый<br></span>
+<span title="двухэтажный"><input type=checkbox name=Cl value="t:size:abs" id="t:size:abs">&nbsp;абсолютный<br></span>
+</div>
+<span title="далекий, соседний"><input onClick="set_children_checked('cl12', this.checked);" type=checkbox name=Cl value="t:dist" id="t:dist">расстояние&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br></span>
+<div class=l2 id=cl12>
+<span title="дальний, отдаленный"><input type=checkbox name=Cl value="t:dist:max" id="t:dist:max">большое</span>&nbsp;
+<span title="близкий, недалекий"><input type=checkbox name=Cl value="t:dist:min" id="t:dist:min">малое<br></span>
+</div>
+<span title="большой, достаточный, трехкратный"><input onClick="set_children_checked('cl13', this.checked);" type=checkbox name=Cl value="t:quant" id="t:quant">количество</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl13>
+<span title="обильный, многочисленный"><input type=checkbox name=Cl value="t:quant:max" id="t:quant:max">большое</span>&nbsp;
+<span title="ничтожный, малочисленный"><input type=checkbox name=Cl value="t:quant:min" id="t:quant:min">малое<br></span>
+<span title="двухтысячный, восьмимилионный"><input type=checkbox name=Cl value="t:quant:abs" id="t:quant:abs">абсолютное<br></span>
+</div>
+<span title="левый, придорожный, теменной"><input type=checkbox name=Cl value="t:place" id="t:place">место<br></span>
+<span title="обратный, подветренный"><input type=checkbox name=Cl value="t:dir" id="t:dir">направление<br></span>
+
+<td bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td>
+
+<td>
+
+<span title="прошлый, ночной"><input onClick="set_children_checked('cl14', this.checked);" type=checkbox name=Cl value="t:time" id="t:time">время</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl14>
+<span title="долгий, краткий"><input onClick="set_children_checked('cl15', this.checked);" type=checkbox name=Cl value="t:time:dur" id="t:time:dur">длительность</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+	<div class=l3 id=cl15>
+	<span title="долгий, продолжительный"><input type=checkbox name=Cl value="t:time:dur:max" id="t:time:dur:max">большая</span>&nbsp;
+	<span title="краткий, кратковременный"><input type=checkbox name=Cl value="t:time:dur:min" id="t:time:dur:min">малая<br></span>
+	<span title="восьмичасовой"><input type=checkbox name=Cl value="t:time:dur:abs" id="t:time:dur:abs">абсолютная<br></span>
+	</div>
+<span title="зрелый"><input onClick="set_children_checked('cl16', this.checked);" type=checkbox name=Cl value="t:time:age" id="t:time:age">возраст</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+	<div class=l3 id=cl16>
+	<span title="старый, древний"><input type=checkbox name=Cl value="t:time:age:max" id="t:time:age:max">большой</span>&nbsp;
+	<span title="молодой, малолетний"><input type=checkbox name=Cl value="t:time:age:min" id="t:time:age:min">малый<br></span>
+	<span title="трехлетний"><input type=checkbox name=Cl value="t:time:age:abs" id="t:time:age:abs">абсолютный<br></span>
+	</div>
+</div>
+<span title="проворный"><input onClick="set_children_checked('cl17', this.checked);" type=checkbox name=Cl value="t:speed" id="t:speed">скорость</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl17>
+<span title="скорый, быстрый"><input type=checkbox name=Cl value="t:speed:max" id="t:speed:max">большая</span>&nbsp;
+<span title="медленный, тягучий"><input type=checkbox name=Cl value="t:speed:min" id="t:speed:min">малая<br></span>
+</div>
+<span title="мягкий, вязкий"><input onClick="set_children_checked('cl18', this.checked);" type=checkbox name=Cl value="t:physq" id="t:physq">физические свойства&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl18>
+<span title="кривой, круглый"><input type=checkbox name=Cl value="t:physq:form" id="t:physq:form">форма<br></span>
+<span title="красный, бесцветный"><input type=checkbox name=Cl value="t:physq:color" id="t:physq:color">цвет<br></span>
+<span title="кислый, приторный"><input type=checkbox name=Cl value="t:physq:taste" id="t:physq:taste">вкус<br></span>
+<span title="ароматный, тухлый"><input type=checkbox name=Cl value="t:physq:smell" id="t:physq:smell">запах<br></span>
+<span title="горячий, ледяной"><input type=checkbox name=Cl value="t:temper" id="t:physq:temper">температура<br></span>
+</div>
+<span title="умный, верный, ловкий"><input type=checkbox name=Cl value="t:humq" id="t:humq">качества человека<br></span>
+</td>
+<td bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td>
+<td><table class="intable" width="100%" border="0" cellspacing="00" cellpadding="0">
+<tr>
+<td><b><span title="толковый, мешковатый"><input onClick="set_children_checked('ev5', this.checked);" type=checkbox name=Ev value="ev" id="ev">Оценка</span></b>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+
+<div class=l2 id=ev5>
+<span title="везучий, ладный"><input type=checkbox name=Ev value="ev:posit" id="ev:posit">положительная<br></span>
+<span title="продажный, сварливый"><input type=checkbox name=Ev value="ev:neg" id="ev:neg">отрицательная<br></span>
+</div><br></td></tr>
+<tr><td  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+
+<tr><td><br><b>Словообразование</b><br>
+<span title="тихонький, крохотный"><input type=checkbox name=D value="d:dim" id="d:dim">диминутивы<br></span>
+<span title="здоровенный, злющий"><input type=checkbox name=D value="d:aug" id="d:aug">аугментативы<br></span>
+<span title="угловатый, жуликоватый"><input type=checkbox name=D value="d:atten" id="d:atten">аттенуативы<br></span>
+<span title="глазастый, пузатый"><input type=checkbox name=D value="d:habit" id="d:habit">хабитивы<br></span>
+<span title="безглазый, бездыханный"><input type=checkbox name=D value="d:carit" id="d:carit">каритивы<br></span>
+<span title="плавучий, недееспособный"><input onClick="set_children_checked('d1', this.checked);" type=checkbox name=D value="d:potent | d:impot" id="d:potent | d:impot">потенциальные</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=d1>
+<span title="плавучий, плодородный, занимательный"><input type=checkbox name=D value="d:potent" id="d:potent">поссибилитивы<br></span>
+<span title="несоизмеримый, недееспособный"><input type=checkbox name=D value="d:impot" id="d:impot">импоссибилитивы<br></span>
+</div>
+<br>
+<span title="домашний, железный"><input type=checkbox name=D value="der:s" id="der:s">отыменные прилагательные<br></span>
+<div class=l2 id=d2>
+	<span class="vtch">в&nbsp;том&nbsp;числе&nbsp;образованные&nbsp;от&nbsp;имен<br>
+	со&nbsp;значением:</span><br>
+	<span title="человеческий, мамин"><input type=checkbox name=Cl value="der:s & dt:hum" id="der:s & dt:hum">лица</span><br>
+	<span title="рыбий, конский"><input type=checkbox name=Cl value="der:s & dt:animal" id="der:s & dt:animal">животные</span><br>
+	<span title="березовый, травянистый"><input type=checkbox name=Cl value="der:s & dt:plant" id="der:s & dt:plant">растения<br></span>
+	<span title="водный, шелковый"><input type=checkbox name=Cl value="der:s & dt:stuff" id="der:s & dt:stuff">вещества&nbsp;и&nbsp;материалы<br></span>
+	<span title="городской, западный, щелястый"><input type=checkbox name=Cl value="der:s & dt:space" id="der:s & dt:space">пространство&nbsp;и&nbsp;место<br></span>
+	<span title="барачный, привокзальный"><input type=checkbox name=Cl value="der:s & dt:constr" id="der:s & dt:constr">здания&nbsp;и&nbsp;сооружения<br></span>
+	<span title="веревочный, винтовой"><input type=checkbox name=Cl value="der:s & dt:tool" id="der:s & dt:tool">инструменты&nbsp;и&nbsp;приспособления<br></span>
+	<span title="фруктовый, мясной"><input type=checkbox name=Cl value="der:s & dt:food" id="der:s & dt:food">еда&nbsp;и&nbsp;напитки<br></span>
+	<span title="книжный, библейский, диссертационный"><input type=checkbox name=Cl value="der:s & dt:text" id="der:s & dt:text">тексты<br></span>
+	<span title="ручной, нагрудный, бескрылый"><input type=checkbox name=Cl value="der:s & dt:partb" id="der:s & dt:partb">части&nbsp;тела&nbsp;и&nbsp;органы<br></span>
+</div>
+<span title="ковкий, навязчивый, кочевой"><input type=checkbox name=D value="der:v" id="der:v">отглагольные прилагательные<br></span>
+<span title="поздний, здешний"><input type=checkbox name=D value="der:adv" id="der:adv">отадвербиальные прилагательные<br></span></td></tr></td></table>
+
+</table>
+</form>
+
+<form name=NUM>
+
+<h4>Числительные</h4>
+<input type=checkbox name=gr value="(NUM|A-NUM)" id="(NUM|A-NUM)" checked style="display: none">
+
+<table border=0 cellspacing=10 cellpadding=0 class="intable" style="margin: 5px;" width="760">
+<tr><td colspan="6"  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr><td>
+<b>Разряд</b><br><br>
+<span title="два, пять, десять"><input onClick="set_children_checked('r1', this.checked);" type=checkbox name=R value="r:card" id="r:card">количественные</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=r1>
+<span title="два, три, четыре, оба, пол, полтора"><input type=checkbox name=R value="r:card:pauc" id="r:card:pauc">числительные малого количества<br></span>
+</div>
+<span title="первый, второй, десятый"><input type=checkbox name=R value="t:ord" id="t:ord">порядковые<br></span><br>
+</td>
+</tr>
+<tr><td  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr>
+</tr>
+</table>
+</form>
+
+<form name=PRO>
+
+<h4>Местоимения</h4>
+<input type=checkbox name=gr value="(SPRO|APRO|ADVPRO|PRAEDICPRO)" id="(SPRO|APRO|ADVPRO|PRAEDICPRO)" checked style="display: none">
+
+<table border=0 cellspacing=10 cellpadding=0 class="intable" style="margin: 5px;" width="760">
+<tr><td colspan="6"  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr><td>
+<b>Разряд</b><br>
+<span title="я, он"><input type=checkbox name=R value="r:pers" id="r:pers">личные<br></span>
+<span title="себя"><input type=checkbox name=R value="r:ref" id="r:ref">возвратные<br></span>
+<span title="мой, его, свой"><input type=checkbox name=R value="r:poss" id="r:poss">притяжательные<br></span>
+<span title="кто, который, когда"><input type=checkbox name=R value="r:rel" id="r:rel">вопросительные/ относительные<br></span>
+<span title="этот, такой"><input type=checkbox name=R value="r:dem" id="r:dem">указательные<br></span>
+<span title="некоторый, некогда"><input type=checkbox name=R value="r:indet" id="r:indet">неопределенные<br></span>
+<span title="никакой, ничей"><input type=checkbox name=R value="r:neg" id="r:neg">отрицательные<br></span>
+<span title="всякий, каждый, любой"><input type=checkbox name=R value="r:spec" id="r:spec">кванторные (определительные)<br></span>
+
+</table>
+</form>
+
+<form name=V>
+
+<h4>Глаголы</h4>
+<input type=checkbox name=gr value="V" id="V" checked style="display: none">
+
+<table border=0 cellspacing=10 cellpadding=0 class="intable" style="margin: 5px;">
+<tr><td colspan="6"  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr><td nowrap rowspan="5">
+<table border=0 cellspacing=0 cellpadding=6 class="intable"><tr>
+<td>
+<b>Таксономия</b><br><br>
+<span title="бежать, дергаться, бросить, нести"><input onClick="set_children_checked('cl20', this.checked);" type=checkbox name=Cl value="t:move" id="t:move">движение</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl20>
+	<span title="согнуть, нагнуться, примоститься"><input type=checkbox name=Cl value="t:move:body" id="t:move:body">изменение положения тела, части тела<br></span>
+</div>
+<span title="положить, вложить, спрятать"><input type=checkbox name=Cl value="t:put" id="t:put">помещение объекта<br></span>
+<span title="бить, колоть, вытирать"><input onClick="set_children_checked('cl21', this.checked);" type=checkbox name=Cl value="t:impact" id="t:impact">физическое воздействие</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl21>
+	<span title="выковать, смастерить, сшить"><input type=checkbox name=Cl value="t:impact:creat" id="t:impact:creat">создание физического объекта<br></span>
+	<span title="взорвать, сжечь, зарезать"><input type=checkbox name=Cl value="t:impact:destr" id="t:impact:destr">уничтожение<br></span>
+</div>
+<span title="взрослеть, богатеть, расширить, испачкать"><input type=checkbox name=Cl value="t:changest" id="t:changest">изменение состояния или признака<br></span>
+<span title="жить, возникнуть, убить"><input onClick="set_children_checked('cl22', this.checked);" type=checkbox name=Cl value="t:be" id="t:be">бытийная сфера<br>
+<div class=l2 id=cl22>
+	<span title="жить, происходить"><input type=checkbox name=Cl value="t:be:exist" id="t:be:exist">существование<br></span>
+	<span title="возникнуть, родиться, сформировать, создать"><input type=checkbox name=Cl value="t:be:appear" id="t:be:appear">начало существования<br></span>
+	<span title="умереть, убить, улетучиться, ликвидировать, искоренить"><input type=checkbox name=Cl value="t:be:disapp" id="t:be:disapp">прекращение существования<br></span>
+</div>
+<span title="лежать, стоять, положить"><input onClick="set_children_checked('cl23', this.checked);" type=checkbox name=Cl value="t:loc" id="t:loc">местонахождение</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl23>
+	<span title="сидеть"><input type=checkbox name=Cl value="t:loc:body" id="t:loc:body">положение тела в пространстве<br></span>
+</div>
+<span title="касаться, обнимать, облокотиться"><input type=checkbox name=Cl value="t:contact" id="t:contact">контакт и опора<br></span>
+</td>
+<td><img src="i/dot.gif" width="10" height="1" border="0"></td>
+<td nowrap>
+<br>
+<span title="иметь дать, подарить, приобрести, лишиться"><input type=checkbox name=Cl value="t:poss" id="t:poss">посессивная сфера<br></span>
+<span title="знать, верить, догадаться, помнить, считать"><input type=checkbox name=Cl value="t:ment" id="t:ment">ментальная сфера<br></span>
+<span title="смотреть, слышать, нюхать, чуять"><input type=checkbox name=Cl value="t:perc" id="t:perc">восприятие<br></span>
+<span title="гипнотизировать, сочувствовать, настроиться, терпеть"><input onClick="set_children_checked('cl24', this.checked);" type=checkbox name=Cl value="t:psych" id="t:psych">психическая сфера</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl24>
+	<span title="радоваться, обидеть"><input type=checkbox name=Cl value="(t:psych:emot|t:emot)" id="(t:psych:emot|t:emot)">эмоция<br></span>
+	<span title="решить"><input type=checkbox name=Cl value="t:psych:volit" id="t:psych:volit">воля<br></span>
+</div>
+<span title="говорить, советовать, спорить, каламбурить"><input type=checkbox name=Cl value="t:speech" id="t:speech">речь<br></span>
+<span title="куролесить, привередничать"><input type=checkbox name=Cl value="t:behav" id="t:behav">поведение человека<br></span>
+<span title="кашлять, икать"><input type=checkbox name=Cl value="t:physiol" id="t:physiol">физиологическая сфера<br></span>
+<span title="бушевать, вьюжить"><input type=checkbox name=Cl value="t:weather" id="t:weather">природное явление<br></span>
+<span title="гудеть, шелестеть"><input type=checkbox name=Cl value="t:sound" id="t:sound">звук<br></span>
+<span title="гаснуть, лучиться"><input type=checkbox name=Cl value="t:light" id="t:light">свет<br></span>
+<span title="пахнуть, благоухать"><input type=checkbox name=Cl value="t:smell" id="t:smell">запах<br></span>
+</td>
+</tr></table>
+<td  rowspan="5" bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td>
+<td xnowrap>
+<b>Каузация</b><br><br>
+<span title="показать, вертеть"><input type=checkbox name=Ca value="ca:caus" id="ca:caus">каузативные глаголы<br></span>
+<span title="показаться, вертеться"><input type=checkbox name=Ca value="ca:-" id="ca:-">некаузативные глаголы<br></span>
+</td>
+</tr>
+<tr><td  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+
+<tr><td><b>Служебные глаголы</b><br><br>
+<span title="начать, продолжать, прекратить"><input type=checkbox name=Ca value="aux:phase" id="aux:phase">фазовые<br></span>
+<span title="вызвать, привести (к)"><input type=checkbox name=Ca value="aux:caus" id="aux:caus">служебные каузативные<br></span>
+</td></tr>
+<tr><td  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+
+<tr><td><b>Словообразование</b><br><br>
+<span title="забегать, оглядеть"><input type=checkbox name=D value="d:pref" id="d:pref">приставочные глаголы<br></span>
+<span title="кивнуть, чихнуть, боднуть, качнуться"><input type=checkbox name=D value="d:semelf" id="d:semelf">семельфактивы <br></span>
+<span title="выпивать, вбивать, прогонять"><input type=checkbox name=D value="d:impf" id="d:impf">вторичные имперфективы<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<i>-ива-, -ва-, -a-</i>)<br></span></td></tr>
+
+</table>
+</form>
+
+<form name=ADV>
+
+<h4>Наречия</h4>
+<input type=checkbox name=gr value="ADV" id="ADV" checked style="display: none">
+
+<table border=0 cellspacing=10 cellpadding=0 class="intable" style="margin: 5px;" width="760">
+<tr><td colspan="6"  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td></tr>
+<tr><td width="40%">
+<b>Таксономия</b><br><br>
+<span title="здесь, посередине"><input type=checkbox name=Cl value="t:place" id="t:place">место<br></span>
+<span title="туда, наверх"><input type=checkbox name=Cl value="t:dir" id="t:dir">направление<br></span>
+<span title="далеко, близко"><input onClick="set_children_checked('cl25', this.checked);" type=checkbox name=Cl value="t:dist" id="t:dist">расстояние</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl25>
+	<span title="далеко, вдали, вдалеке"><input type=checkbox name=Cl value="t:dist:max" id="t:dist:max">большое</span>&nbsp;
+	<span title="близко, вблизи"><input type=checkbox name=Cl value="t:dist:min" id="t:dist:min">малое<br></span>
+</div>
+<span title="тогда, поздно"><input onClick="set_children_checked('cl26', this.checked);" type=checkbox name=Cl value="t:time" id="t:time">время</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl26>
+	<span title="вечно, недолго"><input onClick="set_children_checked('cl27', this.checked);" type=checkbox name=Cl value="t:time:dur" id="t:time:dur">длительность</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+	<div class=l3 id=cl27>
+	<span title="вечно, подолгу, всегда"><input type=checkbox name=Cl value="t:time:dur:max" id="t:time:dur:max">большая</span>&nbsp;
+	<span title="временно, недолго"><input type=checkbox name=Cl value="t:time:dur:min" id="t:time:dur:min">малая<br></span>
+	</div>
+	<span title=""><input type=checkbox name=Cl value="t:time:age" id="t:time:age">возраст<br></span>
+</div>
+<span title="быстро, медленно"><input onClick="set_children_checked('cl28', this.checked);" type=checkbox name=Cl value="(t:speed:max|t:speed:min)" id="(t:speed:max|t:speed:min)">скорость</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl28>
+	<span title="быстро, мигом"><input type=checkbox name=Cl value="t:speed:max" id="t:speed:max">большая</span>&nbsp;
+	<span title="медленно, неторопливо"><input type=checkbox name=Cl value="t:speed:min" id="t:speed:min">малая<br></span>
+</div>
+<span title="столько, достаточно"><input onClick="set_children_checked('cl29', this.checked);" type=checkbox name=Cl value="t:quant" id="t:quant">количество</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=cl29>
+	<span title="много, навалом"><input type=checkbox name=Cl value="t:quant:max" id="t:quant:max">большое</span>&nbsp;
+	<span title="мало, чуть-чуть"><input type=checkbox name=Cl value="t:quant:min" id="t:quant:min">малое<br></span>
+</div>
+<td bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td>
+<td width="40%">
+<b><span title="беспечно, бойко"><input onClick="set_children_checked('ev6', this.checked);" type=checkbox name=Ev value="ev" id="ev">Оценка</span></b>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+<div class=l2 id=ev6>
+<span title="бойко, безупречно"><input type=checkbox name=Ev value="ev:posit" id="ev:posit">положительная<br></span>
+<span title="бездарно, неловко"><input type=checkbox name=Ev value="ev:neg" id="ev:neg">отрицательная<br></span>
+</div>
+<td  bgcolor="#999999"><img src="i/dot.gif" width="1" height="1" border="0"></td>
+
+<td width="40%">
+<b>Словообразование</b><br><br>
+<span title="немножко, быстренько"><input type=checkbox name=D value="d:dim" id="d:dim">диминутивы<br></span>
+<span title="рановато, суховато"><input type=checkbox name=D value="d:atten" id="d:atten">аттенуативы<br></span>
+<br>
+<span title="вверху, дома"><input type=checkbox name=D value="der:s" id="der:s">отыменные наречия<br></span>
+<span title="отродясь, стоймя"><input type=checkbox name=D value="der:v" id="der:v">отглагольные наречия<br></span>
+<span title="быстро, обычно"><input onClick="set_children_checked('d5', this.checked);" type=checkbox name=D value="der:a" id="der:a">отадъективные наречия<br></span>
+<div class=l2 id=d5>
+	<span class="vtch">в том числе образованные от <br>
+	прилагательных со значением:</span><br>
+	<span title="высоко, коротко"><input onClick="set_children_checked('cl30', this.checked);" type=checkbox name=Cl value="der:a & dt:size" id="der:a & dt:size">размер</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+	<div class=l3 id=cl30>
+	<span title="высоко, бесконечно"><input type=checkbox name=Cl value="der:a & dt:size:l" id="der:a & dt:size:l">большой</span>&nbsp;
+	<span title="коротко, низко"><input type=checkbox name=Cl value="der:a & dt:size:min" id="der:a & dt:size:min">малый<br></span>
+	</div>
+	<span title="твердо, плотно"><input onClick="set_children_checked('cl131', this.checked);" type=checkbox name=Cl value="der:a & dt:physq" id="der:a & dt:physq">физические&nbsp;свойства</span>&nbsp;&nbsp;&nbsp;<span class="vtch">в&nbsp;том&nbsp;числе:</span><br>
+	<div class=l3 id=cl31><span title="плоско, прямо"><input type=checkbox name=Cl value="der:a & dt:physq:form" id="der:a & dt:physq:form">форма<br></span>
+	<span title="красно, добела"><input type=checkbox name=Cl value="der:a & dt:physq:color" id="der:a & dt:physq:color">цвет<br></span>
+	<span title="горько, вкусно"><input type=checkbox name=Cl value="der:a & dt:physq:taste" id="der:a & dt:physq:taste">вкус<br></span>
+	<span title="смрадно, зловонно"><input type=checkbox name=Cl value="der:a & dt:physq:smell" id="der:a & dt:physq:smell">запах<br></span>
+	<span title="тепло, прохладно"><input type=checkbox name=Cl value="der:a & dt:physq:temper" id="der:a & dt:physq:temper">температура<br></span>
+	<span title="тяжело, легко"><input type=checkbox name=Cl value="der:a & dt:physq:weght" id="der:a & dt:physq:weght">вес<br></span>
+	</div>
+	<span title="внимательно, грубо"><input type=checkbox name=Cl value="der:a & dt:humq" id="der:a & dt:humq">качества человека<br></span>
+</div>
+
+</table>
+</form>
+</td>
+</tr>
+
+<tr>
+    <td colspan=4 align="left" style="padding-left: 15px;">
+<input type=button class=button value="  OK  " onclick="collect()">
+<input type=button class=button value="Очистить" onclick='document.forms[curform].reset()'>
+<input type=reset class=button value="Отмена" onclick='window.close()'>
+
+<form name="SEM_MOD" style="display:block">
+	<input type="checkbox" name="sem_modifier" value="sem" checked>sem&nbsp;
+	<input type="checkbox" name="sem_modifier" value='sem2' checked>sem2&nbsp;
+	<input type="checkbox" name="sem_modifier" value='semf'>semf&nbsp;
+	<input type="checkbox" name="sem_modifier" value='semf2'>semf2&nbsp;
+<form>
+<!--<input type=button class=button value="Test" onclick='collect(1)'>-->
+<!--<input type=text name=test size=60>-->
+	</td>
+</tr>
+</table>
+
+<script>
+function collect(test) {
+	var els = document.forms[curform].elements;
+	var ar = {};
+	for (var i = 0; i != els.length; i++) {
+		var el = els[i];
+		if (el.type != 'checkbox') continue;
+		if (el.checked) {
+			if (!ar[el.name]) ar[el.name] = el.value;
+			else ar[el.name] += ' | ' + el.value;
+		}
+	}
+	var s = ''; var gr = '';
+	for (i in ar) {
+		var v = ar[i]
+		if (v.indexOf(' ') != -1) v = '(' + v + ')'
+		if (i == 'gr') gr = v;
+		else {
+			if (s) s += ' & ' + v;
+			else s = v;
+		}
+	}
+
+	modifier = "";
+	var elements = document.forms["SEM_MOD"].elements;
+	for (var i = 0; i != elements.length; ++i) {
+		if (elements[i].checked) {
+			modifier += " " + elements[i].value;
+		}
+	}
+
+	sourceName = window.name;
+	if (window.opener && !window.opener.closed) {
+		window.opener.document.reqForm.elements["sem"].value = modifier;
+
+		window.opener.document.reqForm.elements[sourceName].value = s;
+		// gramm
+		grName = sourceName.replace("sem", "gramm");
+		var el = window.opener.document.reqForm.elements[grName];
+		if (el.value == '' || el.value == gr) el.value = gr;
+		else el.value += ' & ' + gr;
+	}
+
+	window.close();
+}
+</script>

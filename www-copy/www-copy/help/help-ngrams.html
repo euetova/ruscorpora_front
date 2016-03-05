@@ -1,0 +1,56 @@
+<!--#set var="TITLE" value="Национальный корпус русского языка. Поиск по n-граммам. Помощь"-->
+<!--#include virtual="ssi/header.html" -->
+
+<h1>Поиск по n-граммам</h1>
+<br clear="all" />
+
+<p><b>Что это такое?</b></br>
+Это бета-версия <a href="search-ngrams_2.html">поиска по словосочетаниям</a> из 2, 3, 4 и 5 слов из подкорпуса с неснятой омонимией основного корпуса.
+Поиск можно вести как по точным формам, так и по леммам, с учетом грамматических признаков и пунктуации или без.
+Вот, например, <a href="http://search.ruscorpora.ru/search.xml?env=sas1_2&mycorp=&mysent=&mysize=&mysentsize=&dpp=100&spp=100&spd=100&text=lexform&sort=gr_freq&lang=ru&mode=ngrams_2_forms&nodia=1&req=%EA%F0%E0%F1%ED%E0%FF">биграммы, содержащие форму &laquo;красная&raquo;</a>. Каждой из них приписано количество вхождений в корпус и число содержащих её документов.
+</p>
+
+<p><b>А если я хочу найти биграммы с леммой &laquo;красный&raquo;?</b><br/>
+Введите эту лемму в окошко лексико-грамматического поиска. <a href="http://search.ruscorpora.ru/search.xml?env=sas1_2&mycorp=&mysent=&mysize=&mysentsize=&dpp=100&spp=100&spd=100&text=lexgramm&mode=ngrams_2_lexgr&sort=gr_freq&lang=ru&nodia=1&parent1=0&level1=0&lex1=%EA%F0%E0%F1%ED%FB%E9&gramm1=&flags1=&parent2=0&level2=0&min2=1&max2=1&lex2=&gramm2=&flags2=">Вот что получится</a>.
+<p>
+
+<p><b>Но тут лемма &laquo;красный&raquo; появляется в разных местах словосочетаний. Как найти биграммы, в которых эта лемма первая?</b><br/>
+Укажите дополнительный признак first, означающий, что слово находится в начале. Результаты будут <a href="http://search.ruscorpora.ru/search.xml?env=sas1_2&mycorp=&mysent=&mysize=&mysentsize=&dpp=100&spp=100&spd=100&text=lexgramm&mode=ngrams_2_lexgr&sort=gr_freq&lang=ru&nodia=1&parent1=0&level1=0&lex1=%EA%F0%E0%F1%ED%FB%E9&gramm1=&flags1=first&parent2=0&level2=0&min2=1&max2=1&lex2=&gramm2=&flags2=">такими</a>.
+</p>
+
+<p><b>Но я хочу, чтобы второе слово было существительным. А тут в выдаче встречаются и другие части речи.</b><br/>
+<a href="http://search.ruscorpora.ru/search.xml?env=sas1_2&mycorp=&mysent=&mysize=&mysentsize=&dpp=100&spp=100&spd=100&text=lexgramm&mode=ngrams_2_lexgr&sort=gr_freq&lang=ru&nodia=1&parent1=0&level1=0&lex1=%EA%F0%E0%F1%ED%FB%E9&gramm1=&flags1=&parent2=0&level2=0&min2=1&max2=1&lex2=&gramm2=S&flags2=">Нет проблем</a>. Укажите грамматику второго слова.
+</p>
+
+<p><b>Здесь встречаются одни и те же словосочетания, но в разных падежах. Например, &laquo;красной армии&raquo;, &laquo;красная армия&raquo;. Можно ли их &laquo;склеить&raquo;?</b><br/>
+К сожалению, в этой версии поиска это сделать нельзя. Объектом поиска является последовательность словоформ, а не лемм.
+</p>
+
+<p><b>Могу я посмотреть на статистику сочетаемости различных частей речи?</b><br/>
+Да. Вот, например, <a href="http://search.ruscorpora.ru/search.xml?env=sas1_2&mycorp=&mysent=&mysize=&mysentsize=&dpp=100&spp=100&spd=100&text=lexgramm&mode=ngrams_2_lexgr&sort=gr_freq&lang=ru&nodia=1&parent1=0&level1=0&lex1=&gramm1=ADV&flags1=&parent2=0&level2=0&min2=1&max2=1&lex2=&gramm2=V%2Cpraet%2Cn&flags2=">наречия, за которыми следует глагол в прошедшем времени</a>.
+</p>
+
+
+<p><b>Я смотрю на <a href="http://search.ruscorpora.ru/search.xml?env=sas1_2&mycorp=&mysent=&mysize=&mysentsize=&dpp=100&spp=100&spd=100&text=lexgramm&mode=ngrams_3_lexgr&sort=gr_freq&lang=ru&nodia=1&parent1=0&level1=0&lex1=&gramm1=A%2Cpl&flags1=&parent2=0&level2=0&min2=1&max2=1&lex2=&gramm2=A%2Cpl&flags2=&parent3=0&level3=0&min3=1&max3=1&lex3=&gramm3=A%2Cpl&flags3=">тройки прилагательных</a>. Откуда тут &laquo;российские железные дороги&raquo;?</b><br/>
+Это все из-за омонимии. &laquo;Дороги&raquo;&nbsp;&ndash; краткая форма прилагательного &laquo;дорогой&raquo;.
+</p>
+
+<p><b>Как учитывать пунктуацию при поиске?</b><br/>
+Не забудьте включить галочку &laquo;учитывать пунктуацию&raquo;.
+<a href="http://search.ruscorpora.ru/search.xml?env=sas1_2&mycorp=&mysent=&mysize=&mysentsize=&dpp=100&spp=100&spd=100&text=lexgramm&mode=ngrams_4_lexgr_punct&sort=gr_freq&lang=ru&nodia=1&parent1=0&level1=0&lex1=%FD%F5&gramm1=&flags1=first%2C+bmark&parent2=0&level2=0&min2=1&max2=1&lex2=&gramm2=&flags2=&parent3=0&level3=0&min3=1&max3=1&lex3=&gramm3=&flags3=&parent4=0&level4=0&min4=1&max4=1&lex4=&gramm4=&flags4=">Вот пример</a> словосочетаний со словом &laquo;эх&raquo;, за которым следует знак препинания.
+</p>
+
+<p><b>Сколько результатов я получаю? Можно ли скачать их в формате Excel?</b><br/>
+По умолчанию поиск возвращает 100 результатов. При этом дополнительно возвращаются все n-граммы с той же частотой и с тем же количеством документов, что и 100-я.
+Возможность скачать все n-граммы для оффлайн-обработки появится в следующих версиях.
+</p>
+
+<p><b>Приведите ещё примеры запросов.</b><br/>
+Например, можно узнать, какие существительные <a href="http://search.ruscorpora.ru/search.xml?env=sas1_2&mycorp=&mysent=&mysize=&mysentsize=&dpp=100&spp=100&spd=100&text=lexgramm&mode=ngrams_2_lexgr&sort=gr_freq&lang=ru&nodia=1&parent1=0&level1=0&lex1=%EF%F0%E8%EB%E8%F7%ED%FB%E9&gramm1=&flags1=&parent2=0&level2=0&min2=1&max2=1&lex2=&gramm2=S&flags2=">сочетаются с прилагательным &laquo;приличный&raquo;</a>,
+какие наречия <a href="http://search.ruscorpora.ru/search.xml?env=sas1_2&mycorp=&mysent=&mysize=&mysentsize=&dpp=100&spp=100&spd=100&text=lexgramm&mode=ngrams_2_lexgr_punct&sort=gr_freq&lang=ru&nodia=1&parent1=0&level1=0&lex1=&gramm1=ADV&flags1=amark&parent2=0&level2=0&min2=1&max2=1&lex2=%22%E3%EE%E2%EE%F0%FF%22&gramm2=&flags2=bmark">часто употребляются в составе вводных оборотов типа
+&laquo;честно говоря&raquo;, &laquo;строго говоря&raquo; и т.п.</a>,
+какие глаголы <a href="http://search.ruscorpora.ru/search.xml?env=sas1_2&mycorp=&mysent=&mysize=&mysentsize=&dpp=100&spp=100&spd=100&text=lexgramm&mode=ngrams_3_lexgr&sort=gr_freq&lang=ru&nodia=1&parent1=0&level1=0&lex1=&gramm1=V&flags1=&parent2=0&level2=0&min2=1&max2=1&lex2=%EF%F0%EE&gramm2=&flags2=&parent3=0&level3=0&min3=1&max3=1&lex3=%22%F2%EE%22&gramm3=&flags3=">управляют предлогом &laquo;про&raquo;<a/> чаще, чем <a href="http://search.ruscorpora.ru/search.xml?env=sas1_2&mycorp=&mysent=&mysize=&mysentsize=&dpp=100&spp=100&spd=100&text=lexgramm&mode=ngrams_3_lexgr&sort=gr_freq&lang=ru&nodia=1&parent1=0&level1=0&lex1=&gramm1=V&flags1=&parent2=0&level2=0&min2=1&max2=1&lex2=%EE&gramm2=&flags2=&parent3=0&level3=0&min3=1&max3=1&lex3=%22%F2%EE%EC%22&gramm3=&flags3=">предлогом
+&laquo;о&raquo;</a>.
+</p>
+
+<!--#include virtual="ssi/ysfooter.html" -->
