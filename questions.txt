@@ -1,1 +1,1 @@
-как заменить git://github.com/elmiram/ruscorpora_front/ на https://github.com/elmiram/ruscorpora_front/ ?
+﻿
