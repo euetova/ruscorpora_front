@@ -1,0 +1,2548 @@
+<html>
+<head>
+<link rel="shortcut icon" href="http://yandex.ru/favicon.ico">
+<script src="../static/js/jquery.js"></script>
+    <link href="../static/css/bootstrap.flatly.css" rel="stylesheet">
+<script src="../static/js/bootstrap.min.js"></script>
+<title>Параметры текста</title>
+<style>
+h3  { text-align: center; }
+</style>
+<script language="JavaScript">
+function collect() {
+  var form = window.activeForm
+  var attr = form.id;
+  var els = form.elements;
+  var strval = "";
+  for (var i = 0; i != els.length; i++) {
+    var el = els[i];
+    if (el.type != 'checkbox') continue;
+    if (el.checked) {
+      if (strval != "") strval += " | ";
+      strval += el.value;
+    }
+  }
+  pwin = window.opener;
+  if (pwin && !pwin.closed) {
+    pwin.document.getElementById(attr).value = strval;
+  }
+  window.close();
+}
+
+function inverse(group) {
+  var form = window.activeForm;
+  var els = form.elements;
+  for (var i = 0; i != els.length; i++) {
+    var el = els[i];
+    if (el.type != 'checkbox') continue;
+    if (el.name == group) el.checked=!el.checked;
+  }
+}
+</script>
+
+<script language="JavaScript">
+function show1form()
+{
+  // select form
+  var attr = window.name;
+  var form = document.getElementById(attr);
+  if (!form) return;
+  window.activeForm = form;
+  form.style.display = "block";
+  if (document.height) {
+    window.innerHeight = document.height + 100;
+    if (window.innerHeight + 40 > window.screen.availHeight)  {
+      window.innerHeight = window.screen.availHeight - 40;
+      netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+      window.scrollbars.visible = true;
+    }
+  }
+  else  {
+    var h = document.body.scrollHeight + 100;
+    var w = document.body.clientWidth + 16;
+    if (h > window.screen.availHeight) {
+      h = window.screen.availHeight; w = w + 20;
+      document.body.scroll = "yes";
+    }
+    window.resizeTo(w, h);
+  }
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+</head>
+<body onLoad="show1form();">
+
+<center>
+<form name="genre_fi" id="genre_fi" action="" style="display: none;">
+<h3>Жанр текста</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('g')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=g value="нежанровая проза">нежанровая проза<br/>
+<input type=checkbox name=g value="детектив, боевик">детектив, боевик<br/>
+<input type=checkbox name=g value="детская">детская<br/>
+<input type=checkbox name=g value="историческая проза">историческая проза<br/>
+<input type=checkbox name=g value="приключения">приключения<br/>
+<input type=checkbox name=g value="фантастика">фантастика<br/>
+<input type=checkbox name=g value="любовная история">любовная история<br/>
+<input type=checkbox name=g value="юмор и сатира">юмор и сатира<br/>
+<input type=checkbox name=g value="документальная проза">документальная проза<br/>
+<input type=checkbox name=g value="драматургия">драматургия<br/>
+<input type=checkbox name=g value="перевод">перевод<br/>
+</td>
+</tr>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="typeF" id="typeF" action="" style="display: none;">
+<h3>Тип текста</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td align="left"><span title="Инвертировать"><a href="#" onclick="inverse('tf')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=tf value="басня">басня (прозаическая)<br/>
+<input type=checkbox name=tf value="загадка">загадка<br/>
+<input type=checkbox name=tf value="дневник, записные книжки">записки<br/>
+<input type=checkbox name=tf value="легенда">легенда<br/>
+<input type=checkbox name=tf value="либретто">либретто<br/>
+<input type=checkbox name=tf value="миниатюра">миниатюра<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=tf value="анекдот">анекдот<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=tf value="шутка">шутка<br/>
+<input type=checkbox name=tf value="очерк">очерк<br/>
+<input type=checkbox name=tf value="письмо литературное">письмо литературное<br/>
+<input type=checkbox name=tf value="повесть">повесть<br/>
+<input type=checkbox name=tf value="поэма">поэма (прозаическая)<br/>
+<input type=checkbox name=tf value="притча">притча<br/>
+<input type=checkbox name=tf value="пьеса">пьеса<br/>
+<input type=checkbox name=tf value="рассказ">рассказ<br/>
+<input type=checkbox name=tf value="роман">роман<br/>
+<input type=checkbox name=tf value="сказка">сказка<br/>
+<input type=checkbox name=tf value="сказ">сказ<br/>
+<input type=checkbox name=tf value="сценарий">сценарий<br/>
+<br/>
+<input type=checkbox name=tf value="цикл">цикл<br/>
+</td>
+</tr>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="typeNF" id="typeNF" action="" style="display: none;">
+<h3>Тип текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<table class="inform" cellspacing=1 cellpadding=1>
+<tr valign=top>
+<td>
+<b>ПУБЛИЦИСТИКА</b><br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf11')"><b>публицистические</b></a></span><br/>
+<input type=checkbox name=tnf11 value="анкета">анкета<br/>
+<input type=checkbox name=tnf11 value="беседа">беседа<br/>
+<input type=checkbox name=tnf11 value="доклад">доклад<br/>
+<input type=checkbox name=tnf11 value="заявление">заявление<br/>
+<input type=checkbox name=tnf11 value="интервью ">интервью<br/>
+<input type=checkbox name=tnf11 value="комментарий">комментарий<br/>
+<input type=checkbox name=tnf11 value="лекция">лекция<br/>
+<input type=checkbox name=tnf11 value="листовка">листовка<br/>
+<input type=checkbox name=tnf11 value="монография">монография<br/>
+<input type=checkbox name=tnf11 value="некролог">некролог<br/>
+<input type=checkbox name=tnf11 value="обращение">обращение<br/>
+<input type=checkbox name=tnf11 value="отзыв">отзыв<br/>
+<input type=checkbox name=tnf11 value="очерк">очерк<br/>
+<input type=checkbox name=tnf11 value="памфлет">памфлет<br/>
+<input type=checkbox name=tnf11 value="письмо">письмо<br/>
+<input type=checkbox name=tnf11 value="письмо открытое">письмо&nbsp;открытое<br/>
+<input type=checkbox name=tnf11 value="поздравление">поздравление<br/>
+<input type=checkbox name=tnf11 value="предисловие, послесловие">предисловие,<br/>послесловие<br/>
+<input type=checkbox name=tnf11 value="рецензия">рецензия<br/>
+<input type=checkbox name=tnf11 value="речь">речь<br/>
+<input type=checkbox name=tnf11 value="совет">совет<br/>
+<input type=checkbox name=tnf11 value="статья">статья<br/>
+<input type=checkbox name=tnf11 value="фельетон">фельетон<br/>
+<input type=checkbox name=tnf11 value="эссе">эссе<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf12')"><b>мемуарно-<br/>биографические</b></a></span><br/>
+<input type=checkbox name=tnf12 value="автобиография">автобиография<br/>
+<input type=checkbox name=tnf12 value="биография">биография<br/>
+<input type=checkbox name=tnf12 value="дневник, записные книжки">дневник,<br/>записные книжки<br/>
+<input type=checkbox name=tnf12 value="мемуары">мемуары<br/>
+<td>
+<br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf13')"><b>информационные</b></a></span><br/>
+<input type=checkbox name=tnf13 value="аннотация">аннотация<br/>
+<input type=checkbox name=tnf13 value="анонс">анонс<br/>
+<input type=checkbox name=tnf13 value="заметка">заметка<br/>
+<input type=checkbox name=tnf13 value="информационное сообщение">информационное<br/>сообщение<br/>
+<input type=checkbox name=tnf13 value="календарь">календарь<br/>
+<input type=checkbox name=tnf13 value="обзор">обзор<br/>
+<input type=checkbox name=tnf13 value="объявление">объявление<br/>
+<input type=checkbox name=tnf13 value="отчет">отчет<br/>
+<input type=checkbox name=tnf13 value="репортаж">репортаж<br/>
+<input type=checkbox name=tnf13 value="хроника">хроника<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf14')"><b>прочие</b></a></span><br/>
+<input type=checkbox name=tnf14 value="гороскоп">гороскоп<br/>
+<input type=checkbox name=tnf14 value="задача">задача<br/>
+<input type=checkbox name=tnf14 value="игра">игра<br/>
+<input type=checkbox name=tnf14 value="инструкция">инструкция<br/>
+<input type=checkbox name=tnf14 value="миниатюра">миниатюра<br/>
+<input type=checkbox name=tnf14 value="путеводитель">путеводитель<br/>
+<input type=checkbox name=tnf14 value="рецепт">рецепт<br/>
+<input type=checkbox name=tnf14 value="тест">тест<br/>
+<input type=checkbox name=tnf14 value="характеристика">характеристика<br/>
+<br/>
+<input type=checkbox name=tnf1 value="цикл">цикл<br/>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf2')"><b>ПРОИЗВОДСТВЕННО-<br/>ТЕХНИЧЕСКИЕ</b></a></span><br/>
+<input type=checkbox name=tnf2 value="инструкция ">инструкция <br/>
+<input type=checkbox name=tnf2 value="описание">описание<br/>
+<input type=checkbox name=tnf2 value="паспорт технический">паспорт технический<br/>
+<input type=checkbox name=tnf2 value="правила">правила<br/>
+
+<td>
+<b>УЧЕБНО-НАУЧНЫЕ</b><br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf31')"><b>научные</b></a></span><br/>
+<input type=checkbox name=tnf31 value="аннотация">аннотация<br/>
+<input type=checkbox name=tnf31 value="диссертация">диссертация<br/>
+<input type=checkbox name=tnf31 value="дневник, записные книжки">дневник<br/>
+<input type=checkbox name=tnf31 value="доклад">доклад<br/>
+<input type=checkbox name=tnf31 value="конспект">конспект<br/>
+<input type=checkbox name=tnf31 value="лекция">лекция<br/>
+<input type=checkbox name=tnf31 value="монография">монография<br/>
+<input type=checkbox name=tnf31 value="обзор">обзор<br/>
+<input type=checkbox name=tnf31 value="отзыв">отзыв<br/>
+<input type=checkbox name=tnf31 value="отчет">отчет<br/>
+<input type=checkbox name=tnf31 value="рецензия">рецензия<br/>
+<input type=checkbox name=tnf31 value="статья">статья<br/>
+<input type=checkbox name=tnf31 value="тезисы">тезисы<br/>
+<input type=checkbox name=tnf31 value="трактат">трактат<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf32')"><b>учебные</b></a></span><br/>
+<input type=checkbox name=tnf32 value="диплом">диплом<br/>
+<input type=checkbox name=tnf32 value="задача">задача<br/>
+<input type=checkbox name=tnf32 value="игра">игра<br/>
+<input type=checkbox name=tnf32 value="инструкция ">инструкция <br/>
+<input type=checkbox name=tnf32 value="лабораторная работа">лабораторная<br/>работа<br/>
+<input type=checkbox name=tnf32 value="методические материалы">методические<br/>материалы<br/>
+<input type=checkbox name=tnf32 value="памятка">памятка<br/>
+<input type=checkbox name=tnf32 value="правила">правила<br/>
+<input type=checkbox name=tnf32 value="словарь">словарь<br/>
+<input type=checkbox name=tnf32 value="справочник">справочник<br/>
+<input type=checkbox name=tnf32 value="сочинение">сочинение<br/>
+<input type=checkbox name=tnf32 value="учебник">учебник<br/>
+<input type=checkbox name=tnf32 value="учебное пособие">учебное пособие<br/>
+<input type=checkbox name=tnf32 value="хрестоматия">хрестоматия<br/>
+<br/>
+<input type=checkbox name=tnf3 value="цикл">цикл<br/>
+
+<td>
+<b>ОФИЦИАЛЬНО-ДЕЛОВЫЕ</b></a></span><br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf41')"><b>деловые документы</b></a></span><br/>
+<input type=checkbox name=tnf41 value="автобиография">автобиография<br/>
+<input type=checkbox name=tnf41 value="акт">акт<br/>
+<input type=checkbox name=tnf41 value="анкета">анкета<br/>
+<input type=checkbox name=tnf41 value="аттестат">аттестат<br/>
+<input type=checkbox name=tnf41 value="диплом">диплом<br/>
+<input type=checkbox name=tnf41 value="доверенность">доверенность<br/>
+<input type=checkbox name=tnf41 value="договор">договор<br/>
+<input type=checkbox name=tnf41 value="доклад">доклад<br/>
+<input type=checkbox name=tnf41 value="донесение">донесение<br/>
+<input type=checkbox name=tnf41 value="записка докладная">записка докладная<br/>
+<input type=checkbox name=tnf41 value="записка служебная">записка служебная<br/>
+<input type=checkbox name=tnf41 value="заявка">заявка<br/>
+<input type=checkbox name=tnf41 value="заявление">заявление<br/>
+<input type=checkbox name=tnf41 value="инструкция">инструкция<br/>
+<input type=checkbox name=tnf41 value="контракт">контракт<br/>
+<input type=checkbox name=tnf41 value="письмо деловое">письмо деловое<br/>
+<input type=checkbox name=tnf41 value="поручение">поручение<br/>
+<input type=checkbox name=tnf41 value="предложение">предложение<br/>
+<input type=checkbox name=tnf41 value="протокол">протокол<br/>
+<input type=checkbox name=tnf41 value="прошение">прошение<br/>
+<input type=checkbox name=tnf41 value="расписка">расписка<br/>
+<input type=checkbox name=tnf41 value="резюме">резюме<br/>
+<input type=checkbox name=tnf41 value="рекомендация">рекомендация<br/>
+<input type=checkbox name=tnf41 value="соглашение">соглашение<br/>
+<input type=checkbox name=tnf41 value="справка">справка<br/>
+<input type=checkbox name=tnf41 value="телеграмма">телеграмма<br/>
+<input type=checkbox name=tnf41 value="уведомление">уведомление<br/>
+<input type=checkbox name=tnf41 value="удостоверение">удостоверение<br/>
+<input type=checkbox name=tnf41 value="характеристика">характеристика<br/>
+
+<td nowrap>
+<br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf42')"><b>законодательные</b></a></span><br/>
+<input type=checkbox name=tnf42 value="закон">закон<br/>
+<input type=checkbox name=tnf42 value="кодекс">кодекс<br/>
+<input type=checkbox name=tnf42 value="манифест">манифест<br/>
+<input type=checkbox name=tnf42 value="положение">положение<br/>
+<input type=checkbox name=tnf42 value="постановление">постановление<br/>
+<input type=checkbox name=tnf42 value="резолюция">резолюция<br/>
+<input type=checkbox name=tnf42 value="указ">указ<br/>
+<input type=checkbox name=tnf42 value="устав">устав<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf43')"><b>правовые</b></a></span><br/>
+<input type=checkbox name=tnf43 value="правила">правила<br/>
+<input type=checkbox name=tnf43 value="предписание">предписание<br/>
+<input type=checkbox name=tnf43 value="приказ">приказ<br/>
+<input type=checkbox name=tnf43 value="присяга">присяга<br/>
+<input type=checkbox name=tnf43 value="распоряжение">распоряжение<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf44')"><b>судебные</b></a></span><br/>
+<input type=checkbox name=tnf44 value="жалоба">жалоба<br/>
+<input type=checkbox name=tnf44 value="заключение">заключение<br/>
+<input type=checkbox name=tnf44 value="определение">определение<br/>
+<input type=checkbox name=tnf44 value="постановление">постановление<br/>
+<input type=checkbox name=tnf44 value="решение">решение<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf45')"><b>нотариальные</b></a></span><br/>
+<input type=checkbox name=tnf45 value="завещание">завещание<br/>
+<input type=checkbox name=tnf45 value="свидетельство">свидетельство<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf46')"><b>дипломатические</b></a></span><br/>
+<input type=checkbox name=tnf46 value="декларация">декларация<br/>
+<input type=checkbox name=tnf46 value="документ итоговый">документ итоговый<br/>
+<input type=checkbox name=tnf46 value="коммюнике">коммюнике<br/>
+<input type=checkbox name=tnf46 value="нота">нота<br/>
+<input type=checkbox name=tnf46 value="пакт">пакт<br/>
+<input type=checkbox name=tnf46 value="протокол дипломатический">протокол<br/>дипломатический<br/>
+<input type=checkbox name=tnf46 value="хартия">хартия<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf47')"><b>прочие</b></a></span><br/>
+<input type=checkbox name=tnf47 value="квитанция">квитанция<br/>
+<input type=checkbox name=tnf47 value="памятка">памятка<br/>
+<input type=checkbox name=tnf47 value="поздравление">поздравление<br/>
+
+<td>
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf5')"><b>БЫТОВЫЕ</b></a></span><br/>
+<input type=checkbox name=tnf5 value="билет">билет<br/>
+<input type=checkbox name=tnf5 value="дневник, записные книжки">дневник,<br/>записные книжки<br/>
+<input type=checkbox name=tnf5 value="записка">записка<br/>
+<input type=checkbox name=tnf5 value="объявление">объявление<br/>
+<input type=checkbox name=tnf5 value="открытка">открытка<br/>
+<input type=checkbox name=tnf5 value="письмо личное">письмо личное<br/>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf6')"><b>РЕКЛАМА</b></a></span><br/>
+<input type=checkbox name=tnf6 value="анонс">анонс<br/>
+<input type=checkbox name=tnf6 value="буклет">буклет<br/>
+<input type=checkbox name=tnf6 value="надпись на упаковке">надпись на упаковке<br/>
+<input type=checkbox name=tnf6 value="объявление">объявление<br/>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf7')"><b>ЦЕРКОВНО-<br/>БОГОСЛОВСКИЕ</b></a></span><br/>
+<input type=checkbox name=tnf7 value="беседа">беседа<br/>
+<input type=checkbox name=tnf7 value="житие">житие<br/>
+<input type=checkbox name=tnf7 value="катехизис">катехизис<br/>
+<input type=checkbox name=tnf7 value="молитва">молитва<br/>
+<input type=checkbox name=tnf7 value="отечник">отечник<br/>
+<input type=checkbox name=tnf7 value="описание паломничества">описание<br/>паломничества<br/>
+<input type=checkbox name=tnf7 value="послание">послание<br/>
+<input type=checkbox name=tnf7 value="поучение">поучение<br/>
+<input type=checkbox name=tnf7 value="проповедь">проповедь<br/>
+<input type=checkbox name=tnf7 value="Священное писание">Священное писание<br/>
+<input type=checkbox name=tnf7 value="слово">слово<br/>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf8')"><b>ЭЛЕКТРОННАЯ<br/>КОММУНИКАЦИЯ</b></a></span><br/>
+<input type=checkbox name=tnf8 value="блог">блог<br/>
+<input type=checkbox name=tnf8 value="конференция">конференция<br/>
+<input type=checkbox name=tnf8 value="смс-сообщение">смс-сообщение<br/>
+<input type=checkbox name=tnf8 value="форум">форум<br/>
+
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+<form name="typeSP" id="typeSP" action="" style="display: none;">
+<h3>Тип текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td align="left"><span title="Инвертировать"><a href="#" onclick="inverse('ts')">Инвертировать выбор</a></span><br/>
+<table class="inform" cellspacing=1 cellpadding=1>
+<tr valign=top>
+<td nowrap>
+<input type=checkbox name=ts value="беседа">беседа<br/>
+<input type=checkbox name=ts value="встреча с читателями">встреча с читателями<br/>
+<input type=checkbox name=ts value="встреча со слушателями">встреча со слушателями<br/>
+<input type=checkbox name=ts value="дискуссия">дискуссия<br/>
+<input type=checkbox name=ts value="доклад">доклад<br/>
+<input type=checkbox name=ts value="интервью">интервью<br/>
+<input type=checkbox name=ts value="комментарий">комментарий<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="спортивный">спортивный<br/>
+<input type=checkbox name=ts value="конференция">конференция<br/>
+<input type=checkbox name=ts value="круглый стол">круглый стол<br/>
+<input type=checkbox name=ts value="лекция">лекция<br/>
+<input type=checkbox name=ts value="парламентские слушания">парламентские слушания<br/>
+<input type=checkbox name=ts value="пересказ">пересказ<br/>
+<input type=checkbox name=ts value="пресс-конференция">пресс-конференция<br/>
+<input type=checkbox name=ts value="рассказ">рассказ<br/>
+<input type=checkbox name=ts value="реалити-шоу">реалити-шоу<br/>
+<input type=checkbox name=ts value="репортаж">репортаж<br/>
+<input type=checkbox name=ts value="речь">речь<br/>
+<input type=checkbox name=ts value="семинар">семинар<br/>
+<input type=checkbox name=ts value="совещание">совещание<br/>
+<input type=checkbox name=ts value="судебное заседание">судебное заседание<br/>
+<input type=checkbox name=ts value="ток-шоу">ток-шоу<br/>
+<input type=checkbox name=ts value="эссе устное">эссе устное<br/>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+<form name="typeSN" id="typeSN" action="" style="display: none;">
+<h3>Тип текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td align="left"><span title="Инвертировать"><a href="#" onclick="inverse('ts')">Инвертировать выбор</a></span><br/>
+<table class="inform" cellspacing=1 cellpadding=1>
+<tr valign=top>
+<td>
+<input type=checkbox name=ts value="беседа"><b>беседа</b><br/>
+<input type=checkbox name=ts value="микродиалог"><b>микродиалог</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в аптеке">в аптеке<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в библиотеке">в библиотеке<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в доме отдыха">в доме отдыха<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в магазине">в магазине<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на рынке">на рынке<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в кассе">в кассе<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на почте">на почте<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в транспорте">в транспорте<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на работе">на работе<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в лифте">в лифте<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на пороге">на пороге<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="домашний">домашний<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на кухне">на кухне<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="с детьми">с детьми<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="с животными">с животными<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="с соседями">с соседями<br/>
+<td>
+<input type=checkbox name=ts value="разговор"><b>разговор</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="домашний">домашний<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="деловой">деловой<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="праздный">праздный<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="воспоминание">воспоминание<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="телефонный">телефонный<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в больнице">в больнице<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в магазине">в магазине<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в парикмахерской">в парикмахерской<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на пляже">на пляже<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="при встрече">при встрече<br/>
+
+<input type=checkbox name=ts value="пересказ"><b>пересказ</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="сна">сна<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="разговора">разговора<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="фильма">фильма<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="телепередачи">телепередачи<br/>
+<input type=checkbox name=ts value="рассказ"><b>рассказ</b><br/>
+<input type=checkbox name=ts value="спор"><b>спор</b><br/>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+<form name="typeSK" id="typeSK" action="" style="display: none;">
+<h3>Тип текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td align="left"><span title="Инвертировать"><a href="#" onclick="inverse('ts')">Инвертировать выбор</a></span><br/>
+<table class="inform" cellspacing=1 cellpadding=1>
+<tr valign=top>
+<td nowrap>
+<input type="checkbox" name="ts" value="кино биографическое"/>кино биографическое<br/>
+<input type="checkbox" name="ts" value="кино военное"/>кино военное<br/>
+<input type="checkbox" name="ts" value="кино революционное"/>кино революционное<br/>
+<input type="checkbox" name="ts" value="кино детское"/>кино детское<br/>
+<input type="checkbox" name="ts" value="кино историческое"/>кино историческое<br/>
+<input type="checkbox" name="ts" value="кино приключенческое"/>кино приключенческое<br/>
+<input type="checkbox" name="ts" value="кино производственное"/>кино производственное<br/>
+<input type="checkbox" name="ts" value="кинобоевик"/>кинобоевик<br/>
+<input type="checkbox" name="ts" value="кинодетектив"/>кинодетектив<br/>
+<input type="checkbox" name="ts" value="кинодрама"/>кинодрама<br/>
+<input type="checkbox" name="ts" value="кино-катастрофа"/>кино-катастрофа<br/>
+<input type="checkbox" name="ts" value="кинокомедия"/>кинокомедия<br/>
+<input type="checkbox" name="ts" value="киномелодрама"/>киномелодрама<br/>
+<input type="checkbox" name="ts" value="киномюзикл"/>киномюзикл<br/>
+<input type="checkbox" name="ts" value="кинопародия"/>кинопародия<br/>
+<input type="checkbox" name="ts" value="киноповесть"/>киноповесть<br/>
+<input type="checkbox" name="ts" value="кинопритча"/>кинопритча<br/>
+<input type="checkbox" name="ts" value="киносказка"/>киносказка<br/>
+<input type="checkbox" name="ts" value="кинотриллер"/>кинотриллер<br/>
+<input type="checkbox" name="ts" value="кинофантастика"/>кинофантастика<br/>
+<input type="checkbox" name="ts" value="кинофарс"/>кинофарс<br/>
+<input type="checkbox" name="ts" value="мультфильм"/>мультфильм<br/>
+<input type="checkbox" name="ts" value="мультфильм для взрослых"/>мультфильм для взрослых<br/>
+<input type="checkbox" name="ts" value="экранизация"/>экранизация<br/>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+
+<form name="sphereN" id="sphereN" action="" style="display: none;">
+<h3>Сфера функционирования</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('s')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=s value="бытовая">обиходно-бытовая<br/>
+<input type=checkbox name=s value="официально-деловая">официально-деловая<br/>
+<input type=checkbox name=s value="производственно-техническая">производственно-техническая<br/>
+<input type=checkbox name=s value="публицистика">публицистика<br/>
+<input type=checkbox name=s value="реклама">реклама<br/>
+<input type=checkbox name=s value="учебно-научная">учебно-научная<br/>
+<input type=checkbox name=s value="церковно-богословская">церковно-богословская<br/>
+<input type=checkbox name=s value="электронная коммуникация">электронная коммуникация<br/>
+</td>
+</tr>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="topic" id="topic" action="" style="display: none;">
+<h3>Тематика текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('sj')">Инвертировать выбор</a></span><br/>
+<tr valign=top>
+<td nowrap>
+<input type=checkbox name=sj value="администрация и управление">администрация и управление<br/>
+<input type=checkbox name=sj value="армия и вооруженные конфликты">армия и вооруженные конфликты<br/>
+<input type=checkbox name=sj value="астрология, парапсихология, эзотерика">астрология, парапсихология, эзотерика<br/>
+<input type=checkbox name=sj value="бизнес, коммерция, экономика, финансы">бизнес, коммерция, экономика, финансы<br/>
+<input type=checkbox name=sj value="дом и домашнее хозяйство">дом и домашнее хозяйство<br/>
+<input type=checkbox name=sj value="досуг, зрелища и развлечения">досуг, зрелища и развлечения<br/>
+<input type=checkbox name=sj value="здоровье и медицина">здоровье и медицина<br/>
+<input type=checkbox name=sj value="искусство и культура">искусство и культура<br/>
+<input type=checkbox name=sj value="криминал">криминал<br/>
+<input type=checkbox name=sj value="образование">образование<br/>
+<input type=checkbox name=sj value="политика и общественная жизнь">политика и общественная жизнь<br/>
+<input type=checkbox name=sj value="право">право<br/>
+<input type=checkbox name=sj value="природа">природа<br/>
+<input type=checkbox name=sj value="производство">производство<br/>
+<input type=checkbox name=sj value="путешествия">путешествия<br/>
+<input type=checkbox name=sj value="религия">религия<br/>
+<input type=checkbox name=sj value="сельское хозяйство">сельское хозяйство<br/>
+<input type=checkbox name=sj value="спорт">спорт<br/>
+<input type=checkbox name=sj value="строительство и архитектура">строительство и архитектура<br/>
+<input type=checkbox name=sj value="техника">техника<br/>
+<input type=checkbox name=sj value="философия">философия<br/>
+<input type=checkbox name=sj value="частная жизнь">частная жизнь<br/>
+<td nowrap>
+<input type=checkbox name=sj value="наука и технологии"><b>наука и технологии</b><br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('sj1')"><b>естественные науки</b></a></span><br/>
+<input type=checkbox name=sj1 value="астрономия">астрономия<br/>
+<input type=checkbox name=sj1 value="биология">биология<br/>
+<input type=checkbox name=sj1 value="география">география<br/>
+<input type=checkbox name=sj1 value="геология">геология<br/>
+<input type=checkbox name=sj1 value="информатика">информатика<br/>
+<input type=checkbox name=sj1 value="математика">математика<br/>
+<input type=checkbox name=sj1 value="статистика">статистика<br/>
+<input type=checkbox name=sj1 value="физика">физика<br/>
+<input type=checkbox name=sj1 value="химия">химия<br/>
+<input type=checkbox name=sj1 value="природа">природа<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('sj2')"><b>прикладные науки</b></a></span><br/>
+<input type=checkbox name=sj2 value="армия и вооруженные конфликты">военное дело<br/>
+<input type=checkbox name=sj2 value="здоровье и медицина">медицина<br/>
+<input type=checkbox name=sj2 value="лесное хозяйство">лесное хозяйство<br/>
+<input type=checkbox name=sj2 value="производство">производство<br/>
+<input type=checkbox name=sj2 value="сельское хозяйство">сельское хозяйство<br/>
+<input type=checkbox name=sj2 value="строительство и архитектура">строительство и архитектура<br/>
+<input type=checkbox name=sj2 value="техника ">техника<br/>
+<input type=checkbox name=sj2 value="транспорт">транспорт<br/>
+<input type=checkbox name=sj2 value="энергетика">энергетика<br/>
+<td>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('sj3')"><b>гуманитарные науки</b></a></span><br/>
+<input type=checkbox name=sj3 value="искусствоведение">искусствоведение<br/>
+<input type=checkbox name=sj3 value="история">история<br/>
+<input type=checkbox name=sj3 value="культурология">культурология<br/>
+<input type=checkbox name=sj3 value="образование">образование <br/>
+<input type=checkbox name=sj3 value="политика и общественная жизнь">политология<br/>
+<input type=checkbox name=sj3 value="право">право<br/>
+<input type=checkbox name=sj3 value="психология">психология<br/>
+<input type=checkbox name=sj3 value="религия">религиоведение<br/>
+<input type=checkbox name=sj3 value="социология">социология<br/>
+<input type=checkbox name=sj3 value="филология">филология<br/>
+<input type=checkbox name=sj3 value="философия">философия<br/>
+<input type=checkbox name=sj3 value="бизнес, коммерция, экономика, финансы">экономика<br/>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+<form name="topic_spoken" id="topic_spoken" action="" style="display: none;">
+<h3>Тематика текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('sj')">Инвертировать выбор</a></span><br/>
+<tr valign=top>
+<td nowrap>
+<input type=checkbox name=sj value="астрология, парапсихология, эзотерика">астрология, парапсихология, эзотерика<br/>
+<input type=checkbox name=sj value="бизнес, коммерция, экономика, финансы">бизнес, коммерция, экономика, финансы<br/>
+<input type=checkbox name=sj value="дом и домашнее хозяйство">дом и домашнее хозяйство<br/>
+<input type=checkbox name=sj value="досуг, зрелища и развлечения">досуг, зрелища и развлечения<br/>
+<input type=checkbox name=sj value="здоровье и медицина">здоровье и медицина<br/>
+<input type=checkbox name=sj value="искусство и культура">искусство и культура<br/>
+<input type=checkbox name=sj value="криминал">криминал<br/>
+<input type=checkbox name=sj value="музыка">музыка<br/>
+<input type=checkbox name=sj value="образование">образование<br/>
+<input type=checkbox name=sj value="политика и общественная жизнь">политика и общественная жизнь<br/>
+<input type=checkbox name=sj value="путешествия">путешествия<br/>
+<input type=checkbox name=sj value="религия">религия<br/>
+<input type=checkbox name=sj value="спорт">спорт<br/>
+<input type=checkbox name=sj value="частная жизнь">частная жизнь<br/>
+<td nowrap>
+<input type=checkbox name=sj value="наука и технологии"><b>наука и технологии</b><br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('sj1')"><b>естественные науки</b></a></span><br/>
+<input type=checkbox name=sj1 value="астрономия">астрономия<br/>
+<input type=checkbox name=sj1 value="биология">биология<br/>
+<input type=checkbox name=sj1 value="информатика">информатика<br/>
+<input type=checkbox name=sj1 value="математика">математика<br/>
+<input type=checkbox name=sj1 value="физика">физика<br/>
+<input type=checkbox name=sj1 value="химия">химия<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('sj2')"><b>прикладные науки</b></a></span><br/>
+<input type=checkbox name=sj2 value="промышленность">промышленность<br/>
+<input type=checkbox name=sj2 value="техника ">техника<br/>
+<td>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('sj3')"><b>гуманитарные науки</b></a></span><br/>
+<input type=checkbox name=sj3 value="искусствоведение">искусствоведение<br/>
+<input type=checkbox name=sj3 value="история">история<br/>
+<input type=checkbox name=sj3 value="культурология">культурология<br/>
+<input type=checkbox name=sj3 value="право">право<br/>
+<input type=checkbox name=sj3 value="психология">психология<br/>
+<input type=checkbox name=sj3 value="филология">филология<br/>
+<input type=checkbox name=sj3 value="философия">философия<br/>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+<form name="chronotop" id="chronotop" action="" style="display: none;">
+<h3>Место и время описываемых событий<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="attr_tbl">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('pt')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr valign="top"><td>
+<input type=checkbox name=pt value="доисторический период">доисторический период<br/>
+<input type=checkbox name=pt value="античность">античность<br/>
+<input type=checkbox name=pt value="Средние века">Средние века<br/>
+<input type=checkbox name=pt value="Новое время">Новое время<br/>
+<input type=checkbox name=pt value="Россия: Средние века">Россия: Средние века<br/>
+<input type=checkbox name=pt value="Россия: 15 век">Россия: XV век<br/>
+<input type=checkbox name=pt value="Россия: 16 век">Россия: XVI век<br/>
+<input type=checkbox name=pt value="Россия: 17 век">Россия: XVII век<br/>
+<input type=checkbox name=pt value="Россия: 18 век">Россия: XVIII век<br/>
+<input type=checkbox name=pt value="Россия: 19 век">Россия: XIX век<br/>
+<input type=checkbox name=pt value="Россия: 1-я пол. 20 в.">Россия: 1-я пол. XX в.<br/>
+<input type=checkbox name=pt value="Россия: 1900-1914">Россия: 1900-1914<br/>
+<input type=checkbox name=pt value="Россия: 1914-1920">Россия: 1914-1920<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1920-е">Россия/СССР: 1920-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1930-е">Россия/СССР: 1930-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1941-1945">Россия/СССР: 1941-1945<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1950-е">Россия/СССР: 1950-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1946-1952">Россия/СССР: 1946-1952<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1960-1980-е">Россия/СССР: 1960-1980-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: советский период">Россия/СССР: советский период<br/>
+<input type=checkbox name=pt value="Россия/СССР: перестройка">Россия/СССР: перестройка<br/>
+<input type=checkbox name=pt value="Россия: постсоветский период">Россия: постсоветский период<br/>
+<input type=checkbox name=pt value="Россия/Кавказ: 19 век">Россия/Кавказ: XIX век<br/>
+<input type=checkbox name=pt value="Россия/Польша: 19 век">Россия/Польша: XIX век<br/>
+<input type=checkbox name=pt value="Россия/Сибирь: 19 век">Россия/Сибирь: XIX век<br/>
+<input type=checkbox name=pt value="Россия/Украина: 18 век">Россия/Украина: XVIII век<br/>
+<input type=checkbox name=pt value="Россия/Украина: 19 век">Россия/Украина: XIX век<br/>
+<td>
+<input type=checkbox name=pt value="Европа: Средние века">Европа: Средние века<br/>
+<input type=checkbox name=pt value="Европа: 17 век">Европа: XVII век<br/>
+<input type=checkbox name=pt value="Европа: 18 век">Европа: XVIII век<br/>
+<input type=checkbox name=pt value="Европа/Балканы: 19 век">Европа/Балканы: XIX век<br/>
+<input type=checkbox name=pt value="Европа: 19 век">Европа: XIX век<br/>
+<input type=checkbox name=pt value="Европа: 1-я пол. 20 в.">Европа: 1-я пол. XX в.<br/>
+<input type=checkbox name=pt value="Европа: 2-я пол. 20 в.">Европа: 2-я пол. XX в.<br/>
+<input type=checkbox name=pt value="Европа: современность">Европа: современность<br/>
+<input type=checkbox name=pt value="Америка: 19 в.">Америка: XIX в.<br/>
+<input type=checkbox name=pt value="Америка: 1-я пол. 20 в.">Америка: 1-я пол. XX в.<br/>
+<input type=checkbox name=pt value="Америка: 2-я пол. 20 в.">Америка: 2-я пол. XX в.<br/>
+<input type=checkbox name=pt value="Америка: современность">Америка: современность<br/>
+<input type=checkbox name=pt value="Ближний Восток: античность">Ближний Восток: античность<br/>
+<input type=checkbox name=pt value="Ближний Восток: 2-я пол. 20 в.">Ближний Восток: 2-я пол. XX в.<br/>
+<input type=checkbox name=pt value="Ближний Восток: современность">Ближний Восток: современность<br/>
+<input type=checkbox name=pt value="Дальний Восток: 1-я пол. 20 в.">Дальний Восток: 1-я пол. XX в.<br/>
+<input type=checkbox name=pt value="Дальний Восток: 2-я пол. 20 в.">Дальний Восток: 2-я пол. XX в.<br/>
+<input type=checkbox name=pt value="Дальний Восток: современность">Дальний Восток: современность<br/>
+<input type=checkbox name=pt value="Восток: неопределенное время">Восток: неопределенное время<br/>
+<input type=checkbox name=pt value="Австралия и Океания: 19 в.">Австралия и Океания: XIX в.<br/>
+<input type=checkbox name=pt value="Австралия и Океания: современность">Австралия и Океания: современность<br/>
+<input type=checkbox name=pt value="Белоруссия: постсоветский период">Белоруссия: постсоветский период<br/>
+<input type=checkbox name=pt value="Средняя Азия: постсоветский период">Средняя Азия: постсоветский период<br/>
+<input type=checkbox name=pt value="Закавказье: постсоветский период">Закавказье: постсоветский период<br/>
+<input type=checkbox name=pt value="Азия: 15 век">Азия: XV век<br/>
+<input type=checkbox name=pt value="Азия: 19 век">Азия: XIX век<br/>
+<input type=checkbox name=pt value="Африка: 19 век">Африка: XIX век<br/>
+<input type=checkbox name=pt value="Африка: 1-я пол. 20 в.">Африка: 1-я пол. XX в.<br/>
+<input type=checkbox name=pt value="ирреальный мир">ирреальный мир<br/>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+<form name="chronotop_spoken" id="chronotop_spoken" action="" style="display: none;">
+<h3>Место и время описываемых событий<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="attr_tbl">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('pt')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr valign="top"><td>
+<input type=checkbox name=pt value="Россия: Средние века">Россия: Средние века<br/>
+<input type=checkbox name=pt value="Россия: 15 век">Россия: XV век<br/>
+<input type=checkbox name=pt value="Россия: 16 век">Россия: XVI век<br/>
+<input type=checkbox name=pt value="Россия: 18 век">Россия: XVIII век<br/>
+<input type=checkbox name=pt value="Россия: 19 век">Россия: XIX век<br/>
+<input type=checkbox name=pt value="Россия: 1-я пол. 20 в.">Россия: 1-я пол. XX в.<br/>
+<input type=checkbox name=pt value="Россия: 1900-1914">Россия: 1900-1914<br/>
+<input type=checkbox name=pt value="Россия: 1914-1920">Россия: 1914-1920<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1920-е">Россия/СССР: 1920-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1930-е">Россия/СССР: 1930-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1941-1945">Россия/СССР: 1941-1945<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1946-1952">Россия/СССР: 1946-1952<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1950-е">Россия/СССР: 1950-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1960-1980-е">Россия/СССР: 1960-1980-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: советский период">Россия/СССР: советский период<br/>
+<input type=checkbox name=pt value="Россия: постсоветский период">Россия: постсоветский период<br/>
+</td><td>
+<input type=checkbox name=pt value="Австралия и Океания: 19 век">Австралия и Океания: XIX век<br/>
+<input type=checkbox name=pt value="Америка: 19 век">Америка: XIX век<br/>
+<input type=checkbox name=pt value="Африка: 19 век">Африка: XIX век<br/>
+<input type=checkbox name=pt value="Европа: 17 век">Европа: XVII век<br/>
+<input type=checkbox name=pt value="Европа: 18 век">Европа: XVIII век<br/>
+<input type=checkbox name=pt value="Европа: 19 век">Европа: XIX век<br/>
+<input type=checkbox name=pt value="Европа: 1-я пол. 20 в.">Европа: 1-я пол. XX в.<br/>
+<input type=checkbox name=pt value="ирреальный мир">ирреальный мир<br/>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+<form name="dial_loc" id="dial_loc" action="" style="display: none;">
+<h3>Место записи</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('dl')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=dl value="Архангельск">Архангельск<br/>
+<input type=checkbox name=dl value="Брянск">Брянск<br/>
+<input type=checkbox name=dl value="Владимир">Владимир<br/>
+<input type=checkbox name=dl value="Волгоград">Волгоград<br/>
+<input type=checkbox name=dl value="Вологда">Вологда<br/>
+<input type=checkbox name=dl value="Воронеж">Воронеж<br/>
+<input type=checkbox name=dl value="Забайкалье">Забайкалье<br/>
+<input type=checkbox name=dl value="Иваново">Иваново<br/>
+<input type=checkbox name=dl value="Калуга">Калуга<br/>
+<input type=checkbox name=dl value="Карелия">Карелия<br/>
+<input type=checkbox name=dl value="Киров">Киров<br/>
+<input type=checkbox name=dl value="Кострома">Кострома<br/>
+<input type=checkbox name=dl value="Курск">Курск<br/>
+<input type=checkbox name=dl value="Новгород">Новгород<br/>
+<input type=checkbox name=dl value="Псков">Псков<br/>
+<input type=checkbox name=dl value="Рязань">Рязань<br/>
+<input type=checkbox name=dl value="Саратов">Саратов<br/>
+<input type=checkbox name=dl value="Смоленск">Смоленск<br/>
+<input type=checkbox name=dl value="Тамбов">Тамбов<br/>
+<input type=checkbox name=dl value="Тверь">Тверь<br/>
+<input type=checkbox name=dl value="Тула">Тула<br/>
+</td>
+</tr>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="dial_topic" id="dial_topic" action="" style="display: none;">
+<h3>Тематика</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('dt')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=dt value="быт">быт<br/>
+<input type=checkbox name=dt value="война">война<br/>
+<input type=checkbox name=dt value="жизнь">жизнь<br/>
+<input type=checkbox name=dt value="люди">люди<br/>
+<input type=checkbox name=dt value="обычаи">обычаи<br/>
+<input type=checkbox name=dt value="праздники">праздники<br/>
+<input type=checkbox name=dt value="природа">природа<br/>
+<input type=checkbox name=dt value="работа">работа<br/>
+<input type=checkbox name=dt value="религия">религия<br/>
+<input type=checkbox name=dt value="семья">семья<br/>
+<input type=checkbox name=dt value="фольклор">фольклор<br/>
+</td>
+</tr>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="genre_poet" id="genre_poet" action="" style="display: none;">
+<h3>Жанр текста</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('g')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=g value="акростих">акростих<br/>
+<input type=checkbox name=g value="аполог">аполог<br/>
+<input type=checkbox name=g value="баллада">баллада<br/>
+<input type=checkbox name=g value="басня">басня<br/>
+<input type=checkbox name=g value="былина">былина<br/>
+<input type=checkbox name=g value="в альбом">в альбом<br/>
+<input type=checkbox name=g value="гимн">гимн<br/>
+<input type=checkbox name=g value="дифирамб">дифирамб<br/>
+<input type=checkbox name=g value="идиллия">идиллия<br/>
+<input type=checkbox name=g value="кантата">кантата<br/>
+<input type=checkbox name=g value="комедия">комедия<br/>
+<input type=checkbox name=g value="куплеты">куплеты<br/>
+<input type=checkbox name=g value="мадригал">мадригал<br/>
+<input type=checkbox name=g value="надпись">надпись<br/>
+<input type=checkbox name=g value="ноэль">ноэль<br/>
+<input type=checkbox name=g value="ода">ода<br/>
+<input type=checkbox name=g value="отрывок">отрывок<br/>
+<input type=checkbox name=g value="пародия">пародия<br/>
+<input type=checkbox name=g value="перевод">перевод<br/>
+<td valign="top">
+<input type=checkbox name=g value="песня">песня<br/>
+<input type=checkbox name=g value="подражание">подражание<br/>
+<input type=checkbox name=g value="посвящение">посвящение<br/>
+<input type=checkbox name=g value="послание">послание<br/>
+<input type=checkbox name=g value="поэма">поэма<br/>
+<input type=checkbox name=g value="притча">притча<br/>
+<input type=checkbox name=g value="пьеса">пьеса<br/>
+<input type=checkbox name=g value="роман в стихах">роман в стихах<br/>
+<input type=checkbox name=g value="романс">романс<br/>
+<input type=checkbox name=g value="сатира">сатира<br/>
+<input type=checkbox name=g value="сказка">сказка<br/>
+<input type=checkbox name=g value="сонет">сонет<br/>
+<input type=checkbox name=g value="стансы">стансы<br/>
+<input type=checkbox name=g value="стихотворение">стихотворение<br/>
+<input type=checkbox name=g value="сцена">сцена<br/>
+<input type=checkbox name=g value="цикл">цикл<br/>
+<input type=checkbox name=g value="экспромт">экспромт<br/>
+<input type=checkbox name=g value="элегия">элегия<br/>
+<input type=checkbox name=g value="эпиграмма">эпиграмма<br/>
+<input type=checkbox name=g value="эпитафия">эпитафия<br/>
+</td>
+</tr>
+</table>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="language" id="language" action="" style="display: none;">
+<h3>Язык оригинала</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('g')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=g value="английский">английский<br/>
+<input type=checkbox name=g value="арабский">арабский<br/>
+<input type=checkbox name=g value="белорусский">белорусский<br/>
+<input type=checkbox name=g value="венгерский">венгерский<br/>
+<input type=checkbox name=g value="датский">датский<br/>
+<input type=checkbox name=g value="древнегреческий">древнегреческий<br/>
+<input type=checkbox name=g value="древнееврейский">древнееврейский<br/>
+<input type=checkbox name=g value="древнерусский">древнерусский<br/>
+<input type=checkbox name=g value="испанский">испанский<br/>
+<input type=checkbox name=g value="итальянский">итальянский<br/>
+<input type=checkbox name=g value="китайский">китайский<br/>
+<input type=checkbox name=g value="латинский">латинский<br/>
+<input type=checkbox name=g value="немецкий">немецкий<br/>
+<input type=checkbox name=g value="новогреческий">новогреческий<br/>
+<input type=checkbox name=g value="персидский">персидский<br/>
+<input type=checkbox name=g value="польский">польский<br/>
+<input type=checkbox name=g value="португальский">португальский<br/>
+<input type=checkbox name=g value="провансальский">провансальский<br/>
+<input type=checkbox name=g value="сербский">сербский<br/>
+<input type=checkbox name=g value="украинский">украинский<br/>
+<input type=checkbox name=g value="французский">французский<br/>
+<input type=checkbox name=g value="церковнославянский">церковнославянский<br/>
+<input type=checkbox name=g value="чешский">чешский<br/>
+</td>
+</tr>
+</table>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+
+
+<form name="strophe" id="strophe" action="" style="display: none;">
+<h3>Строфика</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=x value="0">(отсутствует)<br/>
+<input type=checkbox name=x value="александрийский стих">александрийский стих<br/>
+<input type=checkbox name=x value="элегический дистих">элегический дистих<br/>
+<input type=checkbox name=x value="терцина">терцина<br/>
+<input type=checkbox name=x value="октава">октава<br/>
+<input type=checkbox name=x value="сицилиана">сицилиана<br/>
+<input type=checkbox name=x value="одическая строфа">одическая строфа<br/>
+<input type=checkbox name=x value="онегинская строфа">онегинская строфа<br/>
+<input type=checkbox name=x value="сонет">сонет<br/>
+<input type=checkbox name=x value="триолет">триолет<br/>
+<input type=checkbox name=x value="сложная">сложная строфика<br/>
+<td valign="top">
+Длина строф<br/>
+<input type=checkbox name=x value="1">1<br/>
+<input type=checkbox name=x value="2">2<br/>
+<input type=checkbox name=x value="3">3<br/>
+<input type=checkbox name=x value="4">4<br/>
+<input type=checkbox name=x value="5">5<br/>
+<input type=checkbox name=x value="6">6<br/>
+<input type=checkbox name=x value="7">7<br/>
+<input type=checkbox name=x value="8">8<br/>
+<input type=checkbox name=x value="9">9<br/>
+<input type=checkbox name=x value="10">10<br/>
+<input type=checkbox name=x value="11">11<br/>
+<input type=checkbox name=x value="12">12<br/>
+</table>
+</table>
+Cложные сочетания строф (2+4) и отсутствуюшие в списке длины графических строф вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="gr_strophe" id="gr_strophe" action="" style="display: none;">
+<h3>Графическая строфика</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=x value="0">(отсутствует)<br/>
+<input type=checkbox name=x value="вольная">вольная<br/>
+<input type=checkbox name=x value="мнимая проза">мнимая проза<br/>
+<input type=checkbox name=x value="парцеллированная">парцеллированная<br/>
+<input type=checkbox name=x value="сложная">сложная<br/>
+<td valign="top">
+Длина графических строф<br/>
+<input type=checkbox name=x value="2">2 строки<br/>
+<input type=checkbox name=x value="3">3<br/>
+<input type=checkbox name=x value="4">4<br/>
+<input type=checkbox name=x value="5">5<br/>
+<input type=checkbox name=x value="6">6<br/>
+<input type=checkbox name=x value="8">8<br/>
+<input type=checkbox name=x value="10">10<br/>
+<input type=checkbox name=x value="12">12<br/>
+<input type=checkbox name=x value="16">16<br/>
+<input type=checkbox name=x value="18">18<br/>
+</table>
+</table>
+Cложные сочетания строф (2+4) и отсутствуюшие в списке длины графических строф вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="meter" id="meter" action="" style="display: none;">
+<h3>Метр</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<b>силлабо-тонический</b><br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Х">хорей<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Я">ямб<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Д">дактиль<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Аф">амфибрахий<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Ан">анапест<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Гм">гетерометрия (сочетание разных метров)<br/>
+<b>несиллабо-тонический</b><br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="силлабический">силлабический<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="тонический">тонический<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="Гек">гекзаметр<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="Пен">пентаметр<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="логаэд">логаэд<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="Дк">дольник<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="Тк">тактовик<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="Ак">акцентный<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Вл">свободный (верлибр)<br/>
+</table>
+Регулярные сочетания метров (Х+Я) вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="ln_meter" id="ln_meter" action="" style="display: none;">
+<h3>Метр</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<b>силлабо-тонический</b><br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Х">хорей<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Я">ямб<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Д">дактиль<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Аф">амфибрахий<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Ан">анапест<br/>
+<b>несиллабо-тонический</b><br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="силлабический">силлабический<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="тонический">тонический<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="Гек">гекзаметр<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="Пен">пентаметр<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="логаэд">логаэд<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="Дк">дольник<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="Тк">тактовик<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="Ак">акцентный<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Вл">свободный (верлибр)<br/>
+</table>
+Регулярные сочетания метров (Х+Я) вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+
+<form name="feet" id="feet" action="" style="display: none;">
+<h3>Длина строки (стопы в силлабо-тонике, икты в тонике, слоги в силлабике)</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=x value="0">(не определена)<br/>
+<input type=checkbox name=x value="1">1<br/>
+<input type=checkbox name=x value="2">2<br/>
+<input type=checkbox name=x value="3">3<br/>
+<input type=checkbox name=x value="4">4<br/>
+<input type=checkbox name=x value="5">5<br/>
+<input type=checkbox name=x value="6">6<br/>
+<input type=checkbox name=x value="6">7<br/>
+<input type=checkbox name=x value="8">8<br/>
+<input type=checkbox name=x value="11">11<br/>
+<input type=checkbox name=x value="12">12<br/>
+<input type=checkbox name=x value="13">13<br/>
+<td valign="top">
+<input type=checkbox name=x value="вольная">вольная<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="3 4">3,4<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4,5">4,5<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4,6">4,6<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4,5,6">4,5,6<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="3,4,5,6">3,4,6<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="3,4,6">3,4,5,6<br/>
+<input type=checkbox name=x value="регулярная">регулярная<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4+2">4+2<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4+3">4+3<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="6+3">6+3<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="6+4">6+4<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="5+4">5+4<br/>
+</table>
+</table>
+Отсутствующие в списке значения, включая запись вида 5(4) [одна 4-стопная строка на фоне 5-стопных] вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="ln_feet" id="ln_feet" action="" style="display: none;">
+<h3>Длина строки (стопы в силлабо-тонике, икты в тонике, слоги в силлабике)</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=x value="0">(не определена)<br/>
+<input type=checkbox name=x value="1">1<br/>
+<input type=checkbox name=x value="2">2<br/>
+<input type=checkbox name=x value="3">3<br/>
+<input type=checkbox name=x value="4">4<br/>
+<input type=checkbox name=x value="5">5<br/>
+<input type=checkbox name=x value="6">6<br/>
+<input type=checkbox name=x value="6">7<br/>
+<input type=checkbox name=x value="8">8<br/>
+<input type=checkbox name=x value="11">11<br/>
+<input type=checkbox name=x value="12">12<br/>
+<input type=checkbox name=x value="13">13<br/>
+<td valign="top">
+<input type=checkbox name=x value="вольная">вольная<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="3 4">3,4<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4,5">4,5<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4,6">4,6<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4,5,6">4,5,6<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="3,4,5,6">3,4,6<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="3,4,6">3,4,5,6<br/>
+<input type=checkbox name=x value="регулярная">регулярная<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4+2">4+2<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4+3">4+3<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="6+3">6+3<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="6+4">6+4<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="5+4">5+4<br/>
+</table>
+</table>
+Отсутствующие в списке значения, включая запись вида 5(4) [одна 4-стопная строка на фоне 5-стопных] вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+
+<form name="clausula" id="clausula" action="" style="display: none;">
+<h3>Клаузула</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=x value="вольная"><b>вольная</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="ж, м">ж, м<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="д, м">д, м<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="д, ж">д, ж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="д, ж, м">д, ж, м<br/>
+<input type=checkbox name=x value="регулярная"><b>регулярная</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жм">жм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="мж">мж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жжм">жжм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="ммж">ммж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жжмм">жжмм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="ммжж">ммжж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="мжжм">мжжм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жммж">жммж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="мжжм жммж">мжжм жммж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жммж мжжм">жммж мжжм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жмжжм">жмжжм<br/>
+<input type=checkbox name=x value="м">мужская<br/>
+<input type=checkbox name=x value="ж">женская<br/>
+<input type=checkbox name=x value="д">дактилическая<br/>
+</table>
+Указаны наиболее частотные в корпусе сочетания клаузул; отсутствующие в списке сочетания вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="ln_clausula" id="ln_clausula" action="" style="display: none;">
+<h3>Клаузула</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=x value="вольная"><b>вольная</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="ж, м">ж, м<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="д, м">д, м<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="д, ж">д, ж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="д, ж, м">д, ж, м<br/>
+<input type=checkbox name=x value="регулярная"><b>регулярная</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жм">жм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="мж">мж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жжм">жжм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="ммж">ммж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жжмм">жжмм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="ммжж">ммжж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="мжжм">мжжм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жммж">жммж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="мжжм жммж">мжжм жммж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жммж мжжм">жммж мжжм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жмжжм">жмжжм<br/>
+<input type=checkbox name=x value="м">мужская<br/>
+<input type=checkbox name=x value="ж">женская<br/>
+<input type=checkbox name=x value="д">дактилическая<br/>
+</table>
+Указаны наиболее частотные в корпусе сочетания клаузул; отсутствующие в списке сочетания вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+
+<form name="ln_rhyme" id="ln_rhyme" action="" style="display: none;">
+<h3>Рифма</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=x value="0">отсутствует (белый стих)<br/>
+<input type=checkbox name=x value="вольная">вольная<br/>
+<input type=checkbox name=x value="спорадическая">спорадическая<br/>
+<input type=checkbox name=x value="монорим">монорим<br/>
+<input type=checkbox name=x value="регулярная">регулярная<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="парная">парная (аа)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="тройная">тройная (ааа)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="перекрестная">перекрестная (абаб)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="охватная">охватная (абба)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="затянутая">затянутая (любая 5- или 6-строчная<br/> строфа на две рифмы)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="нечетная">нечетная (абав)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="четная">четная (абвб)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="цепная">цепная (терцины или подобная)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="скользящая">скользящая (абвг абвг или подобная)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="сложная">сложная (иные типы)<br/>
+
+<td valign="top">
+<input type=checkbox name=x value="аабввб">аабввб<br/>
+<input type=checkbox name=x value="абааб">абааб<br/>
+<input type=checkbox name=x value="абаб вв">абаб вв<br/>
+<input type=checkbox name=x value="абаб ввгг">абаб ввгг<br/>
+<input type=checkbox name=x value="абаб вггв">абаб вггв<br/>
+<input type=checkbox name=x value="абабаб">абабаб<br/>
+<input type=checkbox name=x value="абабаб вв">абабаб вв<br/>
+</table>
+</table>
+Указаны наиболее частотные в корпусе виды затянутой и сложной рифмовки; отсутствующие в списке сочетания вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+<!---
+<form name="formula" id="formula" action="" style="display: none;">
+<h3>Формула</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=x value="Аф3жм">Аф3жм<br/>
+<input type=checkbox name=x value="Х4ж,м">Х4ж,м<br/>
+<input type=checkbox name=x value="Х4жм">Х4жм<br/>
+<input type=checkbox name=x value="Х4мж">Х4мж<br/>
+<input type=checkbox name=x value="Я3ж,м">Я3ж,м<br/>
+<input type=checkbox name=x value="Я4,Я5,Я6ж,м">Я4,Я5,Я6ж,м<br/>
+<input type=checkbox name=x value="Я4,Я6ж,м">Я4,Я6ж,м<br/>
+<input type=checkbox name=x value="Я4ж,м">Я4ж,м<br/>
+<input type=checkbox name=x value="Я4жм">Я4жм<br/>
+<input type=checkbox name=x value="Я4жм, мж">Я4жм, мж<br/>
+<input type=checkbox name=x value="Я4м">Я4м<br/>
+<input type=checkbox name=x value="Я4мж">Я4мж<br/>
+<input type=checkbox name=x value="Я5ж,м">Я5ж,м<br/>
+<input type=checkbox name=x value="Я5жм">Я5жм<br/>
+<input type=checkbox name=x value="Я5м">Я5м<br/>
+<input type=checkbox name=x value="Я5мж">Я5мж<br/>
+<input type=checkbox name=x value="Я6ж,м">Я6ж,м<br/>
+<input type=checkbox name=x value="Я6жжмм">Я6жжмм<br/>
+<input type=checkbox name=x value="Я6жм">Я6жм<br/>
+<input type=checkbox name=x value="Я6мж">Я6мж<br/>
+<input type=checkbox name=x value="Я6ммжж">Я6ммжж<br/>
+</table>
+Указаны наиболее частотные в корпусе формулы; отсутствующие в списке формулы вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+--->
+<form name="extra" id="extra" action="" style="display: none;">
+<h3>Дополнительные пометы</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top" nowrap>
+<b>Полиметрия</b><br/>
+<input type=checkbox name=x value="с инометрическими фрагментами">с инометрическими фрагментами<br/>
+<input type=checkbox name=x value="полиметрия">полиметрия<br/>
+<input type=checkbox name=x value="полиметрический фрагмент">полиметрический фрагмент<br/>
+<b>Преобразования метра</b><br/>
+<input type=checkbox name=x value="перебои">перебои<br/>
+<input type=checkbox name=x value="цезурные наращения">цезурные наращения<br/>
+<input type=checkbox name=x value="цезурные усечения">цезурные усечения<br/>
+<input type=checkbox name=x value="двойные цезурные усечения">двойные цезурные усечения<br/>
+
+<b>Особые типы силлабо-тонических метров</b><br/>
+<input type=checkbox name=x value="пентон">пентон<br/>
+<input type=checkbox name=x value="пеон III">пеон III<br/>
+<b>Особенности строфики</b><br/>
+<input type=checkbox name=x value="белая строка">белая строка<br/>
+<input type=checkbox name=x value="кода">кода<br/>
+<input type=checkbox name=x value="нарушения строфики">нарушения строфики<br/>
+<input type=checkbox name=x value="пантум">пантум<br/>
+<input type=checkbox name=x value="редупликация">редупликация<br/>
+<input type=checkbox name=x value="рефрен">рефрен<br/>
+<input type=checkbox name=x value="усеченная строка">усеченная строка<br/>
+<input type=checkbox name=x value="холостая строка">холостая строка<br/>
+<td valign="top" nowrap>
+<b>Рифма</b><br/>
+<input type=checkbox name=x value="ассонанс">ассонанс<br/>
+<input type=checkbox name=x value="внутренняя рифма">внутренняя рифма<br/>
+<input type=checkbox name=x value="диссонанс">диссонанс<br/>
+<input type=checkbox name=x value="монотонная рифма">монотонная рифма<br/>
+<input type=checkbox name=x value="омонимическая рифма">каламбурная рифма<br/>
+<input type=checkbox name=x value="разноударная рифма">разноударная рифма<br/>
+<input type=checkbox name=x value="составная рифма">составная рифма<br/>
+<input type=checkbox name=x value="тавторифма">тавторифма<br/>
+</table>
+</table>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+</center>
+</body>
+</html>
+<html>
+<head>
+<link rel="shortcut icon" href="http://yandex.ru/favicon.ico">
+<link rel="stylesheet" type="text/css" href="./form.css">
+<title>Параметры текста</title>
+<style>
+h3  { text-align: center; }
+</style>
+<script language="JavaScript">
+function collect() {
+  var form = window.activeForm
+  var attr = form.id;
+  var els = form.elements;
+  var strval = "";
+  for (var i = 0; i != els.length; i++) {
+    var el = els[i];
+    if (el.type != 'checkbox') continue;
+    if (el.checked) {
+      if (strval != "") strval += " | ";
+      strval += el.value;
+    }
+  }
+  pwin = window.opener;
+  if (pwin && !pwin.closed) {
+    pwin.document.getElementById(attr).value = strval;
+  }
+  window.close();
+}
+
+function inverse(group) {
+  var form = window.activeForm;
+  var els = form.elements;
+  for (var i = 0; i != els.length; i++) {
+    var el = els[i];
+    if (el.type != 'checkbox') continue;
+    if (el.name == group) el.checked=!el.checked;
+  }
+}
+</script>
+
+<script language="JavaScript">
+function show1form()
+{
+  // select form
+  var attr = window.name;
+  var form = document.getElementById(attr);
+  if (!form) return;
+  window.activeForm = form;
+  form.style.display = "block";
+  if (document.height) {
+    window.innerHeight = document.height + 100;
+    if (window.innerHeight + 40 > window.screen.availHeight)  {
+      window.innerHeight = window.screen.availHeight - 40;
+      netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite");
+      window.scrollbars.visible = true;
+    }
+  }
+  else  {
+    var h = document.body.scrollHeight + 100;
+    var w = document.body.clientWidth + 16;
+    if (h > window.screen.availHeight) {
+      h = window.screen.availHeight; w = w + 20;
+      document.body.scroll = "yes";
+    }
+    window.resizeTo(w, h);
+  }
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+</head>
+<body onLoad="show1form();">
+
+<center>
+<form name="genre_fi" id="genre_fi" action="" style="display: none;">
+<h3>Жанр текста</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('g')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=g value="нежанровая проза">нежанровая проза<br/>
+<input type=checkbox name=g value="детектив, боевик">детектив, боевик<br/>
+<input type=checkbox name=g value="детская">детская<br/>
+<input type=checkbox name=g value="историческая проза">историческая проза<br/>
+<input type=checkbox name=g value="приключения">приключения<br/>
+<input type=checkbox name=g value="фантастика">фантастика<br/>
+<input type=checkbox name=g value="любовная история">любовная история<br/>
+<input type=checkbox name=g value="юмор и сатира">юмор и сатира<br/>
+<input type=checkbox name=g value="документальная проза">документальная проза<br/>
+<input type=checkbox name=g value="драматургия">драматургия<br/>
+<input type=checkbox name=g value="перевод">перевод<br/>
+</td>
+</tr>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="typeF" id="typeF" action="" style="display: none;">
+<h3>Тип текста</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td align="left"><span title="Инвертировать"><a href="#" onclick="inverse('tf')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=tf value="басня">басня<br/>
+<input type=checkbox name=tf value="загадка">загадка<br/>
+<input type=checkbox name=tf value="дневник, записные книжки">записки<br/>
+<input type=checkbox name=tf value="легенда">легенда<br/>
+<input type=checkbox name=tf value="либретто">либретто<br/>
+<input type=checkbox name=tf value="миниатюра">миниатюра<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=tf value="анекдот">анекдот<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=tf value="шутка">шутка<br/>
+<input type=checkbox name=tf value="очерк">очерк<br/>
+<input type=checkbox name=tf value="письмо литературное">письмо литературное<br/>
+<input type=checkbox name=tf value="повесть">повесть<br/>
+<input type=checkbox name=tf value="поэма">поэма<br/>
+<input type=checkbox name=tf value="притча">притча<br/>
+<input type=checkbox name=tf value="пьеса">пьеса<br/>
+<input type=checkbox name=tf value="рассказ">рассказ<br/>
+<input type=checkbox name=tf value="роман">роман<br/>
+<input type=checkbox name=tf value="сказка">сказка<br/>
+<input type=checkbox name=tf value="сказ">сказ<br/>
+<input type=checkbox name=tf value="сценарий">сценарий<br/>
+<br/>
+<input type=checkbox name=tf value="цикл">цикл<br/>
+</td>
+</tr>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="typeNF" id="typeNF" action="" style="display: none;">
+<h3>Тип текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<table class="inform" cellspacing=1 cellpadding=1>
+<tr valign=top>
+<td>
+<b>ПУБЛИЦИСТИКА</b><br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf11')"><b>публицистические</b></a></span><br/>
+<input type=checkbox name=tnf11 value="анкета">анкета<br/>
+<input type=checkbox name=tnf11 value="беседа">беседа<br/>
+<input type=checkbox name=tnf11 value="доклад">доклад<br/>
+<input type=checkbox name=tnf11 value="заявление">заявление<br/>
+<input type=checkbox name=tnf11 value="интервью ">интервью<br/>
+<input type=checkbox name=tnf11 value="комментарий">комментарий<br/>
+<input type=checkbox name=tnf11 value="лекция">лекция<br/>
+<input type=checkbox name=tnf11 value="листовка">листовка<br/>
+<input type=checkbox name=tnf11 value="монография">монография<br/>
+<input type=checkbox name=tnf11 value="некролог">некролог<br/>
+<input type=checkbox name=tnf11 value="обращение">обращение<br/>
+<input type=checkbox name=tnf11 value="отзыв">отзыв<br/>
+<input type=checkbox name=tnf11 value="очерк">очерк<br/>
+<input type=checkbox name=tnf11 value="памфлет">памфлет<br/>
+<input type=checkbox name=tnf11 value="письмо">письмо<br/>
+<input type=checkbox name=tnf11 value="письмо открытое">письмо&nbsp;открытое<br/>
+<input type=checkbox name=tnf11 value="поздравление">поздравление<br/>
+<input type=checkbox name=tnf11 value="предисловие, послесловие">предисловие,<br/>послесловие<br/>
+<input type=checkbox name=tnf11 value="рецензия">рецензия<br/>
+<input type=checkbox name=tnf11 value="речь">речь<br/>
+<input type=checkbox name=tnf11 value="совет">совет<br/>
+<input type=checkbox name=tnf11 value="статья">статья<br/>
+<input type=checkbox name=tnf11 value="фельетон">фельетон<br/>
+<input type=checkbox name=tnf11 value="эссе">эссе<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf12')"><b>мемуарно-<br/>биографические</b></a></span><br/>
+<input type=checkbox name=tnf12 value="автобиография">автобиография<br/>
+<input type=checkbox name=tnf12 value="биография">биография<br/>
+<input type=checkbox name=tnf12 value="дневник, записные книжки">дневник,<br/>записные книжки<br/>
+<input type=checkbox name=tnf12 value="мемуары">мемуары<br/>
+<td>
+<br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf13')"><b>информационные</b></a></span><br/>
+<input type=checkbox name=tnf13 value="аннотация">аннотация<br/>
+<input type=checkbox name=tnf13 value="анонс">анонс<br/>
+<input type=checkbox name=tnf13 value="заметка">заметка<br/>
+<input type=checkbox name=tnf13 value="информационное сообщение">информационное<br/>сообщение<br/>
+<input type=checkbox name=tnf13 value="календарь">календарь<br/>
+<input type=checkbox name=tnf13 value="обзор">обзор<br/>
+<input type=checkbox name=tnf13 value="объявление">объявление<br/>
+<input type=checkbox name=tnf13 value="отчет">отчет<br/>
+<input type=checkbox name=tnf13 value="репортаж">репортаж<br/>
+<input type=checkbox name=tnf13 value="хроника">хроника<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf14')"><b>прочие</b></a></span><br/>
+<input type=checkbox name=tnf14 value="гороскоп">гороскоп<br/>
+<input type=checkbox name=tnf14 value="задача">задача<br/>
+<input type=checkbox name=tnf14 value="игра">игра<br/>
+<input type=checkbox name=tnf14 value="инструкция">инструкция<br/>
+<input type=checkbox name=tnf14 value="миниатюра">миниатюра<br/>
+<input type=checkbox name=tnf14 value="рецепт">рецепт<br/>
+<input type=checkbox name=tnf14 value="тест">тест<br/>
+<input type=checkbox name=tnf14 value="характеристика">характеристика<br/>
+<br/>
+<input type=checkbox name=tnf1 value="цикл">цикл<br/>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf2')"><b>ПРОИЗВОДСТВЕННО-<br/>ТЕХНИЧЕСКИЕ</b></a></span><br/>
+<input type=checkbox name=tnf2 value="инструкция ">инструкция <br/>
+<input type=checkbox name=tnf2 value="описание">описание<br/>
+<input type=checkbox name=tnf2 value="паспорт технический">паспорт технический<br/>
+<input type=checkbox name=tnf2 value="правила">правила<br/>
+
+<td>
+<b>УЧЕБНО-НАУЧНЫЕ</b><br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf31')"><b>научные</b></a></span><br/>
+<input type=checkbox name=tnf31 value="аннотация">аннотация<br/>
+<input type=checkbox name=tnf31 value="диссертация">диссертация<br/>
+<input type=checkbox name=tnf31 value="дневник, записные книжки">дневник<br/>
+<input type=checkbox name=tnf31 value="доклад">доклад<br/>
+<input type=checkbox name=tnf31 value="конспект">конспект<br/>
+<input type=checkbox name=tnf31 value="лекция">лекция<br/>
+<input type=checkbox name=tnf31 value="монография">монография<br/>
+<input type=checkbox name=tnf31 value="обзор">обзор<br/>
+<input type=checkbox name=tnf31 value="отзыв">отзыв<br/>
+<input type=checkbox name=tnf31 value="отчет">отчет<br/>
+<input type=checkbox name=tnf31 value="рецензия">рецензия<br/>
+<input type=checkbox name=tnf31 value="трактат">трактат<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf32')"><b>учебные</b></a></span><br/>
+<input type=checkbox name=tnf32 value="диплом">диплом<br/>
+<input type=checkbox name=tnf32 value="задача">задача<br/>
+<input type=checkbox name=tnf32 value="игра">игра<br/>
+<input type=checkbox name=tnf32 value="инструкция ">инструкция <br/>
+<input type=checkbox name=tnf32 value="лабораторная работа">лабораторная<br/>работа<br/>
+<input type=checkbox name=tnf32 value="методические материалы">методические<br/>материалы<br/>
+<input type=checkbox name=tnf32 value="памятка">памятка<br/>
+<input type=checkbox name=tnf32 value="правила">правила<br/>
+<input type=checkbox name=tnf32 value="словарь">словарь<br/>
+<input type=checkbox name=tnf32 value="справочник">справочник<br/>
+<input type=checkbox name=tnf32 value="сочинение">сочинение<br/>
+<input type=checkbox name=tnf32 value="учебник">учебник<br/>
+<input type=checkbox name=tnf32 value="учебное пособие">учебное пособие<br/>
+<input type=checkbox name=tnf32 value="хрестоматия">хрестоматия<br/>
+<br/>
+<input type=checkbox name=tnf3 value="цикл">цикл<br/>
+
+<td>
+<b>ОФИЦИАЛЬНО-ДЕЛОВЫЕ</b></a></span><br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf41')"><b>деловые документы</b></a></span><br/>
+<input type=checkbox name=tnf41 value="автобиография">автобиография<br/>
+<input type=checkbox name=tnf41 value="акт">акт<br/>
+<input type=checkbox name=tnf41 value="анкета">анкета<br/>
+<input type=checkbox name=tnf41 value="аттестат">аттестат<br/>
+<input type=checkbox name=tnf41 value="диплом">диплом<br/>
+<input type=checkbox name=tnf41 value="доверенность">доверенность<br/>
+<input type=checkbox name=tnf41 value="договор">договор<br/>
+<input type=checkbox name=tnf41 value="доклад">доклад<br/>
+<input type=checkbox name=tnf41 value="донесение">донесение<br/>
+<input type=checkbox name=tnf41 value="записка докладная">записка докладная<br/>
+<input type=checkbox name=tnf41 value="записка служебная">записка служебная<br/>
+<input type=checkbox name=tnf41 value="заявка">заявка<br/>
+<input type=checkbox name=tnf41 value="заявление">заявление<br/>
+<input type=checkbox name=tnf41 value="инструкция">инструкция<br/>
+<input type=checkbox name=tnf41 value="контракт">контракт<br/>
+<input type=checkbox name=tnf41 value="паспорт">паспорт<br/>
+<input type=checkbox name=tnf41 value="письмо деловое">письмо деловое<br/>
+<input type=checkbox name=tnf41 value="поручение">поручение<br/>
+<input type=checkbox name=tnf41 value="предложение">предложение<br/>
+<input type=checkbox name=tnf41 value="протокол">протокол<br/>
+<input type=checkbox name=tnf41 value="прошение">прошение<br/>
+<input type=checkbox name=tnf41 value="расписка">расписка<br/>
+<input type=checkbox name=tnf41 value="резюме">резюме<br/>
+<input type=checkbox name=tnf41 value="рекомендация">рекомендация<br/>
+<input type=checkbox name=tnf41 value="соглашение">соглашение<br/>
+<input type=checkbox name=tnf41 value="справка">справка<br/>
+<input type=checkbox name=tnf41 value="телеграмма">телеграмма<br/>
+<input type=checkbox name=tnf41 value="уведомление">уведомление<br/>
+<input type=checkbox name=tnf41 value="удостоверение">удостоверение<br/>
+<input type=checkbox name=tnf41 value="характеристика">характеристика<br/>
+
+<td nowrap>
+<br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf42')"><b>законодательные</b></a></span><br/>
+<input type=checkbox name=tnf42 value="закон">закон<br/>
+<input type=checkbox name=tnf42 value="кодекс">кодекс<br/>
+<input type=checkbox name=tnf42 value="положение">положение<br/>
+<input type=checkbox name=tnf42 value="постановление">постановление<br/>
+<input type=checkbox name=tnf42 value="резолюция">резолюция<br/>
+<input type=checkbox name=tnf42 value="указ">указ<br/>
+<input type=checkbox name=tnf42 value="устав">устав<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf43')"><b>правовые</b></a></span><br/>
+<input type=checkbox name=tnf43 value="правила">правила<br/>
+<input type=checkbox name=tnf43 value="предписание">предписание<br/>
+<input type=checkbox name=tnf43 value="приказ">приказ<br/>
+<input type=checkbox name=tnf43 value="присяга">присяга<br/>
+<input type=checkbox name=tnf43 value="распоряжение">распоряжение<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf44')"><b>судебные</b></a></span><br/>
+<input type=checkbox name=tnf44 value="жалоба">жалоба<br/>
+<input type=checkbox name=tnf44 value="заключение">заключение<br/>
+<input type=checkbox name=tnf44 value="определение">определение<br/>
+<input type=checkbox name=tnf44 value="постановление">постановление<br/>
+<input type=checkbox name=tnf44 value="решение">решение<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf45')"><b>нотариальные</b></a></span><br/>
+<input type=checkbox name=tnf45 value="завещание">завещание<br/>
+<input type=checkbox name=tnf45 value="свидетельство">свидетельство<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf46')"><b>дипломатические</b></a></span><br/>
+<input type=checkbox name=tnf46 value="декларация">декларация<br/>
+<input type=checkbox name=tnf46 value="документ итоговый">документ итоговый<br/>
+<input type=checkbox name=tnf46 value="коммюнике">коммюнике<br/>
+<input type=checkbox name=tnf46 value="протокол дипломатический">протокол<br/>дипломатический<br/>
+<input type=checkbox name=tnf46 value="хартия">хартия<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf47')"><b>прочие</b></a></span><br/>
+<input type=checkbox name=tnf47 value="квитанция">квитанция<br/>
+<input type=checkbox name=tnf47 value="памятка">памятка<br/>
+<input type=checkbox name=tnf47 value="поздравление">поздравление<br/>
+
+<td>
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf5')"><b>БЫТОВЫЕ</b></a></span><br/>
+<input type=checkbox name=tnf5 value="билет">билет<br/>
+<input type=checkbox name=tnf5 value="дневник, записные книжки">дневник,<br/>записные книжки<br/>
+<input type=checkbox name=tnf5 value="записка">записка<br/>
+<input type=checkbox name=tnf5 value="объявление">объявление<br/>
+<input type=checkbox name=tnf5 value="письмо личное">письмо личное<br/>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf6')"><b>РЕКЛАМА</b></a></span><br/>
+<input type=checkbox name=tnf6 value="анонс">анонс<br/>
+<input type=checkbox name=tnf6 value="буклет">буклет<br/>
+<input type=checkbox name=tnf6 value="надпись на упаковке">надпись на упаковке<br/>
+<input type=checkbox name=tnf6 value="объявление">объявление<br/>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf7')"><b>ЦЕРКОВНО-<br/>БОГОСЛОВСКИЕ</b></a></span><br/>
+<input type=checkbox name=tnf7 value="беседа">беседа<br/>
+<input type=checkbox name=tnf7 value="житие">житие<br/>
+<input type=checkbox name=tnf7 value="катехизис">катехизис<br/>
+<input type=checkbox name=tnf7 value="молитва">молитва<br/>
+<input type=checkbox name=tnf7 value="отечник">отечник<br/>
+<input type=checkbox name=tnf7 value="описание паломничества">описание<br/>паломничества<br/>
+<input type=checkbox name=tnf7 value="послание">послание<br/>
+<input type=checkbox name=tnf7 value="поучение">поучение<br/>
+<input type=checkbox name=tnf7 value="проповедь">проповедь<br/>
+<input type=checkbox name=tnf7 value="Священное писание">Священное писание<br/>
+<input type=checkbox name=tnf7 value="слово">слово<br/>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('tnf8')"><b>ЭЛЕКТРОННАЯ<br/>КОММУНИКАЦИЯ</b></a></span><br/>
+<input type=checkbox name=tnf8 value="блог">блог<br/>
+<input type=checkbox name=tnf8 value="конференция">конференция<br/>
+<input type=checkbox name=tnf8 value="смс-сообщение">смс-сообщение<br/>
+<input type=checkbox name=tnf8 value="форум">форум<br/>
+
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+<form name="typeSP" id="typeSP" action="" style="display: none;">
+<h3>Тип текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td align="left"><span title="Инвертировать"><a href="#" onclick="inverse('ts')">Инвертировать выбор</a></span><br/>
+<table class="inform" cellspacing=1 cellpadding=1>
+<tr valign=top>
+<td nowrap>
+<input type=checkbox name=ts value="беседа">беседа<br/>
+<input type=checkbox name=ts value="встреча с читателями">встреча с читателями<br/>
+<input type=checkbox name=ts value="встреча со слушателями">встреча со слушателями<br/>
+<input type=checkbox name=ts value="дискуссия">дискуссия<br/>
+<input type=checkbox name=ts value="доклад">доклад<br/>
+<input type=checkbox name=ts value="интервью">интервью<br/>
+<input type=checkbox name=ts value="комментарий">комментарий<br/>
+<input type=checkbox name=ts value="конференция">конференция<br/>
+<input type=checkbox name=ts value="круглый стол">круглый стол<br/>
+<input type=checkbox name=ts value="лекция">лекция<br/>
+<input type=checkbox name=ts value="парламентские слушания">парламентские слушания<br/>
+<input type=checkbox name=ts value="пресс-конференция">пресс-конференция<br/>
+<input type=checkbox name=ts value="рассказ">рассказ<br/>
+<input type=checkbox name=ts value="репортаж">репортаж<br/>
+<input type=checkbox name=ts value="речь">речь<br/>
+<input type=checkbox name=ts value="семинар">семинар<br/>
+<input type=checkbox name=ts value="совещание">совещание<br/>
+<input type=checkbox name=ts value="эссе устное">эссе устное<br/>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+<form name="typeSN" id="typeSN" action="" style="display: none;">
+<h3>Тип текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td align="left"><span title="Инвертировать"><a href="#" onclick="inverse('ts')">Инвертировать выбор</a></span><br/>
+<table class="inform" cellspacing=1 cellpadding=1>
+<tr valign=top>
+<td>
+<input type=checkbox name=ts value="беседа"><b>беседа</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="разговор">разговор<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="праздный">праздный<br/>
+<input type=checkbox name=ts value="интервью"><b>интервью</b><br/>
+<input type=checkbox name=ts value="микродиалог"><b>микродиалог</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в аптеке">в аптеке<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в библиотеке">в библиотеке<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в доме отдыха">в доме отдыха<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в кассе">в кассе<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в лифте">в лифте<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в магазине">в магазине<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в транспорте">в транспорте<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="домашний">домашний<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="с детьми">с детьми<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="с животными">с животными<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="с соседями">с соседями<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на кухне">на кухне<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на пороге">на пороге<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на почте">на почте<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на работе">на работе<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на рынке">на рынке<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="информационный">информационный<br/>
+<td>
+<input type=checkbox name=ts value="разговор"><b>разговор</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="домашний">домашний<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="информационный">информационный<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="деловой">деловой<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="праздный">праздный<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="поздравление">поздравление<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="воспоминание">воспоминание<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="телефонный">телефонный<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в больнице">в больнице<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в магазине">в магазине<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в парикмахерской">в парикмахерской<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="в столовой">в столовой<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="на пляже">на пляже<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="при встрече">при встрече<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="при прощании">при прощании<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="семейный">семейный<br/>
+
+<input type=checkbox name=ts value="пересказ"><b>пересказ</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="сна">сна<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="разговора">разговора<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="фильма">фильма<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=ts value="телепередачи">телепередачи<br/>
+<input type=checkbox name=ts value="рассказ"><b>рассказ</b><br/>
+<input type=checkbox name=ts value="спор"><b>спор</b><br/>
+<input type=checkbox name=ts value="ссора"><b>ссора</b><br/>
+<input type=checkbox name=ts value="тост"><b>тост</b><br/>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+<form name="typeSK" id="typeSK" action="" style="display: none;">
+<h3>Тип текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td align="left"><span title="Инвертировать"><a href="#" onclick="inverse('ts')">Инвертировать выбор</a></span><br/>
+<table class="inform" cellspacing=1 cellpadding=1>
+<tr valign=top>
+<td nowrap>
+<input type=checkbox name=ts value="вестерн">вестерн<br/>
+<input type=checkbox name=ts value="кино детское">кино детское<br/>
+<input type=checkbox name=ts value="кинобоевик">кинобоевик<br/>
+<input type=checkbox name=ts value="кинодетектив">кинодетектив<br/>
+<input type=checkbox name=ts value="кинодрама">кинодрама<br/>
+<input type=checkbox name=ts value="кино-катастрофа">кино-катастрофа<br/>
+<input type=checkbox name=ts value="кинокомедия">кинокомедия<br/>
+<input type=checkbox name=ts value="киномелодрама">киномелодрама<br/>
+<input type=checkbox name=ts value="киномюзикл">киномюзикл<br/>
+<input type=checkbox name=ts value="киноповесть">киноповесть<br/>
+<input type=checkbox name=ts value="кино приключенческое">кино приключенческое<br/>
+<input type=checkbox name=ts value="киносказка">киносказка<br/>
+<input type=checkbox name=ts value="кинофантастика">кинофантастика<br/>
+
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+
+<form name="sphereN" id="sphereN" action="" style="display: none;">
+<h3>Сфера функционирования</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('s')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=s value="бытовая">обиходно-бытовая<br/>
+<input type=checkbox name=s value="официально-деловая">официально-деловая<br/>
+<input type=checkbox name=s value="производственно-техническая">производственно-техническая<br/>
+<input type=checkbox name=s value="публицистика">публицистика<br/>
+<input type=checkbox name=s value="реклама">реклама<br/>
+<input type=checkbox name=s value="учебно-научная">учебно-научная<br/>
+<input type=checkbox name=s value="церковно-богословская">церковно-богословская<br/>
+<input type=checkbox name=s value="электронная коммуникация">электронная коммуникация<br/>
+</td>
+</tr>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="topic" id="topic" action="" style="display: none;">
+<h3>Тематика текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('sj')">Инвертировать выбор</a></span><br/>
+<tr valign=top>
+<td nowrap>
+<input type=checkbox name=sj value="администрация и управление">администрация и управление<br/>
+<input type=checkbox name=sj value="армия и вооруженные конфликты">армия и вооруженные конфликты<br/>
+<input type=checkbox name=sj value="астрология, парапсихология, эзотерика">астрология, парапсихология, эзотерика<br/>
+<input type=checkbox name=sj value="бизнес, коммерция, экономика, финансы">бизнес, коммерция, экономика, финансы<br/>
+<input type=checkbox name=sj value="дом и домашнее хозяйство">дом и домашнее хозяйство<br/>
+<input type=checkbox name=sj value="досуг, зрелища и развлечения">досуг, зрелища и развлечения<br/>
+<input type=checkbox name=sj value="здоровье и медицина">здоровье и медицина<br/>
+<input type=checkbox name=sj value="искусство и культура">искусство и культура<br/>
+<input type=checkbox name=sj value="криминал">криминал<br/>
+<input type=checkbox name=sj value="образование">образование<br/>
+<input type=checkbox name=sj value="политика и общественная жизнь">политика и общественная жизнь<br/>
+<input type=checkbox name=sj value="право">право<br/>
+<input type=checkbox name=sj value="природа">природа<br/>
+<input type=checkbox name=sj value="производство">производство<br/>
+<input type=checkbox name=sj value="путешествия">путешествия<br/>
+<input type=checkbox name=sj value="религия">религия<br/>
+<input type=checkbox name=sj value="сельское хозяйство">сельское хозяйство<br/>
+<input type=checkbox name=sj value="спорт">спорт<br/>
+<input type=checkbox name=sj value="строительство и архитектура">строительство и архитектура<br/>
+<input type=checkbox name=sj value="техника">техника<br/>
+<input type=checkbox name=sj value="философия">философия<br/>
+<input type=checkbox name=sj value="частная жизнь">частная жизнь<br/>
+<td nowrap>
+<input type=checkbox name=sj value="наука и технологии"><b>наука и технологии</b><br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('sj1')"><b>естественные науки</b></a></span><br/>
+<input type=checkbox name=sj1 value="астрономия">астрономия<br/>
+<input type=checkbox name=sj1 value="биология">биология<br/>
+<input type=checkbox name=sj1 value="география">география<br/>
+<input type=checkbox name=sj1 value="геология">геология<br/>
+<input type=checkbox name=sj1 value="информатика">информатика<br/>
+<input type=checkbox name=sj1 value="математика">математика<br/>
+<input type=checkbox name=sj1 value="статистика">статистика<br/>
+<input type=checkbox name=sj1 value="физика">физика<br/>
+<input type=checkbox name=sj1 value="химия">химия<br/>
+<input type=checkbox name=sj1 value="природа">природа<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('sj2')"><b>прикладные науки</b></a></span><br/>
+<input type=checkbox name=sj2 value="армия и вооруженные конфликты">военное дело<br/>
+<input type=checkbox name=sj2 value="здоровье и медицина">медицина<br/>
+<input type=checkbox name=sj2 value="лесное хозяйство">лесное хозяйство<br/>
+<input type=checkbox name=sj2 value="производство">производство<br/>
+<input type=checkbox name=sj2 value="сельское хозяйство">сельское хозяйство<br/>
+<input type=checkbox name=sj2 value="строительство и архитектура">строительство и архитектура<br/>
+<input type=checkbox name=sj2 value="техника ">техника<br/>
+<input type=checkbox name=sj2 value="транспорт">транспорт<br/>
+<input type=checkbox name=sj2 value="энергетика">энергетика<br/>
+<td>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('sj3')"><b>гуманитарные науки</b></a></span><br/>
+<input type=checkbox name=sj3 value="искусствоведение">искусствоведение<br/>
+<input type=checkbox name=sj3 value="история">история<br/>
+<input type=checkbox name=sj3 value="культурология">культурология<br/>
+<input type=checkbox name=sj3 value="образование">образование <br/>
+<input type=checkbox name=sj3 value="политика и общественная жизнь">политология<br/>
+<input type=checkbox name=sj3 value="право">право<br/>
+<input type=checkbox name=sj3 value="психология">психология<br/>
+<input type=checkbox name=sj3 value="религия">религиоведение<br/>
+<input type=checkbox name=sj3 value="социология">социология<br/>
+<input type=checkbox name=sj3 value="филология">филология<br/>
+<input type=checkbox name=sj3 value="философия">философия<br/>
+<input type=checkbox name=sj3 value="бизнес, коммерция, экономика, финансы">экономика<br/>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+<form name="topic_spoken" id="topic_spoken" action="" style="display: none;">
+<h3>Тематика текста<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('sj')">Инвертировать выбор</a></span><br/>
+<tr valign=top>
+<td nowrap>
+<input type=checkbox name=sj value="астрология, парапсихология, эзотерика">астрология, парапсихология, эзотерика<br/>
+<input type=checkbox name=sj value="бизнес, коммерция, экономика, финансы">бизнес, коммерция, экономика, финансы<br/>
+<input type=checkbox name=sj value="дом и домашнее хозяйство">дом и домашнее хозяйство<br/>
+<input type=checkbox name=sj value="досуг, зрелища и развлечения">досуг, зрелища и развлечения<br/>
+<input type=checkbox name=sj value="здоровье и медицина">здоровье и медицина<br/>
+<input type=checkbox name=sj value="искусство и культура">искусство и культура<br/>
+<input type=checkbox name=sj value="криминал">криминал<br/>
+<input type=checkbox name=sj value="музыка">музыка<br/>
+<input type=checkbox name=sj value="образование">образование<br/>
+<input type=checkbox name=sj value="политика и общественная жизнь">политика и общественная жизнь<br/>
+<input type=checkbox name=sj value="путешествия">путешествия<br/>
+<input type=checkbox name=sj value="религия">религия<br/>
+<input type=checkbox name=sj value="спорт">спорт<br/>
+<input type=checkbox name=sj value="частная жизнь">частная жизнь<br/>
+<td nowrap>
+<input type=checkbox name=sj value="наука и технологии"><b>наука и технологии</b><br/>
+<span title="Инвертировать"><a href="#" onclick="inverse('sj1')"><b>естественные науки</b></a></span><br/>
+<input type=checkbox name=sj1 value="астрономия">астрономия<br/>
+<input type=checkbox name=sj1 value="биология">биология<br/>
+<input type=checkbox name=sj1 value="информатика">информатика<br/>
+<input type=checkbox name=sj1 value="математика">математика<br/>
+<input type=checkbox name=sj1 value="физика">физика<br/>
+<input type=checkbox name=sj1 value="химия">химия<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('sj2')"><b>прикладные науки</b></a></span><br/>
+<input type=checkbox name=sj2 value="промышленность">промышленность<br/>
+<input type=checkbox name=sj2 value="техника ">техника<br/>
+<td>
+<br/>
+
+<span title="Инвертировать"><a href="#" onclick="inverse('sj3')"><b>гуманитарные науки</b></a></span><br/>
+<input type=checkbox name=sj3 value="искусствоведение">искусствоведение<br/>
+<input type=checkbox name=sj3 value="история">история<br/>
+<input type=checkbox name=sj3 value="культурология">культурология<br/>
+<input type=checkbox name=sj3 value="право">право<br/>
+<input type=checkbox name=sj3 value="психология">психология<br/>
+<input type=checkbox name=sj3 value="филология">филология<br/>
+<input type=checkbox name=sj3 value="философия">философия<br/>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+<form name="chronotop" id="chronotop" action="" style="display: none;">
+<h3>Место и время описываемых событий<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="attr_tbl">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('pt')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr valign="top"><td>
+<input type=checkbox name=pt value="доисторический период">доисторический период<br/>
+<input type=checkbox name=pt value="античность">античность<br/>
+<input type=checkbox name=pt value="Средние века">Средние века<br/>
+<input type=checkbox name=pt value="Новое время">Новое время<br/>
+<input type=checkbox name=pt value="Россия: Средние века">Россия: Средние века<br/>
+<input type=checkbox name=pt value="Россия: 15 век">Россия: 15 век<br/>
+<input type=checkbox name=pt value="Россия: 17 век">Россия: 17 век<br/>
+<input type=checkbox name=pt value="Россия: 18 век">Россия: 18 век<br/>
+<input type=checkbox name=pt value="Россия: 19 век">Россия: 19 век<br/>
+<input type=checkbox name=pt value="Россия: 1-я пол. 20 в.">Россия: 1-я пол. 20 в.<br/>
+<input type=checkbox name=pt value="Россия: 1900-1914">Россия: 1900-1914<br/>
+<input type=checkbox name=pt value="Россия: 1914-1920">Россия: 1914-1920<br/>
+<input type=checkbox name=pt value="Россия: 1920-е">Россия: 1920-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1930-е">Россия/СССР: 1930-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1941-1945">Россия/СССР: 1941-1945<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1950-е">Россия/СССР: 1950-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1946-1952">Россия/СССР: 1946-1952<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1960-1980-е">Россия/СССР: 1960-1980-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: советский период">Россия/СССР: советский период<br/>
+<input type=checkbox name=pt value="Россия/СССР: перестройка">Россия/СССР: перестройка<br/>
+<input type=checkbox name=pt value="Россия: постсоветский период">Россия: постсоветский период<br/>
+<input type=checkbox name=pt value="Россия/Кавказ: 19 век">Россия/Кавказ: 19 век<br/>
+<input type=checkbox name=pt value="Россия/Польша: 19 век">Россия/Польша: 19 век<br/>
+<input type=checkbox name=pt value="Россия/Сибирь: 19 век">Россия/Сибирь: 19 век<br/>
+<input type=checkbox name=pt value="Россия/Украина: 18 век">Россия/Украина: 18 век<br/>
+<input type=checkbox name=pt value="Россия/Украина: 19 век">Россия/Украина: 19 век<br/>
+<td>
+<input type=checkbox name=pt value="Европа: Средние века">Европа: Средние века<br/>
+<input type=checkbox name=pt value="Европа: 18 век">Европа: 18 век<br/>
+<input type=checkbox name=pt value="Европа/Балканы: 19 век">Европа/Балканы: 19 век<br/>
+<input type=checkbox name=pt value="Европа: 19 век">Европа: 19 век<br/>
+<input type=checkbox name=pt value="Европа: 1-я пол. 20 в.">Европа: 1-я пол. 20 в.<br/>
+<input type=checkbox name=pt value="Европа: 2-я пол. 20 в.">Европа: 2-я пол. 20 в.<br/>
+<input type=checkbox name=pt value="Европа: современность">Европа: современность<br/>
+<input type=checkbox name=pt value="Америка: 1-я пол. 20 в.">Америка: 1-я пол. 20 в.<br/>
+<input type=checkbox name=pt value="Америка: 2-я пол. 20 в.">Америка: 2-я пол. 20 в.<br/>
+<input type=checkbox name=pt value="Америка: современность">Америка: современность<br/>
+<input type=checkbox name=pt value="Ближний Восток: античность">Ближний Восток: античность<br/>
+<input type=checkbox name=pt value="Ближний Восток: 2-я пол. 20 в.">Ближний Восток: 2-я пол. 20 в.<br/>
+<input type=checkbox name=pt value="Ближний Восток: современность">Ближний Восток: современность<br/>
+<input type=checkbox name=pt value="Дальний Восток: 1-я пол. 20 в.">Дальний Восток: 1-я пол. 20 в.<br/>
+<input type=checkbox name=pt value="Дальний Восток: 2-я пол. 20 в.">Дальний Восток: 2-я пол. 20 в.<br/>
+<input type=checkbox name=pt value="Дальний Восток: современность">Дальний Восток: современность<br/>
+<input type=checkbox name=pt value="Восток: неопределенное время">Восток: неопределенное время<br/>
+<input type=checkbox name=pt value="Австралия: современность">Австралия: современность<br/>
+<input type=checkbox name=pt value="Белоруссия: постсоветский период">Белоруссия: постсоветский период<br/>
+<input type=checkbox name=pt value="Средняя Азия: постсоветский период">Средняя Азия: постсоветский период<br/>
+<input type=checkbox name=pt value="Закавказье: постсоветский период">Закавказье: постсоветский период<br/>
+<input type=checkbox name=pt value="Азия: 15 век">Азия: 15 век<br/>
+<input type=checkbox name=pt value="Азия: 19 век">Азия: 19 век<br/>
+<input type=checkbox name=pt value="Африка: 19 век">Африка: 19 век<br/>
+<input type=checkbox name=pt value="Африка: 1-я пол. 20 в.">Африка: 1-я пол. 20 в.<br/>
+<input type=checkbox name=pt value="ирреальный мир">ирреальный мир<br/>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+<form name="chronotop_spoken" id="chronotop_spoken" action="" style="display: none;">
+<h3>Место и время описываемых событий<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="attr_tbl">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('pt')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr valign="top"><td>
+<input type=checkbox name=pt value="Россия: Средние века">Россия: Средние века<br/>
+<input type=checkbox name=pt value="Россия: 15 век">Россия: 15 век<br/>
+<input type=checkbox name=pt value="Россия: 16 век">Россия: 16 век<br/>
+<input type=checkbox name=pt value="Россия: 18 век">Россия: 18 век<br/>
+<input type=checkbox name=pt value="Россия: 19 век">Россия: 19 век<br/>
+<input type=checkbox name=pt value="Россия: 1-я пол. 20 в.">Россия: 1-я пол. 20 в.<br/>
+<input type=checkbox name=pt value="Россия: 1900-1914">Россия: 1900-1914<br/>
+<input type=checkbox name=pt value="Россия: 1914-1920">Россия: 1914-1920<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1920-е">Россия/СССР: 1920-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1930-е">Россия/СССР: 1930-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1941-1945">Россия/СССР: 1941-1945<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1946-1952">Россия/СССР: 1946-1952<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1950-е">Россия/СССР: 1950-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: 1960-1980-е">Россия/СССР: 1960-1980-е<br/>
+<input type=checkbox name=pt value="Россия/СССР: советский период">Россия/СССР: советский период<br/>
+<input type=checkbox name=pt value="Россия: постсоветский период">Россия: постсоветский период<br/>
+</td><td>
+<input type=checkbox name=pt value="Австралия и Океания: 19 век">Австралия и Океания: 19 век<br/>
+<input type=checkbox name=pt value="Америка: 19 век">Америка: 19 век<br/>
+<input type=checkbox name=pt value="Африка: 19 век">Африка: 19 век<br/>
+<input type=checkbox name=pt value="Европа: 17 век">Европа: 17 век<br/>
+<input type=checkbox name=pt value="Европа: 18 век">Европа: 18 век<br/>
+<input type=checkbox name=pt value="Европа: 19 век">Европа: 19 век<br/>
+<input type=checkbox name=pt value="Европа: 1-я пол. 20 в.">Европа: 1-я пол. 20 в.<br/>
+<input type=checkbox name=pt value="Европа: 1-я пол. 20 в.">ирреальный мир<br/>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+<form name="dial_loc" id="dial_loc" action="" style="display: none;">
+<h3>Место записи</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('dl')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=dl value="Архангельск">Архангельск<br/>
+<input type=checkbox name=dl value="Брянск">Брянск<br/>
+<input type=checkbox name=dl value="Волгоград">Волгоград<br/>
+<input type=checkbox name=dl value="Вологда">Вологда<br/>
+<input type=checkbox name=dl value="Воронеж">Воронеж<br/>
+<input type=checkbox name=dl value="Забайкалье">Забайкалье<br/>
+<input type=checkbox name=dl value="Иваново">Иваново<br/>
+<input type=checkbox name=dl value="Калуга">Калуга<br/>
+<input type=checkbox name=dl value="Карелия">Карелия<br/>
+<input type=checkbox name=dl value="Кострома">Кострома<br/>
+<input type=checkbox name=dl value="Курск">Курск<br/>
+<input type=checkbox name=dl value="Новгород">Новгород<br/>
+<input type=checkbox name=dl value="Псков">Псков<br/>
+<input type=checkbox name=dl value="Рязань">Рязань<br/>
+<input type=checkbox name=dl value="Саратов">Саратов<br/>
+<input type=checkbox name=dl value="Смоленск">Смоленск<br/>
+<input type=checkbox name=dl value="Тамбов">Тамбов<br/>
+<input type=checkbox name=dl value="Тверь">Тверь<br/>
+<input type=checkbox name=dl value="Тула">Тула<br/>
+</td>
+</tr>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="dial_topic" id="dial_topic" action="" style="display: none;">
+<h3>Тематика</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('dt')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=dt value="быт">быт<br/>
+<input type=checkbox name=dt value="война">война<br/>
+<input type=checkbox name=dt value="жизнь">жизнь<br/>
+<input type=checkbox name=dt value="люди">люди<br/>
+<input type=checkbox name=dt value="обычаи">обычаи<br/>
+<input type=checkbox name=dt value="праздники">праздники<br/>
+<input type=checkbox name=dt value="природа">природа<br/>
+<input type=checkbox name=dt value="работа">работа<br/>
+<input type=checkbox name=dt value="религия">религия<br/>
+<input type=checkbox name=dt value="семья">семья<br/>
+<input type=checkbox name=dt value="фольклор">фольклор<br/>
+</td>
+</tr>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="genre_poet" id="genre_poet" action="" style="display: none;">
+<h3>Жанр текста</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('g')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=g value="акростих">акростих<br/>
+<input type=checkbox name=g value="аполог">аполог<br/>
+<input type=checkbox name=g value="баллада">баллада<br/>
+<input type=checkbox name=g value="басня">басня<br/>
+<input type=checkbox name=g value="былина">былина<br/>
+<input type=checkbox name=g value="в альбом">в альбом<br/>
+<input type=checkbox name=g value="гимн">гимн<br/>
+<input type=checkbox name=g value="дифирамб">дифирамб<br/>
+<input type=checkbox name=g value="идиллия">идиллия<br/>
+<input type=checkbox name=g value="кантата">кантата<br/>
+<input type=checkbox name=g value="комедия">комедия<br/>
+<input type=checkbox name=g value="куплеты">куплеты<br/>
+<input type=checkbox name=g value="мадригал">мадригал<br/>
+<input type=checkbox name=g value="надпись">надпись<br/>
+<input type=checkbox name=g value="ноэль">ноэль<br/>
+<input type=checkbox name=g value="ода">ода<br/>
+<input type=checkbox name=g value="отрывок">отрывок<br/>
+<input type=checkbox name=g value="пародия">пародия<br/>
+<input type=checkbox name=g value="перевод">перевод<br/>
+<td valign="top">
+<input type=checkbox name=g value="песня">песня<br/>
+<input type=checkbox name=g value="подражание">подражание<br/>
+<input type=checkbox name=g value="посвящение">посвящение<br/>
+<input type=checkbox name=g value="послание">послание<br/>
+<input type=checkbox name=g value="поэма">поэма<br/>
+<input type=checkbox name=g value="притча">притча<br/>
+<input type=checkbox name=g value="пьеса">пьеса<br/>
+<input type=checkbox name=g value="роман в стихах">роман в стихах<br/>
+<input type=checkbox name=g value="романс">романс<br/>
+<input type=checkbox name=g value="сатира">сатира<br/>
+<input type=checkbox name=g value="сказка">сказка<br/>
+<input type=checkbox name=g value="сонет">сонет<br/>
+<input type=checkbox name=g value="стансы">стансы<br/>
+<input type=checkbox name=g value="стихотворение">стихотворение<br/>
+<input type=checkbox name=g value="сцена">сцена<br/>
+<input type=checkbox name=g value="цикл">цикл<br/>
+<input type=checkbox name=g value="экспромт">экспромт<br/>
+<input type=checkbox name=g value="элегия">элегия<br/>
+<input type=checkbox name=g value="эпиграмма">эпиграмма<br/>
+<input type=checkbox name=g value="эпитафия">эпитафия<br/>
+</td>
+</tr>
+</table>
+</table>
+
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="strophe" id="strophe" action="" style="display: none;">
+<h3>Строфика</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=x value="0">(отсутствует)<br/>
+<input type=checkbox name=x value="александрийский стих">александрийский стих<br/>
+<input type=checkbox name=x value="элегический дистих">элегический дистих<br/>
+<input type=checkbox name=x value="терцина">терцина<br/>
+<input type=checkbox name=x value="октава">октава<br/>
+<input type=checkbox name=x value="сицилиана">сицилиана<br/>
+<input type=checkbox name=x value="одическая строфа">одическая строфа<br/>
+<input type=checkbox name=x value="онегинская строфа">онегинская строфа<br/>
+<input type=checkbox name=x value="сонет">сонет<br/>
+<input type=checkbox name=x value="триолет">триолет<br/>
+<input type=checkbox name=x value="сложная">сложная строфика<br/>
+<td valign="top">
+Длина строф<br/>
+<input type=checkbox name=x value="1">1<br/>
+<input type=checkbox name=x value="2">2<br/>
+<input type=checkbox name=x value="3">3<br/>
+<input type=checkbox name=x value="4">4<br/>
+<input type=checkbox name=x value="5">5<br/>
+<input type=checkbox name=x value="6">6<br/>
+<input type=checkbox name=x value="7">7<br/>
+<input type=checkbox name=x value="8">8<br/>
+<input type=checkbox name=x value="9">9<br/>
+<input type=checkbox name=x value="10">10<br/>
+<input type=checkbox name=x value="11">11<br/>
+<input type=checkbox name=x value="12">12<br/>
+</table>
+</table>
+Cложные сочетания строф (2+4) и отсутствуюшие в списке длины графических строф вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="gr_strophe" id="gr_strophe" action="" style="display: none;">
+<h3>Графическая строфика</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=x value="0">(отсутствует)<br/>
+<input type=checkbox name=x value="вольная">вольная<br/>
+<input type=checkbox name=x value="мнимая проза">мнимая проза<br/>
+<input type=checkbox name=x value="парцеллированная">парцеллированная<br/>
+<input type=checkbox name=x value="сложная">сложная<br/>
+<td valign="top">
+Длина графических строф<br/>
+<input type=checkbox name=x value="2">2 строки<br/>
+<input type=checkbox name=x value="3">3<br/>
+<input type=checkbox name=x value="4">4<br/>
+<input type=checkbox name=x value="5">5<br/>
+<input type=checkbox name=x value="6">6<br/>
+<input type=checkbox name=x value="8">8<br/>
+<input type=checkbox name=x value="10">10<br/>
+<input type=checkbox name=x value="12">12<br/>
+<input type=checkbox name=x value="16">16<br/>
+<input type=checkbox name=x value="18">18<br/>
+</table>
+</table>
+Cложные сочетания строф (2+4) и отсутствуюшие в списке длины графических строф вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="meter" id="meter" action="" style="display: none;">
+<h3>Метр</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<b>силлабо-тонический</b><br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Х">хорей<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Я">ямб<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Д">дактиль<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Аф">амфибрахий<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="Ан">анапест<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="гетерометрия">гетерометрия (сочетание разных метров)<br/>
+<b>несиллабо-тонический</b><br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="силлабический">силлабический<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="тонический">тонический<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="гекзаметр">гекзаметр<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="пентаметр">пентаметр<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="логаэд">логаэд<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="дольник">дольник<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="тактовик">тактовик<br/>
+&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="акцентный">акцентный<br/>
+&nbsp;&nbsp;<input type=checkbox name=x value="свободный">свободный<br/>
+</table>
+Регулярные сочетания метров (Х+Я) вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="foots" id="foots" action="" style="display: none;">
+<h3>Длина строки (стопы в силлабо-тонике, икты в тонике, слоги в силлабике)</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=x value="0">(не определена)<br/>
+<input type=checkbox name=x value="1">1<br/>
+<input type=checkbox name=x value="2">2<br/>
+<input type=checkbox name=x value="3">3<br/>
+<input type=checkbox name=x value="4">4<br/>
+<input type=checkbox name=x value="5">5<br/>
+<input type=checkbox name=x value="6">6<br/>
+<input type=checkbox name=x value="6">7<br/>
+<input type=checkbox name=x value="8">8<br/>
+<input type=checkbox name=x value="11">11<br/>
+<input type=checkbox name=x value="12">12<br/>
+<input type=checkbox name=x value="13">13<br/>
+<td valign="top">
+<input type=checkbox name=x value="вольная">вольная<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="3 4">3,4<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4,5">4,5<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4,6">4,6<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4,5,6">4,5,6<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="3,4,5,6">3,4,6<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="3,4,6">3,4,5,6<br/>
+<input type=checkbox name=x value="регулярная">регулярная<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4+2">4+2<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="4+3">4+3<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="6+3">6+3<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="6+4">6+4<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="5+4">5+4<br/>
+</table>
+</table>
+Отсутствующие в списке значения, включая запись вида 5(4) [одна 4-стопная строка на фоне 5-стопных] вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+
+<form name="clausula" id="clausula" action="" style="display: none;">
+<h3>Клаузула</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=x value="вольная"><b>вольная</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="ж, м">ж, м<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="д, м">д, м<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="д, ж">д, ж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="д, ж, м">д, ж, м<br/>
+<input type=checkbox name=x value="регулярная"><b>регулярная</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жм">жм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="мж">мж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жжм">жжм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="ммж">ммж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жжмм">жжмм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="ммжж">ммжж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="мжжм">мжжм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жммж">жммж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="мжжм жммж">мжжм жммж<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жммж мжжм">жммж мжжм<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="жмжжм">жмжжм<br/>
+<input type=checkbox name=x value="м">мужская<br/>
+<input type=checkbox name=x value="ж">женская<br/>
+<input type=checkbox name=x value="д">дактилическая<br/>
+</table>
+Указаны наиболее частотные в корпусе сочетания клаузул; отсутствующие в списке сочетания вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="rhyme" id="rhyme" action="" style="display: none;">
+<h3>Рифма</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top">
+<input type=checkbox name=x value="0">отсутствует (белый стих)<br/>
+<input type=checkbox name=x value="вольная">вольная<br/>
+<input type=checkbox name=x value="спорадическая">спорадическая<br/>
+<input type=checkbox name=x value="монорим">монорим<br/>
+<input type=checkbox name=x value="регулярная">регулярная<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="парная">парная (аа)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="тройная">тройная (ааа)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="перекрестная">перекрестная (абаб)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="охватная">охватная (абба)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="затянутая">затянутая (любая 5- или 6-строчная<br/> строфа на две рифмы)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="нечетная">нечетная (абав)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="четная">четная (абвб)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="цепная">цепная (терцины или подобная)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="скользящая">скользящая (абвг абвг или подобная)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type=checkbox name=x value="сложная">сложная (иные типы)<br/>
+
+<td valign="top">
+<input type=checkbox name=x value="аабввб">аабввб<br/>
+<input type=checkbox name=x value="абааб">абааб<br/>
+<input type=checkbox name=x value="абаб вв">абаб вв<br/>
+<input type=checkbox name=x value="абаб ввгг">абаб ввгг<br/>
+<input type=checkbox name=x value="абаб вггв">абаб вггв<br/>
+<input type=checkbox name=x value="абабаб">абабаб<br/>
+<input type=checkbox name=x value="абабаб вв">абабаб вв<br/>
+</table>
+</table>
+Указаны наиболее частотные в корпусе виды затянутой и сложной рифмовки; отсутствующие в списке сочетания вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+<form name="formula" id="formula" action="" style="display: none;">
+<h3>Формула</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<input type=checkbox name=x value="Аф3жм">Аф3жм<br/>
+<input type=checkbox name=x value="Х4ж,м">Х4ж,м<br/>
+<input type=checkbox name=x value="Х4жм">Х4жм<br/>
+<input type=checkbox name=x value="Х4мж">Х4мж<br/>
+<input type=checkbox name=x value="Я3ж,м">Я3ж,м<br/>
+<input type=checkbox name=x value="Я4,Я5,Я6ж,м">Я4,Я5,Я6ж,м<br/>
+<input type=checkbox name=x value="Я4,Я6ж,м">Я4,Я6ж,м<br/>
+<input type=checkbox name=x value="Я4ж,м">Я4ж,м<br/>
+<input type=checkbox name=x value="Я4жм">Я4жм<br/>
+<input type=checkbox name=x value="Я4жм, мж">Я4жм, мж<br/>
+<input type=checkbox name=x value="Я4м">Я4м<br/>
+<input type=checkbox name=x value="Я4мж">Я4мж<br/>
+<input type=checkbox name=x value="Я5ж,м">Я5ж,м<br/>
+<input type=checkbox name=x value="Я5жм">Я5жм<br/>
+<input type=checkbox name=x value="Я5м">Я5м<br/>
+<input type=checkbox name=x value="Я5мж">Я5мж<br/>
+<input type=checkbox name=x value="Я6ж,м">Я6ж,м<br/>
+<input type=checkbox name=x value="Я6жжмм">Я6жжмм<br/>
+<input type=checkbox name=x value="Я6жм">Я6жм<br/>
+<input type=checkbox name=x value="Я6мж">Я6мж<br/>
+<input type=checkbox name=x value="Я6ммжж">Я6ммжж<br/>
+</table>
+Указаны наиболее частотные в корпусе формулы; отсутствующие в списке формулы вводите в строку запроса<br/>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+<form name="extra" id="extra" action="" style="display: none;">
+<h3>Дополнительные пометы</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+<TR valign=top>
+<td><span title="Инвертировать"><a href="#" onclick="inverse('x')">Инвертировать выбор</a></span><br/>
+<table cellspacing=1 cellpadding=1 class="inform">
+<tr><td valign="top" nowrap>
+<b>Полиметрия</b><br/>
+<input type=checkbox name=x value="с инометрическими фрагментами">с инометрическими фрагментами<br/>
+<input type=checkbox name=x value="полиметрия">полиметрия<br/>
+<input type=checkbox name=x value="полиметрический фрагмент">полиметрический фрагмент<br/>
+<b>Преобразования метра</b><br/>
+<input type=checkbox name=x value="перебои">перебои<br/>
+<input type=checkbox name=x value="цезурные наращения">цезурные наращения<br/>
+<input type=checkbox name=x value="цезурные усечения">цезурные усечения<br/>
+<input type=checkbox name=x value="двойные цезурные усечения">двойные цезурные усечения<br/>
+
+<b>Особые типы силлабо-тонических метров</b><br/>
+<input type=checkbox name=x value="пентон">пентон<br/>
+<input type=checkbox name=x value="пеон III">пеон III<br/>
+<b>Особенности строфики</b><br/>
+<input type=checkbox name=x value="белая строка">белая строка<br/>
+<input type=checkbox name=x value="кода">кода<br/>
+<input type=checkbox name=x value="нарушения строфики">нарушения строфики<br/>
+<input type=checkbox name=x value="пантум">пантум<br/>
+<input type=checkbox name=x value="редупликация">редупликация<br/>
+<input type=checkbox name=x value="рефрен">рефрен<br/>
+<input type=checkbox name=x value="усеченная строка">усеченная строка<br/>
+<input type=checkbox name=x value="холостая строка">холостая строка<br/>
+<td valign="top" nowrap>
+<b>Рифма</b><br/>
+<input type=checkbox name=x value="ассонанс">ассонанс<br/>
+<input type=checkbox name=x value="внутренняя рифма">внутренняя рифма<br/>
+<input type=checkbox name=x value="диссонанс">диссонанс<br/>
+<input type=checkbox name=x value="монотонная рифма">монотонная рифма<br/>
+<input type=checkbox name=x value="омонимическая рифма">каламбурная рифма<br/>
+<input type=checkbox name=x value="разноударная рифма">разноударная рифма<br/>
+<input type=checkbox name=x value="составная рифма">составная рифма<br/>
+<input type=checkbox name=x value="тавторифма">тавторифма<br/>
+<b>Прочее</b><br/>
+<input type=checkbox name=x value="акростих">акростих<br/>
+</table>
+</table>
+<br/>
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+</center>
+</body>
+</html>

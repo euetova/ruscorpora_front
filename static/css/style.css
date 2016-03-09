@@ -15,7 +15,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 70px;
-    padding-top: 80px;
+    /*padding-top: 80px;*/
 }
 .footer {
   position: absolute;
@@ -38,3 +38,10 @@ form .form-group {
     margin-bottom: 2%;
 }
 
+.date {
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  text-align: left;
+  font-weight: bold;
+  color: #FA9108;
+}

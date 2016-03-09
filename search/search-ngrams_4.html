@@ -1,3 +1,10 @@
+<!--#set var="PARENT_NAME" value="main"-->
+<!--#set var="SCRIPT" value="ru.js"-->
+<!--#set var="SCRIPT1" value="search.js"-->
+<!--#set var="SCRIPT2" value="ngrams.js"-->
+<!--#set var="TITLE" value="Поиск в корпусе. Национальный корпус русского языка"-->
+<!--#include virtual="ssi/corpora-header.html" -->
+
 <!-- HEADER START -->
 <!DOCTYPE html>
 <html lang="ru">
@@ -20,19 +27,24 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-    <script src="static/js/jquery.js"></script>
-    <link href="static/css/bootstrap.flatly.css" rel="stylesheet">
-<script src="static/js/bootstrap.min.js"></script>
-    <link href="static/css/style.css" rel="stylesheet">
+    <script src="../static/js/jquery.js"></script>
+    <link href="../static/css/bootstrap.flatly.css" rel="stylesheet">
+<script src="../static/js/bootstrap.min.js"></script>
+    <link href="../static/css/style.css" rel="stylesheet">
 
-        <script language="JavaScript" src="static/js/common.js"> </script>
-    <script language="JavaScript" src="www-copy/www-copy/custom_draw_word.js"> </script>
-    <script language="JavaScript" src="static/js/ru.js"> </script>
-	<script language="JavaScript" src="static/js/search-wf.js"></script>
-    <script language="JavaScript" src="static/js/main.js"> </script>
-    <script type="text/javascript" src="static/js/suggest.js"></script>
+        <script language="JavaScript" src="../static/js/common.js"> </script>
+    <script language="JavaScript" src="../static/js/custom_draw_word.js"> </script>
+    <script language="JavaScript" src="../static/js/ru.js"> </script>
+	<script language="JavaScript" src="../static/js/search.js"></script>
+    <script language="JavaScript" src="../static/js/ngrams.js"> </script>
 
+<link rel="search" href="opensearch-main.xml" title="Ruscorpora" type="application/opensearchdescription+xml">
+<script type="text/javascript" src="suggest.js"></script> 
 
+<script type="text/javascript">
+settings.wordsCount = 4;
+settings.mode = "ngrams_4";
+</script>
 </head>
 
 <body onload="init();" onclick="bodyclosehelp()">
@@ -46,7 +58,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand"><img src="www-copy/www-copy/i/logo.gif" style=""></a>
+      <a href="/" class="navbar-brand"><img src="../static/img/logo.gif" style=""></a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
@@ -95,71 +107,78 @@
 
 <div class="col-sm-10">
       <div class="row">
-          <div class="col-sm-6">
-          <h3>Основной корпус</h3>
-        </div>
-          <div class="col-sm-6">
-                <div class="row">
-        	      	    <div class="btn-group pull-right" style="padding-right: 10px; padding-top: 10px">
-                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#subcorpus">Задать подкорпус</button>
-                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#preferences">Настройки</button>
-                            <a class="btn btn btn-default" href="/" target="_blank">English</a>
-                        </div>
-                </div>
-              </div>
-       </div>
-    <div class="row">
-          <h4>Поиск точных форм</h4>
-<form target="_blank" action="http://search1.ruscorpora.ru/search.xml" name="exactForm" method="get" onsubmit="yaCounter677861.reachGoal('TARGET_MAIN');  return true;">
-          <input type="hidden" name="env" value="alpha"/>
+
+<div class="settings"/>
+ <a target="_blank" href="help-ngrams.html"><nobr>инструкция</nobr></a>
+</div>
+
+<h1 class="header">Поиск по 4-граммам</h1>
+<br clear="all" />
+
+<form target="_blank" action="http://search.ruscorpora.ru/search.xml" name="exactForm" method="get" onsubmit="toggleMode(false); return true;">
+<input type="hidden" name="env" value="sas1_2"/>
 <input type="hidden" name="mycorp" value=""/>
 <input type="hidden" name="mysent" value=""/>
 <input type="hidden" name="mysize" value=""/>
 <input type="hidden" name="mysentsize" value=""/>
-<input type="hidden" name="mydocsize" value=""/>
-<input type="hidden" name="dpp" value=""/>
-<input type="hidden" name="spp" value=""/>
-<input type="hidden" name="spd" value=""/>
+<input type="hidden" name="dpp" value="100"/>
+<input type="hidden" name="spp" value="100"/>
+<input type="hidden" name="spd" value="100"/>
 <input type="hidden" name="text" value="lexform"/>
-<input type="hidden" name="mode" value="main"/>
-<input type="hidden" name="sort" value="gr_tagging"/>
+<input type="hidden" name="sort" value="gr_freq"/>
+<input type="hidden" name="lang" value="ru"/>
+<input type="hidden" name="mode" value="ngrams_4"/>
+<input type="hidden" name="nodia" value="1"/>
+
+<div class="row">
+   <input type="checkbox" id="use_lexgr" onclick="toggleMode()"/>учитывать лексику и грамматику&nbsp;&nbsp;&nbsp;<br/>
+   <input type="checkbox" id="use_punct" onclick="toggleMode()"/>учитывать пунктуацию&nbsp;&nbsp;&nbsp;<br/>
+   <br/><br/>
+</div>
+<div class="row">
+  <h4>Поиск&nbsp;точных&nbsp;форм&nbsp;&nbsp; <a href="../help/help-simple.html" onClick="return showhelp('../help/help-simple.html',516)"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a>
+   <a href="#" onClick="return getVkb('req')"><img style="vertical-align:bottom;" src="../static/img/keyboard.gif" alt="Виртуальная клавиатура" title="Виртуальная клавиатура" width="42" height="21" border="0"></a></h4>
+
+</div>
+    <div class="row">
+        <label>Слово или фраза
+             <input class="form-control input-sm" type="text" name="req" placeholder="" size="100%">
+        </label>
+
+   <p>
+            <input type="submit" class="btn btn-xs btn-default" value="Искать">
+        <input type="reset" class="btn btn-xs btn-default" value="Очистить">
+        </p></div>
+</form>
+<div class="row">
+<form target="_blank" name="reqForm" action="http://search.ruscorpora.ru/search.xml" method="get" onsubmit="order_indexes(); toggleMode(true); return true;">
+<input type="hidden" name="env" value="sas1_2"/>
+<input type="hidden" name="mycorp" value=""/>
+<input type="hidden" name="mysent" value=""/>
+<input type="hidden" name="mysize" value=""/>
+<input type="hidden" name="mysentsize" value=""/>
+<input type="hidden" name="dpp" value="100"/>
+<input type="hidden" name="spp" value="100"/>
+<input type="hidden" name="spd" value="100"/>
+<input type="hidden" name="text" value="lexgramm"/>
+<input type="hidden" name="mode" value="ngrams_4"/>
+<input type="hidden" name="sort" value="gr_freq"/>
 <input type="hidden" name="lang" value="ru"/>
 <input type="hidden" name="nodia" value="1"/>
-        <label>
-            <input class="form-control input-sm" type="text" name="req" placeholder="" size="100%">
-        </label>
-        <p id="search">
+<h4><nobr>Лексико-грамматический&nbsp;поиск&nbsp;&nbsp;</nobr> <a href="../help/help-lexic.html" onClick="return showhelp('help-lexic.html',516)"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a> </h4>
+
+<div id="0_words" style="padding: 10 0 10 0" ></div>
+<p id="search">
             <input type="submit" class="btn btn-xs btn-default" value="Искать">
         <input type="reset" class="btn btn-xs btn-default" value="Очистить">
         </p>
-            </form>
-        </div>
-
-<div class="row">
-    <h4>Лексико-грамматический поиск</h4>
-<form target="_blank" name="reqForm" action="http://search1.ruscorpora.ru/search.xml" method="get" onsubmit="order_indexes(); yaCounter677861.reachGoal('TARGET_MAIN'); return true;">
-<input type="hidden" name="env" value="alpha"/>
-<input type="hidden" name="mycorp" value=""/>
-<input type="hidden" name="mysent" value=""/>
-<input type="hidden" name="mysize" value=""/>
-<input type="hidden" name="mysentsize" value=""/>
-<input type="hidden" name="mydocsize" value=""/>
-<input type="hidden" name="spd" value=""/>
-<input type="hidden" name="text" value="lexgramm"/>
-<input type="hidden" name="mode" value="main"/>
-<input type="hidden" name="sort" value="gr_tagging"/>
-<input type="hidden" name="lang" value="ru"/>
-<input type="hidden" name="nodia" value="1"/>
-<div id="0_words"></div>
-    <input type="submit" class="btn btn-xs btn-default" value="Искать">
-        <input type="reset" class="btn btn-xs btn-default" value="Очистить">
 </form>
 </div>
-    <hr>
-              <p class="text-muted">Национальный корпус русского языка <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> 2003&ndash;2016 </p>
-</div>
 
 
+<!--#include virtual="ssi/ysfooter.html" -->
+    </div>
+<!--</div>-->
 </body>
 <script>
 $(document).ready(function(){

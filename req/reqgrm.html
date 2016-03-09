@@ -2,7 +2,9 @@
 <head>
 <title>Грамматические признаки</title>
 <link rel="shortcut icon" href="../yandex.ru/favicon.ico">
-<link rel="stylesheet" type="text/css" href="./form.css">
+<script src="../static/js/jquery.js"></script>
+    <link href="../static/css/bootstrap.flatly.css" rel="stylesheet">
+<script src="../static/js/bootstrap.min.js"></script>
 <style>
 .inverse	 { cursor: pointer; color: #023F7C; }
 </style>
@@ -70,7 +72,7 @@ try { var yaCounter677861 = new Ya.Metrika(677861); } catch(e){}
 
 <center>
 <form name=gramForm action="">
-<table border=1 cellspacing=0 cellpadding=4 class="intable">
+<table border=0 cellspacing=0 cellpadding=20 class="intable">
 <tr>
 <td valign="top" nowrap rowspan=3>
 <span title="Инвертировать" class="inverse" onclick="inverse('s')"><b>Часть речи</b></span><br>
@@ -149,11 +151,13 @@ try { var yaCounter677861 = new Ya.Metrika(677861); } catch(e){}
 
 <td valign="top" nowrap rowspan=3>
 <span title="Инвертировать" class="inverse" onclick="inverse('o')"><b>Прочее</b></span><br>
-	<!--<input type=checkbox name=o id="norm" value="norm">&nbsp;словарная форма<br>-->
+	<!--<input type=checkbox name=o id="norm" value="norm">&nbsp;словарная форма<br>
+-->
 	<input type=checkbox name=o id="ciph" value="ciph">&nbsp;цифровая запись<br>
 	<input type=checkbox name=o id="anom" value="anom">&nbsp;аномальная форма*<br>
 	<input type=checkbox name=o id="distort" value="distort">&nbsp;искаженная форма*<br>
-	<!--<input type=checkbox name=o id="bastard" value="bastard">&nbsp;несловарная форма**<br>-->
+	<!--<input type=checkbox name=o id="bastard" value="bastard">&nbsp;несловарная форма**<br>
+-->
 	<input type=checkbox name=o id="INIT" value="INIT">&nbsp;инициал*<br>
 	<input type=checkbox name=o id="abbr" value="abbr">&nbsp;сокращение*<br>
 	<input type=checkbox name=o id="0" value="0">&nbsp;несклоняемое*<br>
@@ -193,9 +197,10 @@ try { var yaCounter677861 = new Ya.Metrika(677861); } catch(e){}
 
 <table align=center>
 <tr><td>
-	<input type=button class=button value="  OK  " onclick="collect()">
-	<input type=button class=button value="Очистить" onclick='document.all.gramForm.reset()'>
-	<input type=reset class=button value="Отмена" onclick='window.close()'>
+    <input type="button" class="btn btn-default" onclick="collect()" value="ОК">
+<input type="button" class="btn btn-default" onClick="document.all.gramForm.reset();return false;" value="Очистить">
+<input type="button" class="btn btn-default" onClick="window.close();return false;" value="Отмена">
+
 <tr><td>
 	<font size=-2>
 	<br>* - только в корпусе со снятой омонимией

@@ -1,0 +1,254 @@
+<html>
+<head>
+<title>Грамматические признаки</title>
+<link rel="shortcut icon" href="../yandex.ru/favicon.ico">
+<script src="../static/js/jquery.js"></script>
+    <link href="../static/css/bootstrap.flatly.css" rel="stylesheet">
+<script src="../static/js/bootstrap.min.js"></script>
+<style>
+.inverse	 { cursor: pointer; color: #023F7C; }
+
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript">
+function parse_grams(str) {
+	var grams = str.split(/[&|,()]/);
+	for (i = 0; i < grams.length; i++) {
+		el = window.document.getElementById(grams[i]);
+		if (el) el.checked=true;
+	}
+}
+
+function collect() {
+	var els = document.gramForm.elements;
+	var ar = {};
+	for (var i = 0; i != els.length; i++) {
+		var el = els[i];
+		if (el.type != 'checkbox') continue;
+		if (el.checked) {
+			if (!ar[el.name])
+				ar[el.name] = '';
+			ar[el.name] += '|' + el.value
+		}
+	}
+	var s = '';
+	for (i in ar) {
+		var v = ar[i].substring(1)
+		if (v.indexOf('|') != -1) v = '(' + v + ')'
+		s += ',' + v;
+	}
+
+	s = s.substring(1)
+
+	sourceName = window.name;
+	if (window.opener && !window.opener.closed) {
+		window.opener.document.reqForm.elements[sourceName].value = s;
+	}
+	window.close();
+}
+
+function inverse(group) {
+	var els = document.gramForm.elements;
+	var ar = {};
+	for (var i = 0; i != els.length; i++) {
+		var el = els[i];
+		if (el.type != 'checkbox') continue;
+		if (el.name == group)
+			el.checked=!el.checked;
+	}
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- Yandex.Metrika -->
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<script type="text/javascript">
+try { var yaCounter677861 = new Ya.Metrika(677861); } catch(e){}
+</script>
+<noscript><img src="//mc.yandex.ru/watch/677861" style="position:absolute" alt="" /></noscript>
+<!-- /Yandex.Metrika -->
+
+<center>
+<form name="gramForm" action="">
+<table border="1" cellspacing="0" cellpadding="4" class="intable">
+<tr>
+<td valign="top">
+
+<span title="Инвертировать" class="inverse" onclick="inverse('pos')"><b>Часть речи</b></span><br>
+	<input type="checkbox" name="pos" id="S" value="S">&nbsp;существительное</input><br>
+	<input type="checkbox" name="pos" id="A" value="A">&nbsp;прилагательное</input><br>
+	<input type="checkbox" name="pos" id="NUM" value="(NUM|ANUM)">&nbsp;числительное</input><br>
+	<input type="checkbox" name="pos" id="V" value="V">&nbsp;глагол</input><br>
+	<input type="checkbox" name="pos" id="ADV" value="ADV">&nbsp;наречие</input><br>
+	<input type="checkbox" name="pos" id="PRAEDIC" value="PRAEDIC">&nbsp;предикатив</input><br>
+	<input type="checkbox" name="pos" id="SPRO" value="SPRO">&nbsp;мест-сущ</input><br>
+	<input type="checkbox" name="pos" id="APRO" value="APRO">&nbsp;мест-прил</input><br>
+	<input type="checkbox" name="pos" id="INTJ" value="INTJ">&nbsp;междометие</input><br>
+	<input type="checkbox" name="pos" id="PARENTH" value="PARENTH">&nbsp;вводное слово</input><br>
+	<input type="checkbox" name="pos" id="PR" value="PR">&nbsp;предлог</input><br>
+	<input type="checkbox" name="pos" id="CONJ" value="CONJ">&nbsp;союз</input><br>
+	<input type="checkbox" name="pos" id="PART" value="PART">&nbsp;частица</input><br>
+<br>
+
+<span title="Инвертировать" class="inverse" onclick="inverse('prop')"><b>Имена собственные</b></span><br>
+	<input type="checkbox" name="prop" id="persn" value="persn">&nbsp;личное имя</input><br>
+	<input type="checkbox" name="prop" id="patrn" value="patrn">&nbsp;отчество</input><br>
+	<input type="checkbox" name="prop" id="husbn" value="((S,husbn)|(A,f,as_persn))">&nbsp;по мужу</input><br>
+	<input type="checkbox" name="prop" id="topn" value="topn">&nbsp;топоним</input><br>
+	<input type="checkbox" name="prop" id="ethn" value="ethn">&nbsp;этноним</input><br>
+<br>
+</td>
+<td valign="top">
+
+<span title="Инвертировать" class="inverse" onclick="inverse('case')"><b>Падеж</b></span><br>
+	<input type="checkbox" name="case" id="nom" value="nom">&nbsp;именительный</input><br>
+	<input type="checkbox" name="case" id="voc" value="voc">&nbsp;звательный</input><br>
+	<input type="checkbox" name="case" id="acc" value="acc">&nbsp;винительный</input><br>
+	<input type="checkbox" name="case" id="accgen" value="accgen">&nbsp;вин-род</input><br>
+	<input type="checkbox" name="case" id="gen" value="gen">&nbsp;родительный</input><br>
+	<input type="checkbox" name="case" id="dat" value="dat">&nbsp;дательный</input><br>
+	<input type="checkbox" name="case" id="ins" value="ins">&nbsp;творительный</input><br>
+	<input type="checkbox" name="case" id="loc" value="loc">&nbsp;местный</input><br>
+<br>
+
+<span title="Инвертировать" class="inverse" onclick="inverse('gend')"><b>Род</b></span><br>
+	<input type="checkbox" name="gend" id="m" value="m">&nbsp;мужской</input><br>
+	<input type="checkbox" name="gend" id="f" value="f">&nbsp;женский</input><br>
+	<input type="checkbox" name="gend" id="n" value="n">&nbsp;средний</input><br>
+<br>
+
+<span title="Инвертировать" class="inverse" onclick="inverse('number')"><b>Число</b></span><br>
+	<input type="checkbox" name="number" id="sg" value="sg">&nbsp;единственное</input><br>
+	<input type="checkbox" name="number" id="du" value="du">&nbsp;двойственной</input><br>
+	<input type="checkbox" name="number" id="pl" value="pl">&nbsp;множественное</input><br>
+	<input type="checkbox" name="number" id="adnum" value="adnum">&nbsp;счётная форма</input><br>
+<br>
+</td>
+<td valign="top">
+
+<span title="Инвертировать" class="inverse" onclick="inverse('mood')"><b>Наклонение</b></span><br>
+	<input type="checkbox" name="mood" id="imper" value="imper">&nbsp;повелительное</input><br>
+	<input type="checkbox" name="mood" id="cond" value="cond">&nbsp;сослагательное</input><br>
+<br>
+
+<span title="Инвертировать" class="inverse" onclick="inverse('tense')"><b>Время</b></span><br>
+	<input type="checkbox" name="tense" id="praes" value="praes">&nbsp;настоящее</input><br>
+	<input type="checkbox" name="tense" id="nonpast" value="nonpast">&nbsp;наст-буд</input><br>
+	<input type="checkbox" name="tense" id="fut" value="fut">&nbsp;будущее</input><br>
+	<input type="checkbox" name="tense" id="fut1" value="fut1">&nbsp;будущее I</input><br>
+	<input type="checkbox" name="tense" id="fut2" value="fut2">&nbsp;будущее II</input><br>
+	<input type="checkbox" name="tense" id="iperf" value="iperf">&nbsp;имперфект</input><br>
+	<input type="checkbox" name="tense" id="aor" value="aor">&nbsp;аорист</input><br>
+	<input type="checkbox" name="tense" id="perf" value="perf">&nbsp;перфект</input><br>
+	<input type="checkbox" name="tense" id="pqperf" value="pqperf">&nbsp;плюсквамперфект</input><br>
+	<input type="checkbox" name="tense" id="past" value="past">&nbsp;прошедшее (прич.)</input><br>
+<br>
+
+<span title="Инвертировать" class="inverse" onclick="inverse('pers')"><b>Лицо</b></span><br>
+	<input type="checkbox" name="pers" id="1p" value="1p">&nbsp;1-е</input><br>
+	<input type="checkbox" name="pers" id="2p" value="2p">&nbsp;2-е</input><br>
+	<input type="checkbox" name="pers" id="3p" value="3p">&nbsp;3-е</input><br>
+<br>
+</td>
+<td valign="top">
+
+<span title="Инвертировать" class="inverse" onclick="inverse('repr')"><b>Форма</b></span><br>
+	<input type="checkbox" name="repr" id="inf" value="inf">&nbsp;инфинитив</input><br>
+	<input type="checkbox" name="repr" id="supin" value="supin">&nbsp;супин</input><br>
+	<input type="checkbox" name="repr" id="partcp" value="partcp">&nbsp;причастие</input><br>
+<br>
+
+<span title="Инвертировать" class="inverse" onclick="inverse('voice')"><b>Залог</b></span><br>
+	<input type="checkbox" name="voice" id="pass" value="pass">&nbsp;страдательный</input><br>
+	<input type="checkbox" name="voice" id="act" value="act">&nbsp;действительный</input><br>
+<br>
+
+<span title="Инвертировать" class="inverse" onclick="inverse('dict')"><b>Словарные признаки</b></span><br>
+	<input type="checkbox" name="dict" id="coll" value="coll">&nbsp;собир. сущ./числ.</input><br>
+	<input type="checkbox" name="dict" id="pl_tant" value="pl_tant">&nbsp;plurale tantum</input><br>
+	<input type="checkbox" name="dict" id="card" value="card">&nbsp;количественное числ.</input><br>
+	<input type="checkbox" name="dict" id="ANUM" value="ANUM">&nbsp;числ.-прил.</input><br>
+	<input type="checkbox" name="dict" id="possess" value="possess">&nbsp;притяжательное прил.</input><br>
+<br>
+
+<span title="Инвертировать" class="inverse" onclick="inverse('pnform')"><b>Форма местоимения</b></span><br>
+	<input type="checkbox" name="pnform" id="ton" value="ton">&nbsp;ударная</input><br>
+	<input type="checkbox" name="pnform" id="cl" value="cl">&nbsp;клитическая</input><br>
+<br>
+</td>
+<td valign="top">
+
+<span title="Инвертировать" class="inverse" onclick="inverse('plenbrev')"><b>Степень / краткость</b></span><br>
+	<input type="checkbox" name="plenbrev" id="plen" value="plen">&nbsp;полное</input><br>
+	<input type="checkbox" name="plenbrev" id="brev" value="brev">&nbsp;краткое</input><br>
+	<input type="checkbox" name="plenbrev" id="comp" value="comp">&nbsp;сравн. степень</input><br>
+<br>
+
+<span title="Инвертировать" class="inverse" onclick="inverse('gvrn')"><b>Управление предлогов</b></span><br>
+	<input type="checkbox" name="gvrn" id="gvrn:nom" value="gvrn:nom">&nbsp;с именительным</input><br>
+	<input type="checkbox" name="gvrn" id="gvrn:acc" value="gvrn:acc">&nbsp;с винительным</input><br>
+	<input type="checkbox" name="gvrn" id="gvrn:gen" value="gvrn:gen">&nbsp;с родительным</input><br>
+	<input type="checkbox" name="gvrn" id="gvrn:dat" value="gvrn:dat">&nbsp;с дательным</input><br>
+	<input type="checkbox" name="gvrn" id="gvrn:ins" value="gvrn:ins">&nbsp;с творительным</input><br>
+	<input type="checkbox" name="gvrn" id="gvrn:loc" value="gvrn:loc">&nbsp;с местным</input><br>
+<br>
+
+<span title="Инвертировать" class="inverse" onclick="inverse('comment')"><b>Комментарий</b></span><br>
+	<input type="checkbox" name="comment" id="redundant" value="redundant">&nbsp;лишнее</input><br>
+	<input type="checkbox" name="comment" id="damaged" value="damaged">&nbsp;порча</input><br>
+	<input type="checkbox" name="comment" id="crossed_out" value="crossed_out">&nbsp;зачёркнуто</input><br>
+	<input type="checkbox" name="comment" id="without_copula" value="without_copula">&nbsp;без связки</input><br>
+	<input type="checkbox" name="comment" id="0" value="0">&nbsp;нескл.</input><br>
+	<input type="checkbox" name="comment" id="in_phrase" value="in_phrase">&nbsp;в соч.</input><br>
+	<input type="checkbox" name="comment" id="reverse_voices" value="reverse_voices">&nbsp;обратное отнош. залогов<br>с греч. оригиналом</input><br>
+
+</td>
+<td valign="top">
+<span title="Инвертировать" class="inverse" onclick="inverse('usage')"><b>Употребление</b></span><br>
+	<input type="checkbox" name="usage" id="as_S" value="as_S">&nbsp;в знач. сущ.</input><br>
+	<input type="checkbox" name="usage" id="as_persn" value="as_persn">&nbsp;в знач. личн.</input><br>
+	<input type="checkbox" name="usage" id="as_topn" value="as_topn">&nbsp;в знач. топонима</input><br>
+	<input type="checkbox" name="usage" id="as_ethn" value="as_ethn">&nbsp;в знач. этнонима</input><br>
+	<input type="checkbox" name="usage" id="as_PRO" value="as_PRO">&nbsp;в знач. мест.</input><br>
+	<input type="checkbox" name="usage" id="as_deb" value="as_deb">&nbsp;в знач. долж.</input><br>
+	<input type="checkbox" name="usage" id="as_ADV" value="as_ADV">&nbsp;в знач. нар.</input><br>
+	<input type="checkbox" name="usage" id="as_voc" value="as_voc">&nbsp;в знач. зват.</input><br>
+	<input type="checkbox" name="usage" id="as_PRAEDIC" value="as_PRAEDIC">&nbsp;в знач. предик.</input><br>
+	<input type="checkbox" name="usage" id="as_ART" value="as_ART">&nbsp;в знач. артикля</input><br>
+	<input type="checkbox" name="usage" id="as_CONJ" value="as_CONJ">&nbsp;в знач. союза</input><br>
+	<input type="checkbox" name="usage" id="as_PARENTH" value="as_PARENTH">&nbsp;в знач. вв. сл.</input><br>
+<br>
+
+<span title="Инвертировать" class="inverse" onclick="inverse('in_comb')"><b>В составе</b></span><br>
+	<input type="checkbox" name="in_comb" id="in_persn" value="in_persn">&nbsp;в сост. личн. имени</input><br>
+	<input type="checkbox" name="in_comb" id="in_ethn" value="in_ethn">&nbsp;в сост. этнонима</input><br>
+	<input type="checkbox" name="in_comb" id="in_topn" value="in_topn">&nbsp;в сост. топонима</input><br>
+	<input type="checkbox" name="in_comb" id="in_NUM" value="in_NUM">&nbsp;в сост. числит.</input><br>
+	<input type="checkbox" name="in_comb" id="in_ADV" value="in_ADV">&nbsp;в сост. наречия</input><br>
+	<input type="checkbox" name="in_comb" id="in_CONJ" value="in_CONJ">&nbsp;в сост. союза</input><br>
+	<input type="checkbox" name="in_comb" id="in_PR" value="in_PR">&nbsp;в сост. предлога</input><br>
+
+</td>
+</tr>
+</table>
+
+<br/>
+<table align=center>
+<tr><td>
+	<input type=button class=button value="  OK  " onclick="collect()">
+	<input type=button class=button value="Очистить" onclick='document.all.gramForm.reset()'>
+	<input type=reset class=button value="Отмена" onclick='window.close()'>
+<tr><td>
+</table>
+</form>
+</center>
+
+<script for=window event=onload language="JavaScript">
+parse_grams(window.opener.document.reqForm.elements[window.name].value);
+</script>
+
+</body>
+</html>

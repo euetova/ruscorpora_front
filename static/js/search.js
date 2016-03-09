@@ -18,52 +18,73 @@ var settings = {
   orphoStructure: false,
   accentStructure: false,
 
-  grammName : "req/reqgrm.html",
+  grammName : "reqgrm.html",
   grammSize : "width=650, height=600",
-  grammHelp : "help/help-lexic-gram.html",
+  grammHelp : "help-lexic-gram.html",
 
-  semName : "req/reqsem.html",
+  semName : "reqsem.html",
   semSize : "width=800, height=750",
-  semHelp : "help/help-lexic-sem.html",
-  semHelpAdditional : "help/help-lexic-sem-add.html",
+  semHelp : "help-lexic-sem.html",
+  semHelpAdditional : "help-lexic-sem-add.html",
 
-  flagsName : "req/reqflags.html",
+  flagsName : "reqflags.html",
   flagsSize : "width=400, height=490",
-  flagsHelp : "help/help-flags.html",
+  flagsHelp : "help-flags.html",
 
-  orphoName : "req/reqorpho.html",
+  orphoName : "reqorpho.html",
   orphoSize : "width=780, height=370",
-  orphoHelp : "help/help-orpho.html",
+  orphoHelp : "help-orpho.html",
 
-  accentName : "req/reqaccents.html",
+  accentName : "reqaccents.html",
   accentSize : "width=470, height=280",
-  accentHelp : "help/help-accent.html",
+  accentHelp : "help-accent.html",
 
-  linksName : "req/reqrel-syntax.html",
+  linksName : "reqrel-syntax.html",
   linksSize : "width=800, height=900",
-  linksHelp : "help/help-syntax-links.html",
+  linksHelp : "help-syntax-links.html",
 
-  attrsName : "req/reqattrs.html",
+  lfName : "",
+  lfSize : "width=800, height=900",
+  lfHelp : "help-lexical-functions.html",
+
+  zoneName : "reqzone-noss.html",
+  zoneSize : "width=800, height=900",
+  zoneHelp : "help-zone.html",
+
+  attrsName : "reqattrs.html",
   attrsSize : "width=900, height=400",
-  attrsHelp : "help/help-attrs.html",
+  attrsHelp : "help-attrs.html",
 
-  wfName : "req/reqwf.html",
-  wfSize : "width=350, height=220",
-  wfHelp : "help/help-wf.html",
+  murcoActsName : "attrs-murco-acts.html",
+  murcoActsMixedName : "attrs-murco-acts-mixed.html",
 
-  murcoActsName : "attrs-murco/attrs-murco-acts.html",
-  murcoActsMixedName : "attrs-murco/attrs-murco-acts-mixed.html",
-
-  murcoGesturesName : "attrs-murco/attrs-murco-gestures.html",
-  murcoGesturesMixedName : "attrs-murco/attrs-murco-gestures-mixed.html",
+  murcoGesturesName : "attrs-murco-gestures.html",
+  murcoGesturesMixedName : "attrs-murco-gestures-mixed.html",
   murcoMixedSize : "width=1000, height=900",
 
+  oneLine : false,
 
-  helpLexicWord : "help/help-lexic-word.html",
+  helpLexicWord : "help-lexic-word.html",
 
   mode : "main",
-  blocksCount : 0
+  blocksCount : 0,
+  wordsCount: 2,
+
+  customDraw: false,
+
+  gramm: {},
+  sem: {},
+  flags: {}
 };
+
+settings.gramm.help = settings.grammHelp;
+settings.sem.help = settings.semHelp;
+settings.flags.help = settings.flagsHelp;
+
+settings.gramm.caption = language.grammFeatures;
+settings.sem.caption = language.semFeatures;
+settings.flags.caption = language.additionalFeatures;
+settings.zoneName = false;
 
 function openPopup(name, val, str) {
   dialog = window.open(name, val, "scrollbars=yes, resizable=yes, " + str);
@@ -90,12 +111,16 @@ function getAccents(name) {
   openPopup(settings.accentName, "strAccent" + name, settings.accentSize);
 }
 
-function getWf(name) {
-  openPopup(settings.wfName, "m" + name, settings.wfSize);
-}
-
 function getLinks(name) {
   openPopup(settings.linksName, "type" + name, settings.linksSize);
+}
+
+function getLf(name) {
+  openPopup(settings.lfName, "lf_func" + name, settings.lfSize);
+}
+
+function getZone(name) {
+  openPopup(settings.zoneName, "zone" + name, settings.zoneSize);
 }
 
 function getAttr(name) {
@@ -116,7 +141,16 @@ function getMurcoAttrMixed(name) {
    openPopup(settings.murcoGesturesMixedName, name, settings.murcoMixedSize);
 }
 
-
+function fill_meaning(elem) {
+  meaning = document.getElementById(elem.id.replace("lex", "sem"));
+  if (elem.value.endsWith(")")) {
+     pos = elem.value.lastIndexOf("(");
+     if (pos >= 0) {
+       meaning.value = elem.value.substr(pos + 1, elem.value.length - pos - 2);
+       elem.value = elem.value.substr(0, pos).trimRight();
+     }
+  }
+}
 
 function get_id(block, name) {
   return "c" + block + "_" + name;
@@ -124,8 +158,19 @@ function get_id(block, name) {
 
 function setSuggest (block, id) {
   var ctrl = document.getElementById(get_id(block, "lex") + id);
-  if (ctrl)
-    suggest = new Suggest(ctrl, { site: "ruscorp" });
+  if (ctrl) {
+    if (settings.suggest == false) {
+      suggest = null;
+    } else if (settings.mode == 'birchbark') {
+      suggest = new Suggest(ctrl, { site: "birchbark" });
+    } else if (settings.mode == 'old_rus') {
+      suggest = new Suggest(ctrl, { site: "old_rus", blur: fill_meaning });
+    } else if (settings.mode == 'orthlib') {
+      suggest = new Suggest(ctrl, { site: "orthlib" });
+    } else {
+      suggest = new Suggest(ctrl, { site: "ruscorp" });
+    }
+  }
 }
 
 function add_sibling ( block, id ) {
@@ -201,18 +246,31 @@ function kill ( block, id ){
   }
 }
 
-function ed_syntaxrel(link) {
-  if(link.checked) {
-    link.nextSibling.nextSibling.disabled = false;
-    link.nextSibling.nextSibling.style.background = "";
+<!-- formerly "ed_syntaxrel" -->
+function toggle_text_under_checkbox(node) {
+  if (node == null) {
+    return;
   }
-  else {
-    link.nextSibling.nextSibling.disabled = true;
-    link.nextSibling.nextSibling.style.background = "#e0e0e0";
+  var checkboxChecked = node.checked;
+  while (node != null && node.nextSibling != null) {
+    node = node.nextSibling;
+    if (node.nodeName == 'INPUT') {
+      if(checkboxChecked) {
+        node.disabled = false;
+        node.style.background = "";
+      }
+      else {
+        node.disabled = true;
+        node.style.background = "#e0e0e0";
+      }
+    }
   }
 }
 
 function draw_word ( block, id, parentid, level ) {
+  if (settings.customDraw)
+     return custom_draw_word(block, id, parentid, level);
+
   var no_words = settings.parentBlock[block].innerHTML == '' ? 1 : 0;
   var kill_link = (no_words == -1) ?
     '<img src="../img/dot.gif" width="16" height="16" alt="" />' :
@@ -231,7 +289,7 @@ function draw_word ( block, id, parentid, level ) {
   if (block == 0) {
     if ( no_words == 0 ) {
       innercode +=
-          '<div class="row"><div class="col-xs-3"><div class="form-group distreq">' +
+        '<div class="row"><div class="col-xs-3"><div class="form-group distreq">' +
                     '<div class="input-group input-group-sm">'+
                       '<div class="input-group-addon">' + language.distance +  (settings.disableTree?'':language.fromParent) + ': '+ language.from + '</div>'+
                       '<input type="text" class="form-control" id="' + get_id(block, "min") + id + '" placeholder="1" name="min' + id + '" value="' + settings.defaultMin + '" />'+
@@ -240,15 +298,27 @@ function draw_word ( block, id, parentid, level ) {
           '</div></div></div>' +
           '<div class="col-xs-1"><a href="../../help/help-lexic-order.html" onClick="return showhelp(\'help/help-lexic-order.html\',0.7)">' + settings.helpImage + '</a></div></div>';
       if ( settings.linksName ) {
+        <!-- syntax relation -->
         innercode +=
-          '<div class="row"><div class="col-xs-6">' +
-          '<input type="checkbox" id="' + get_id(block, "link") + id + '" name="link' + id + '" checked="checked" onclick="ed_syntaxrel(this)" />' +
-          language.syntacticRelationship + ' <input type="text" id="' + get_id(block, "type") + id + '" name="type' + id + '" value="' + settings.defaultType + '" class="text" size="60" /> ' +
+          '<div class="row">' +
+          '<input type="checkbox" id="' + get_id(block, "link") + id + '" name="link' + id + '" checked="checked" onclick="toggle_text_under_checkbox(this)" />' +
+          language.syntacticRelationship + ' <input type="text" id="' + get_id(block, "type") + id + '" name="type' + id + '" value="' + settings.defaultType + '" class="form-control" size="60" /> ' +
           ' <a href="' + settings.linksHelp + '" onClick="return showhelp(\'' + settings.linksHelp + '\',0.7)">' + settings.helpImage + '</a> '+
           '<a href="javascript:getLinks(' + id + ')">' + language.select + '</a>' +
-          '</div></div>';
+          '</div>';
       }
-      //innercode += '</table>';
+      if ( settings.lfName ) {
+        <!-- lexical function-->
+        innercode +=
+          '<div class="row">' +
+          '<input type="checkbox" id="' + get_id(block, "lf") + id + '" name="lf' + id + '" checked="checked" onclick="toggle_text_under_checkbox(this)" />' +
+          language.lexicalFunction + ' <input type="text" id="' + get_id(block, "lf_func") + id + '" name="lf_func' + id + '" value="' + settings.defaultType + '" class="form-control" size="60" /> ' +
+          ' <a href="' + settings.lfHelp + '" onClick="return showhelp(\'' + settings.lfHelp + '\',0.7)">' + settings.helpImage + '</a> '+
+          '<a href="javascript:getLf(' + id + ')">' + language.select + '</a>';
+        innercode += '&nbsp;&nbsp; ' + language.lexicalFunctionPrep  + ': <input type="text" id="' + get_id(block, "lf_prep") + id + '" name="lf_prep' + id + '" value="' + settings.defaultType + '" class="form-control" size="30" /> '+
+          '</div>';
+      }
+      innercode += '</div>';
     }
     var widthSettings = (settings.semName) ? "wordreqtext" : "wordreqtext50";
       var zind = (100-id).toString();
@@ -287,45 +357,51 @@ function draw_word ( block, id, parentid, level ) {
           '</nobr></div>' +
         '</div>';
 
-   if (settings.mode != 'murco') {
+    if (settings.zoneName) {
+      innercode +=
+        '<tr>'+
+          '<td class="wordreqtext" style="padding:0 10px 10px 10px">'+
+            language.zone + ' ' +
+            ' <a href="' + settings.zoneHelp + '" onClick="return showhelp(\'' + settings.zoneHelp + '\',0.8)">' + settings.helpImage + '</a>'+
+            ' <a href="javascript:getZone(' + id + ')">' + language.select + '</a>'+
+          '</td>'+
+          '<td class="wordreqinput">'+
+            '<input type="text" id="' + get_id(block, "zone") + id + '" name="zone' + id + '" class="form-control">'+
+          '</td>';
+      innercode += '</tr>';
+    }
 
-   innercode += '<div class="row">';
+    if (settings.mode != 'murco') {
 
-   if (settings.flagsName)
-      innercode += // Flags caption
-        '<div class="col-sm-3 wordreqinput"><label>'+
-          language.additionalFeatures + ' ' +
-          ' <a href="' + settings.flagsHelp + '" onClick="return showhelp(\'' + settings.flagsHelp + '\',0.8)">' + settings.helpImage + '</a>'+
-          ' <a href="javascript:getFlags(' + id + ')">' + language.select + '</a>'+
-            '<input type="text" id="' + get_id(block, "flags") + id + '" name="flags' + id + '" class="form-control input-sm">'+
-        '</label></div>';
-   else innercode += '<div class="col-sm-3"><label></label></div>';
-   if (settings.wordFormationName)
-      innercode += // Word formation caption
-         '<div class="col-sm-3 wordreqinput"><label>'+
-           language.wordFormation + ' ' +
-           //' <a href="' + settings.wfHelp + '" onClick="return showhelp(\'' + settings.wfHelp + '\',0.8)">' + settings.helpImage + '</a>' +
-           ' <a href="javascript:getWf(' + id + ')">' + language.select + '</a>'+
-             '<input type="text" id="' + get_id(block, "m") + id + '" name="m' + id + '" class="form-control input-sm">' +
-         '</label></div>';
-   else innercode += '<div class="col-sm-3"><label></label></div>';
-   if (settings.semModifiers)
-      innercode += // Semantics additional checkboxes
-         '<div class="col-sm-4">'+
-           '<input type="checkbox" id="' + get_id(block, "sem-mod") + id + '" name="sem-mod' + id + '" value="sem" checked>' + language.sem + '&nbsp;' +
-           '<input type="checkbox" id="' + get_id(block, "sem-mod") + id + '" name="sem-mod' + id + '" value="sem2" checked>' + language.sem2 + '&nbsp;' +
-           '<input type="checkbox" id="' + get_id(block, "sem-mod") + id + '" name="sem-mod' + id + '" value="semf">' + language.semf + '&nbsp;' +
-           '<input type="checkbox" id="' + get_id(block, "sem-mod") + id + '" name="sem-mod' + id + '" value="semf2">' + language.semf2 + '&nbsp;' +
-           ' <a href="' + settings.semHelpAdditional + '" onClick="return showhelp(\'' + settings.semHelpAdditional + '\',0.8)">' + settings.helpImage + '</a>'+
-         '</div>';
-   else innercode += '<td />';
-   innercode += '</div>';
-  
-  } else {
+    if (settings.flagsName) {
+      innercode +=
+        '<tr>'+
+          '<td class="wordreqtext" style="padding:0 10px 10px 10px">'+
+            language.additionalFeatures + ' ' +
+            ' <a href="' + settings.flagsHelp + '" onClick="return showhelp(\'' + settings.flagsHelp + '\',0.8)">' + settings.helpImage + '</a>'+
+            ' <a href="javascript:getFlags(' + id + ')">' + language.select + '</a>'+
+          '</td>'+
+          '<td class="wordreqinput">'+
+            '<input type="text" id="' + get_id(block, "flags") + id + '" name="flags' + id + '" class="text100">'+
+          '</td>';
+      if (settings.semModifiers) {
+        innercode +=
+          '<td class="wordreqtext" style="padding:0 10px 10px 10px">'+
+            '<input type="checkbox" id="' + get_id(block, "sem-mod") + id + '" name="sem-mod' + id + '" value="sem" checked>' + language.sem + '&nbsp;' +
+            '<input type="checkbox" id="' + get_id(block, "sem-mod") + id + '" name="sem-mod' + id + '" value="sem2" checked>' + language.sem2 + '&nbsp;' +
+            '<input type="checkbox" id="' + get_id(block, "sem-mod") + id + '" name="sem-mod' + id + '" value="semf">' + language.semf + '&nbsp;' +
+            '<input type="checkbox" id="' + get_id(block, "sem-mod") + id + '" name="sem-mod' + id + '" value="semf2">' + language.semf2 + '&nbsp;' +
+            ' <a href="' + settings.semHelpAdditional + '" onClick="return showhelp(\'' + settings.semHelpAdditional + '\',0.8)">' + settings.helpImage + '</a>'+
+          '</td>';
+      }
+      innercode += '</tr>';
+    }
+
+   } else {
 
 //  murco
       innercode +=
-        '<div class="row">'+
+        '<tr valign="bottom">'+
           '<td class="wordreqtext">'+
             language.additionalFeatures + ' ' +
             ' <a href="' + settings.flagsHelp + '" onClick="return showhelp(\'' + settings.flagsHelp + '\',0.8)">' + settings.helpImage + '</a>'+
@@ -343,34 +419,34 @@ function draw_word ( block, id, parentid, level ) {
             ' <a href="' + settings.accentHelp + '" onClick="return showhelp(\'' + settings.accentHelp + '\',0.8)">' + settings.helpImage + '</a>'+
             ' <a href="javascript:getAccents(' + id + ')">' + language.select + '</a>'+
           '</td>'+
-        '</div>';
+        '</tr>';
       innercode +=
-        '<div class="row">'+
+        '<tr valign="top">'+
           '<td class="wordreqinput">'+
-            '<input type="text" id="' + get_id(block, "flags") + id + '" name="flags' + id + '" class="form-control input-sm">'+
+            '<input type="text" id="' + get_id(block, "flags") + id + '" name="flags' + id + '" class="text100">'+
           '</td>';
       innercode +=
           '<td class="wordreqinput">'+
-            '<input type="text" id="' + get_id(block, "orphoGr") + id + '" name="orphoGr' + id + '" class="form-control input-sm">'+
+            '<input type="text" id="' + get_id(block, "orphoGr") + id + '" name="orphoGr' + id + '" class="text100">'+
             '<input type="hidden" id="' + get_id(block, "orpho") + id + '" name="orpho' + id + '"/>'+
           '</td>';
       innercode +=
           '<td class="wordreqinput">'+
-            '<input type="text" id="' + get_id(block, "strAccent") + id + '" name="strAccent' + id + '" class="form-control input-sm">'+
+            '<input type="text" id="' + get_id(block, "strAccent") + id + '" name="strAccent' + id + '" class="text100">'+
           '</td>'+
-         '</div>';
-      innercode += 
+         '</tr>';
+      innercode +=
           '<input type="hidden" id="' + get_id(block, "accent") + id + '" name="accent' + id + '"/>';
-      innercode += 
+      innercode +=
           '<input type="hidden" id="' + get_id(block, "before") + id + '" name="before' + id + '"/>';
-      innercode += 
+      innercode +=
           '<input type="hidden" id="' + get_id(block, "after") + id + '" name="after' + id + '"/>';
-      innercode += 
+      innercode +=
           '<input type="hidden" id="' + get_id(block, "number") + id + '" name="number' + id + '"/>';
     }
 // End of murco
 
-    innercode += '</div></div>';
+    innercode += '</table>';
     return innercode;
   } else {
     if ( no_words == 0 ) {
@@ -390,10 +466,10 @@ function draw_word ( block, id, parentid, level ) {
           '<td>&nbsp;</td>' +
         '</tr><tr>' +
           '<td class="wordreqinput">'+
-            '<input type="text" id="' + get_id(block, "attr") + id + '" name="attr' + id + '" class="form-control input-sm">'+
+            '<input type="text" id="' + get_id(block, "attr") + id + '" name="attr' + id + '" class="text100">'+
           '</td>'+
           '<td class="wordreqinput">'+
-            '<input type="text" id="' + get_id(block, "val") + id + '" name="val' + id + '" class="form-control input-sm">'+
+            '<input type="text" id="' + get_id(block, "val") + id + '" name="val' + id + '" class="text100">'+
           '</td>';
     innercode +=
           '<td valign=bottom style="padding:0 10px 10px 0"><nobr>' +
@@ -575,6 +651,7 @@ function get_cookie(str) {
 }
 
 function set_cookie_params() {
+  if (settings.mode != "ngrams") {
   var x = get_cookie(settings.mode)
   if (x) {
     x = x.split("&");
@@ -609,7 +686,7 @@ function set_cookie_params() {
     document.exactForm.mysentsize.value = "";
     document.reqForm.mydocsize.value = "";
     document.exactForm.mydocsize.value = "";
-  }
+   }
 
   x = get_cookie("dpp");
   document.reqForm.dpp.value = x;
@@ -622,10 +699,11 @@ function set_cookie_params() {
   x = get_cookie("spd");
   document.reqForm.spd.value = x;
   document.exactForm.spd.value = x;
+  }
 }
 
 function init(){
-
+  if (settings.mode != 'mid_rus') {
   settings.parentBlock[0] = document.getElementById(settings.parentBlock[0]);
 
   add_sibling (0, 0);
@@ -634,13 +712,16 @@ function init(){
     add_child (0, 1);
   }
   if (!settings.disableFirstLevel) {
-    add_sibling (0, 0);
+    for (var i = 1; i != settings.wordsCount; ++i)
+      add_sibling (0, 0);
   }
 
   if (!settings.disableSecondTable) {
     settings.parentBlock[1] = document.getElementById(settings.parentBlock[1]);
     add_sibling (1, 0);
     add_sibling (1, 0);
+
+  }
   }
   set_cookie_params();
 }
@@ -654,6 +735,6 @@ function clearSubcorpus() {
 
 function clearSubcorpusLink() {
   if (get_cookie(settings.mode) != "")
-    document.write ('<span id="clearSubcorpusLink">&nbsp;&nbsp;&nbsp;<a href="javascript:clearSubcorpus()">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</a></span>');
+    document.write ('<span id="clearSubcorpusLink">&nbsp;&nbsp;&nbsp;<a href="javascript:clearSubcorpus()">сбросить подкорпус</a></span>');
 }
 

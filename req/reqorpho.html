@@ -1,0 +1,142 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Орфоэпическая структура</title>
+<script language="javascript" src="orpho.js"></script>
+<link rel="shortcut icon" href="../yandex.ru/favicon.ico">
+<script src="../static/js/jquery.js"></script>
+    <link href="../static/css/bootstrap.flatly.css" rel="stylesheet">
+<script src="../static/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<script language="javascript">
+function parse_orpho(str) {
+  var scheme = getOrphoScheme(str);
+  var n = scheme.length < 3 ? scheme.length : 3;
+  for (i = 0; i < n; ++i) {
+    var s = scheme[i].join("");
+    if (scheme[i].length > 1)
+      s = "[" + s + "]";
+    elem = document.getElementById("inp" + (i+1).toString());
+    if (elem) elem.value = s;
+  }
+}
+
+function collect() {
+  var s = "";
+  s += document.getElementById('inp1').value;
+  s += document.getElementById('inp2').value;
+  s += document.getElementById('inp3').value;
+
+  sourceName = window.name;
+  if (window.opener && !window.opener.closed) {
+    window.opener.document.reqForm.elements[sourceName].value = s;
+  }
+  window.close();
+}
+</script>
+
+<center>
+<form name="orphoForm" action="">
+
+<table border="0">
+<tr>
+
+<td valign="top" style="padding-right: 0px">
+<table border="0" cellspacing="0" cellpadding="3" class="inform">
+<tr>
+ <td id="V" />
+</tr>
+<tr>
+ <td id="CLV" />
+</tr>
+<tr>
+ <td id="MV" />
+</tr>
+<tr>
+ <td id="FV" />
+</tr>
+<tr>
+ <td id="BV" />
+</tr>
+<tr>
+ <td id="CV" />
+</tr>
+<tr>
+ <td id="VS" />
+</tr>
+<tr>
+ <td id="VH" />
+</tr>
+</table>
+</td>
+
+<td td valign="top">
+<table border="0" cellspacing="0" cellpadding="3" class="inform">
+<tr>
+ <td id="C" colspan="2" />
+</tr>
+<tr>
+ <td id="NVC" style="padding-right: 25px"/>
+ <td id="NUC" />
+</tr>
+<tr>
+ <td id="LC" />
+ <td id="RC" />
+</tr>
+<tr>
+ <td id="LLC" />
+ <td id="LDC" />
+</tr>
+<tr>
+ <td id="VC" />
+ <td id="PC" />
+</tr>
+<tr>
+ <td id="OC" />
+ <td id="FC" />
+</tr>
+<tr>
+ <td id="A" colspan="2" />
+</tr>
+</table>
+</td>
+
+</tr>
+</table>
+
+<br/>
+
+<table border="0" cellspacing="15px">
+<tr>
+<td>
+ <input type="text" id="inp1" />
+</td>
+<td>
+ <input type="text" id="inp2" />
+</td>
+<td>
+ <input type="text" id="inp3" />
+</td>
+</tr>
+</table>
+
+<br/>
+
+<input type=button class=button value=" OK " onclick="collect()">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+
+</center>
+
+
+<script language="javascript">
+ makeTable();
+ parse_orpho(window.opener.document.reqForm.elements[window.name].value);
+</script>
+
+
+</body>
+</html>

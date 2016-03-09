@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>Вокалическая структура</title>
+<link rel="shortcut icon" href="../yandex.ru/favicon.ico">
+<script src="../static/js/jquery.js"></script>
+    <link href="../static/css/bootstrap.flatly.css" rel="stylesheet">
+<script src="../static/js/bootstrap.min.js"></script>
+<style>
+.inverse   { cursor: pointer; color: #023F7C; }
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script language="JavaScript">
+
+var delim = "/";
+
+function parse_grams(str) {
+  var grams = str.split(/\//);
+  if (grams.length != 4) return;
+  
+  var vowel = window.document.getElementById('accent_vowel');
+  var pos = window.document.getElementById('accent_pos');
+  if (grams[0].length == 2) {
+    vowel.value = grams[0][0];
+    pos.value = grams[0][1];
+  }
+
+  var vowel = window.document.getElementById('before_vowel');
+  var pos = window.document.getElementById('before_pos');
+  if (grams[1].length == 2) {
+    vowel.value = grams[1][0];
+    pos.value = grams[1][1];
+  }
+
+  var vowel = window.document.getElementById('after_vowel');
+  var pos = window.document.getElementById('after_pos');
+  if (grams[2].length == 2) {
+    vowel.value = grams[2][0];
+    pos.value = grams[2][1];
+  }
+
+  var syllables = window.document.getElementById('syllables');
+  syllables.value = grams[3];
+}
+
+function collect() {
+  var s = '';
+  var vowel = document.getElementById('accent_vowel').value;
+  var pos = document.getElementById('accent_pos').value;
+  s += vowel + pos + delim;
+
+  vowel = document.getElementById('before_vowel').value;
+  pos = document.getElementById('before_pos').value;
+  s += vowel + pos + delim;
+
+  vowel = document.getElementById('after_vowel').value;
+  pos = document.getElementById('after_pos').value;
+  s += vowel + pos + delim;
+
+  s += document.getElementById('syllables').value;
+
+  sourceName = window.name;
+  if (window.opener && !window.opener.closed) {
+    window.opener.document.reqForm.elements[sourceName].value = s;
+  }
+  window.close();
+}
+
+function inverse(group) {
+  var els = document.flagsForm.elements;
+  var ar = {};
+  for (var i = 0; i != els.length; i++) {
+    var el = els[i];
+    if (el.type != 'checkbox') continue;
+    if (el.name == group)
+      el.checked=!el.checked;
+  }
+}
+</script>
+
+</head>
+<body>
+
+<center>
+<form name=flagsForm action="">
+<table border=1 cellspacing=0 cellpadding=4 class="intable">
+ <tr>
+  <td>&nbsp;</td>
+  <td align="center">Качество</td>
+  <td align="center">Номер</td>
+ </tr>
+ <tr>
+  <td>Ударный гласный</td>
+  <td align="center"><input size="15" type="text" name="a" id="accent_vowel" value=""/></td>
+  <td align="center"><input size="15" type="text" name="a" id="accent_pos" value=""/></td>
+ </tr>
+ <tr>
+  <td>Предударный гласный</td>
+  <td align="center"><input size="15" type="text" name="a" id="before_vowel" value=""/></td>
+  <td align="center"><input size="15" type="text" name="a" id="before_pos" value=""/></td>
+ </tr>
+ <tr>
+  <td>Заударный гласный</td>
+  <td align="center"><input size="15" type="text" name="a" id="after_vowel" value=""/></td>
+  <td align="center"><input size="15" type="text" name="a" id="after_pos" value=""/></td>
+ </tr>
+<br />
+ <tr>
+  <td>Количество слогов</td>
+  <td align="center" colspan="2"><input size="36" type="text" name="a" id="syllables" value=""/></td>
+ </tr>
+</table>
+
+<br />
+
+<table align="center">
+<tr><td>
+  <input type=button class=button value="  OK  " onclick="collect()">
+  <input type=button class=button value="Очистить" onclick='document.all.flagsForm.reset()'>
+  <input type=reset class=button value="Отмена" onclick='window.close()'>
+<tr><td>
+</table>
+
+
+</form>
+</center>
+
+<script for="window" event="onload" language="JavaScript">
+parse_grams(window.opener.document.reqForm.elements[window.name].value);
+</script>
+
+</body>
+</html>

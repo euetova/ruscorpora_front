@@ -1,0 +1,88 @@
+<html>
+<head>
+<link rel="SHORTCUT ICON" href="../yandex.ru/favicon.ico">
+<script src="../static/js/jquery.js"></script>
+    <link href="../static/css/bootstrap.flatly.css" rel="stylesheet">
+<script src="../static/js/bootstrap.min.js"></script>
+<title>Тип связи</title>
+<script language="JavaScript">
+
+function collect(f_name, formObj) {
+ 	    var els = formObj.elements;
+		var strval = "";
+	    for (var i = 0; i != els.length; i++)
+		{
+    	    var el = els[i];
+        	if (el.type != 'checkbox') continue;
+	        if (el.checked)
+			{
+				 if (strval != "")  strval += ", ";
+				 strval += el.value;
+        	}
+	    }
+	   pwin = window.opener;
+       if (pwin && !pwin.closed) 
+       {  
+		  pwin.document.all.reqForm.elements[f_name].value = strval;
+	   }
+      window.close();
+}
+
+function inverse(group, formObj) {
+    var els = formObj.elements;
+    var ar = {};
+    for (var i = 0; i != els.length; i++) {
+        var el = els[i];
+        if (el.type != 'checkbox') continue;
+        if (el.name == group)
+            el.checked=!el.checked;
+    }
+}
+</script>
+
+<script for=window event=onload language="JavaScript">
+	var types_str = new String(window.opener.document.reqForm.elements[window.name].value);
+	var pattern = /\s*,\s*/
+	types = types_str.split(pattern);	
+	var el;
+
+	for (i=0; i<types.length; i++) {
+			el = window.document.getElementById(types[i]);
+			if (el)	window.document.getElementById(types[i]).checked = true;
+	}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<body>
+
+<!-- Yandex.Metrika -->
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<script type="text/javascript">
+try { var yaCounter677861 = new Ya.Metrika(677861); } catch(e){}
+</script>
+<noscript><img src="//mc.yandex.ru/watch/677861" style="position:absolute" alt="" /></noscript>
+<!-- /Yandex.Metrika -->
+
+<center>
+<form name=cnctForm action="" >
+<h3>Тип связи</h3>
+<table border=0 cellspacing=0 cellpadding=3 class="inform">
+    <TR valign=top>
+        <td><span title="Инвертировать"><a href="default.htm" onclick="inverse('ct', document.cnctForm)">инвертировать</a></span><br>
+            <input type=checkbox name=ct value="тип 1" id = "тип 1">тип 1<br>
+            <input type=checkbox name=ct value="тип 2" id = "тип 2">тип 2<br>
+            <input type=checkbox name=ct value="тип 3" id = "тип 3">тип 3<br>
+        </td>
+    </tr>
+</table>
+
+<br>
+<input type=button class=button value="  OK  " onclick="collect(window.name, document.cnctForm)">&nbsp;&nbsp;
+<input type=button class=button value="Очистить" onclick='this.form.reset()'>&nbsp;&nbsp;
+<input type=reset class=button value="Отмена" onclick='window.close()'>&nbsp;&nbsp;
+</form>
+</center>
+
+</body>
+</html>
+

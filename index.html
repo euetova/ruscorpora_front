@@ -1,3 +1,4 @@
+<!-- HEADER START -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <meta name="title" content="Russian Learner Corpus">
+        <meta name="title" content="Russian National Corpus">
         <meta name="robots" content="index,all">
         <meta name="resourse-type" content="document">
         <meta name="document-state" content="dynamic">
@@ -19,14 +20,17 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+    <script src="static/js/jquery.js"></script>
     <link href="static/css/bootstrap.flatly.css" rel="stylesheet">
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
- <link href="static/css/style.css" rel="stylesheet">
-          <link href="static/css/styles.css" rel="stylesheet">
-	<script language="JavaScript" src="static/js/gramsel.js"></script>
-	<script language="JavaScript" src="static/js/urlprocessor.js"></script>
-    <script language="JavaScript" src="static/js/mainform.js"></script>
+    <link href="static/css/style.css" rel="stylesheet">
+
+        <script language="JavaScript" src="static/js/common.js"> </script>
+    <script language="JavaScript" src="www-copy/www-copy/custom_draw_word.js"> </script>
+    <script language="JavaScript" src="static/js/ru.js"> </script>
+	<script language="JavaScript" src="static/js/search-wf.js"></script>
+    <script language="JavaScript" src="static/js/main.js"> </script>
+    <script type="text/javascript" src="static/js/suggest.js"></script>
 
 
         <script type="text/javascript">
@@ -48,8 +52,9 @@
 
 </head>
 
-<body>
-<nav class="navbar navbar-default navbar-fixed-top" role="banner">
+<body onload="init();" onclick="bodyclosehelp()">
+
+<nav class="navbar navbar-default" role="banner">
   <div class="container-fluid">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -58,12 +63,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand"><img src="www-copy/www-copy/i/logo.gif" ></a>
+      <a href="/" class="navbar-brand"><img src="www-copy/www-copy/i/logo.gif" style=""></a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li>
-          <a href="">Главная</a>
+          <a href="/">Главная</a>
         </li>
       </ul>
 
@@ -73,8 +78,48 @@
   </div>
 </nav>
 
- <div id="masthead">
-      <div class="container">
+<!-- HEADER END -->
+
+
+<!-- MENU START -->
+<div class="col-sm-2">
+<ul class="nav nav-pills nav-stacked small menu" style="text-align: right">
+    <li ><hr></li>
+    <li class="disabled"><a href="#">главная</a></li>
+  <li><a href="#">архив новостей</a></li>
+    <li><hr></li>
+    <li><a href="#">поиск в корпусе</a></li>
+    <li><hr></li>
+    <li><a href="#">что такое корпус?</a></li>
+    <li><a href="#">состав и структура</a></li>
+    <li><a href="#">статистика</a></li>
+    <li><a href="#">графики</a></li>
+    <li><a href="#">частоты</a></li>
+    <li><a href="#">морфология</a></li>
+    <li><a href="#">обороты</a></li>
+    <li><a href="#">синтаксис</a></li>
+    <li><a href="#">семантика</a></li>
+    <li><a href="#">параметры текстов</a></li>
+    <li><hr></li>
+    <li><a href="#">studiorum</a></li>
+    <li><a href="#">форум</a></li>
+     <li><hr></li>
+    <li><a href="#">о проекте</a></li>
+    <li><a href="#">участники проекта</a></li>
+    <li><a href="#">публикации</a></li>
+    <li><a href="#">программные средства</a></li>
+    <li><a href="#">ошибки в корпусе</a></li>
+    <li><a href="#">использование корпуса</a></li>
+    <li><a href="#">другие корпуса</a></li>
+
+</ul>
+</div>
+<!-- MENU END-->
+
+<div class="col-sm-10">
+      <div class="row">
+
+
 <div class="settings">
  <a href="en/index.html">English</a>
 </div>
@@ -100,9 +145,8 @@
 
 <br />
 
-    </div>
-</div>
-<div class="container">
+
+
 
 <h1>Новости проекта</h1>
 
@@ -366,16 +410,11 @@
 
 <p><a href="archive.html">Архив новостей</a></p>
 
-</div><!--/container-->
 
-      <footer class="footer">
-          <div class="container">
-              <p class="navbar-text navbar-left text-muted">Национальный корпус русского языка (C) 2003&ndash;2016 </p>
-          </div>
-
-      </footer>
-
-    <script src="static/js/scripts.js"></script>
+</div>
+    <hr>
+              <p class="text-muted">Национальный корпус русского языка <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> 2003&ndash;2016 </p>
+</div>
 
 </body>
 
